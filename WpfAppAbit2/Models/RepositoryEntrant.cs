@@ -77,7 +77,7 @@ namespace WpfAppAbit2.Models
             SimpleClass ReturnDocumentsType,
             FinSourceAndEduForms FinSourceAndEduForms,
             ObservableCollection<Document> ApplicationDocuments,
-            ObservableCollection<EntranceTestResults> EntranceTestResults,
+            ObservableCollection<EntranceTestResult> EntranceTestResults,
             ObservableCollection<InstitutionAchievement> InstitutionAchievments,
             bool Original,
             ObservableCollection<EntrantApplication> applications)

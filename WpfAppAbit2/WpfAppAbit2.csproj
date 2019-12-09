@@ -124,7 +124,7 @@
     <Compile Include="Models\ApplicationCommonBenefit.cs" />
     <Compile Include="Models\LocalStorage.cs" />
     <Compile Include="Models\Document.cs" />
-    <Compile Include="Models\EntranceTestResults.cs" />
+    <Compile Include="Models\EntranceTestResult.cs" />
     <Compile Include="Models\FinSourceAndEduForms.cs" />
     <Compile Include="Models\InstitutionAchievement.cs" />
     <Compile Include="Models\MailAddress.cs" />

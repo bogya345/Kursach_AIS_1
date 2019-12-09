@@ -8,7 +8,7 @@ namespace WpfAppAbit2.Models
 
         public ObservableCollection<Entrant> Entrants = new ObservableCollection<Entrant>();
         public ObservableCollection<Person> Persons = new ObservableCollection<Person>();
-
+        public ObservableCollection<EntranceTestResult> EntranceTestResults = new ObservableCollection<EntranceTestResult>();
         public ObservableCollection<CampaignType> CampaignTypes = new ObservableCollection<CampaignType>();
         public ObservableCollection<EducationLevel> EducationLevels = new ObservableCollection<EducationLevel>();
         public ObservableCollection<EducationForm> EducationForms = new ObservableCollection<EducationForm>();
@@ -33,11 +33,80 @@ namespace WpfAppAbit2.Models
                 Status = "Ведётся набор"
             }
         };
+        public void FillEntranceTestItems()
+        {
+            EntranceTestItems = new ObservableCollection<EntranceTestItem>()
+            {
+                new EntranceTestItem()
+                {
+                    Guid = Guid.NewGuid(),
+                    EntranceTestType = 0,
+                    MinScore = 45,
+                    EntranceTestPriority = 0,
+                    Subject = Subjects[0],
+                    IsForSPOandVO = false,
+                    EntranceTestBenefits = new ObservableCollection<EntranceTestBenefitItem>(),
+                    ReplacedEntranceTestItem = null
+
+                },
+                new EntranceTestItem()
+                {
+                    Guid = Guid.NewGuid(),
+                    EntranceTestType = 0,
+                    MinScore = 40,
+                    EntranceTestPriority = 0,
+                    Subject = Subjects[1],
+                    IsForSPOandVO = false,
+                    EntranceTestBenefits = new ObservableCollection<EntranceTestBenefitItem>(),
+                    ReplacedEntranceTestItem = null
+
+                },
+                new EntranceTestItem()
+                {
+                    Guid = Guid.NewGuid(),
+                    EntranceTestType = 0,
+                    MinScore = 45,
+                    EntranceTestPriority = 0,
+                    Subject = Subjects[2],
+                    IsForSPOandVO = false,
+                    EntranceTestBenefits = new ObservableCollection<EntranceTestBenefitItem>(),
+                    ReplacedEntranceTestItem = null
+
+                },
+                new EntranceTestItem()
+                {
+                    Guid = Guid.NewGuid(),
+                    EntranceTestType = 0,
+                    MinScore = 38,
+                    EntranceTestPriority = 0,
+                    Subject = Subjects[3],
+                    IsForSPOandVO = false,
+                    EntranceTestBenefits = new ObservableCollection<EntranceTestBenefitItem>(),
+                    ReplacedEntranceTestItem = null
+
+                }
+
+            };
+        }
+        private void FillLevelBudjets()
+        {
+            LevelBudgets = new ObservableCollection<LevelBudget>()
+            {
+                new LevelBudget() { ID = 1, Name = "Обучение за счёт Федерального бюджета"},
+                new LevelBudget() { ID = 2, Name = "Обучение на договорной основе"}
+
+            };
+        }
         private void FillCompGroups()
         {
             CompetitiveGroups = new ObservableCollection<CompetitiveGroup>()
             {
-                new CompetitiveGroup(){UID = Guid.NewGuid(), Campaign =  Campaigns[0], Direction = Directions[1], }
+                new CompetitiveGroup(){UID = Guid.NewGuid(), Campaign =  Campaigns[0], Direction = Directions[1],
+                    IsForKrym = false, IsAdditional = false,
+                    CompetitiveGroupItem = new CompetitiveGroupItem(1, "Бюджетные места  "+ Directions[1].Name, 40),
+                    LevelBudget = LevelBudgets[0],
+                    EntranceTestItems = new ObservableCollection<EntranceTestItem>()
+                    { new EntranceTestItem(){ } } }
             };
         }
         private void FillLevels()
@@ -102,11 +171,40 @@ namespace WpfAppAbit2.Models
         {
             Entrants = new ObservableCollection<Entrant>()
             {
-                new Entrant(){ Person = new Person(){ PersonPassports = new ObservableCollection<Passport>(){ new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1" } } }, IsFromKrym=true },
-                new Entrant(){ Person = new Person(){ PersonPassports = new ObservableCollection<Passport>(){ new Passport() { FirstName="B2", LastName= "Volkov2", MiddleName="M2" } } }, IsFromKrym=false },
-                new Entrant(){ Person = new Person(){ PersonPassports = new ObservableCollection<Passport>(){ new Passport() { FirstName="B3", LastName= "Volkov3", MiddleName="M3" } } }, IsFromKrym=true },
-                new Entrant(){ Person = new Person(){ PersonPassports = new ObservableCollection<Passport>(){ new Passport() { FirstName="B4", LastName= "Volkov4", MiddleName="M4" } } }, IsFromKrym=false },
-                new Entrant(){ Person = new Person(){ PersonPassports = new ObservableCollection<Passport>(){ new Passport() { FirstName="B5", LastName= "Volkov5", MiddleName="M5" } } }, IsFromKrym=true }
+                new Entrant(){ Person = new Person()
+                {
+                    PersonPassports = new ObservableCollection<Passport>()
+                    {
+                        new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1" }
+                    }
+                }, IsFromKrym=true},
+                new Entrant(){ Person = new Person()
+                {
+                    PersonPassports = new ObservableCollection<Passport>()
+                    { new Passport()
+                    { FirstName="B2", LastName= "Volkov2", MiddleName="M2" }
+                    }
+                }, IsFromKrym=false },
+                new Entrant(){ Person = new Person()
+                {
+                        PersonPassports = new ObservableCollection<Passport>()
+                        {
+                            new Passport() { FirstName="B3", LastName= "Volkov3", MiddleName="M3" }
+                        }
+                }, IsFromKrym=true },
+                new Entrant(){ Person = new Person()
+                {
+                    PersonPassports = new ObservableCollection<Passport>()
+                    {
+                        new Passport() { FirstName="B4", LastName= "Volkov4", MiddleName="M4" }
+                    }
+                }, IsFromKrym=false },
+                new Entrant(){ Person = new Person()
+                {
+                    PersonPassports = new ObservableCollection<Passport>()
+                    { new Passport() { FirstName="B5", LastName= "Volkov5", MiddleName="M5" }
+                    }
+                }, IsFromKrym=true }
             };
         }
 

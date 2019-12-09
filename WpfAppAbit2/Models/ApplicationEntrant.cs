@@ -18,7 +18,7 @@ namespace WpfAppAbit2.Models
 
         public ObservableCollection<Document> ApplicationDocuments = new ObservableCollection<Document>();
 
-        public ObservableCollection<EntranceTestResults> EntranceTestResults = new ObservableCollection<EntranceTestResults>();
+        public ObservableCollection<EntranceTestResult> EntranceTestResults = new ObservableCollection<EntranceTestResult>();
 
         public ObservableCollection<InstitutionAchievement> InstitutionAchievments = new ObservableCollection<InstitutionAchievement>();
         public void balls()
@@ -54,7 +54,7 @@ namespace WpfAppAbit2.Models
 
          FinSourceAndEduForms FinSourceAndEduForms,
          ObservableCollection<Document> ApplicationDocuments,
-         ObservableCollection<EntranceTestResults> EntranceTestResults,
+         ObservableCollection<EntranceTestResult> EntranceTestResults,
          ObservableCollection<InstitutionAchievement> InstitutionAchievments,
          bool Original)
         {

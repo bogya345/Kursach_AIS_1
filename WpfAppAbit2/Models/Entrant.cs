@@ -18,7 +18,7 @@ namespace WpfAppAbit2.Models
 
         public ObservableCollection<EntrantApplication> EntrantApps = new ObservableCollection<EntrantApplication>();
         public ObservableCollection<Document> EntrantDocuments = new ObservableCollection<Document>();
-        public ObservableCollection<EntranceTestResults> EntranceTestResults = new ObservableCollection<EntranceTestResults>();
+        public ObservableCollection<EntranceTestResult> EntranceTestResults = new ObservableCollection<EntranceTestResult>();
        // public ObservableCollection<Document> EntrantDocuments = new ObservableCollection<Document>();
         public ObservableCollection<EntrantApplication> GetApplications(Entrant entrant)
         {
@@ -52,7 +52,7 @@ namespace WpfAppAbit2.Models
 
         }
         //TODO получить список всех заявлений абитуриента
-        public Entrant(Person person, bool IsFromKrym, Document DocumentForKrym, ObservableCollection<EntranceTestResults> EntranceTestResults)
+        public Entrant(Person person, bool IsFromKrym, Document DocumentForKrym, ObservableCollection<EntranceTestResult> EntranceTestResults)
         {
             this.Person = person;
             this.IsFromKrym = IsFromKrym;
