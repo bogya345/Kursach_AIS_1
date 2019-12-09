@@ -25,7 +25,7 @@
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,187,0,0" TextWrapping="Wrap" Text="{Binding _selectedpassport.FirstName, StringFormat={}({0})}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbFirstName"/>
         <Label Content="Отчество" HorizontalAlignment="Left" Margin="53,213,0,0" VerticalAlignment="Top" Height="26" Width="61"/>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,214,0,0" TextWrapping="Wrap" Text="{Binding _selectedpassport.MiddleName, StringFormat={}({0})}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbMiddleName"/>
-        <RichTextBox HorizontalAlignment="Left" Height="137" Margin="124,245,0,0" VerticalAlignment="Top" Width="158" AutomationProperties.Name="rtbIfo">
+        <RichTextBox HorizontalAlignment="Left" Height="22" Margin="124,245,0,0" VerticalAlignment="Top" Width="158" AutomationProperties.Name="rtbIfo">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="{Binding Person.CustomInformation, StringFormat={}({0})}"/>
@@ -64,7 +64,7 @@
         <Button Content="Добавить заявление" Grid.Column="2" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Width="220" Height="34" AutomationProperties.Name="btAddApp"/>
         <Button Content="Добавить паспорт" HorizontalAlignment="Left" Margin="57,22,0,0" VerticalAlignment="Top" Width="185" Height="34" AutomationProperties.Name="btAddApp"/>
         <ComboBox HorizontalAlignment="Left" Margin="123,77,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbPassport" Height="22"
-                   ItemsSource="{Binding }"/>
+                   ItemsSource="{Binding }" Background="#19673AB7"/>
         <Label Content="Паспорт" HorizontalAlignment="Left" Margin="57,75,0,0" VerticalAlignment="Top" Height="26" Width="61" AutomationProperties.Name="lbPassport"/>
         <Button Command="{Binding CommandCreateEntrant}" Content="Создать абитуриента" Grid.Column="2" HorizontalAlignment="Left" Margin="27,393,0,0" VerticalAlignment="Top" Width="220" AutomationProperties.Name="btSave" Height="33"/>
         <Label Content="Статус" Grid.Column="2" HorizontalAlignment="Left" Margin="27,205,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
