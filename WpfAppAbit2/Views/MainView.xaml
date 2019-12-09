@@ -37,6 +37,7 @@
         <Menu HorizontalAlignment="Left" Height="48" Margin="245,0,0,0" VerticalAlignment="Top" Width="787">
             <MenuItem Header="Добавить абитуриента" Command="{Binding ShowAddEntrant}" ></MenuItem>
             <MenuItem Header="Редактировать абитуриента" ></MenuItem>
+            <MenuItem Header="XML Test" Click="MenuItem_Click" ></MenuItem>
 
         </Menu>
         <DataGrid HorizontalAlignment="Left" Height="366" Margin="250,53,0,0" VerticalAlignment="Top" Width="782" 

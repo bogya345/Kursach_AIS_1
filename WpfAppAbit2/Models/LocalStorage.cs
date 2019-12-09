@@ -16,8 +16,6 @@ namespace WpfAppAbit2.Models
                 Name = "Приёмная кампания 2019",
                 YearStart = DateTime.Now.Year,
                 Status = "Ведётся набор"
-
-
     }
     };
         public ObservableCollection<CampaignType> CampaignTypes = new ObservableCollection<CampaignType>();
@@ -37,7 +35,8 @@ namespace WpfAppAbit2.Models
 
         public LocalStorage()
         {
-            FillEntrants();
+            //FillEntrants();
+            FillApplications();
         }
 
         private void FillEntrants()
@@ -49,6 +48,28 @@ namespace WpfAppAbit2.Models
                 new Entrant(){ Person = new Person(){ PersonPassports = new ObservableCollection<Passport>(){ new Passport() { FirstName="B3", LastName= "Volkov3", MiddleName="M3" } } }, IsFromKrym=true },
                 new Entrant(){ Person = new Person(){ PersonPassports = new ObservableCollection<Passport>(){ new Passport() { FirstName="B4", LastName= "Volkov4", MiddleName="M4" } } }, IsFromKrym=false },
                 new Entrant(){ Person = new Person(){ PersonPassports = new ObservableCollection<Passport>(){ new Passport() { FirstName="B5", LastName= "Volkov5", MiddleName="M5" } } }, IsFromKrym=true }
+            };
+        }
+
+        private void FillApplications()
+        {
+            Applications = new ObservableCollection<EntrantApplication>()
+            {
+                new EntrantApplication(){
+                    UID = "0001",
+                    Entrant = new Entrant(){
+                        Person = new Person(){
+                            UID = new Guid(),
+                            PersonPassports = new ObservableCollection<Passport>(){ new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1" } } }, IsFromKrym=true },
+                    ApplicationNumber = 1001,
+                    RegistrationDate = DateTime.Today,
+                    NeedHostel = true,
+                    StatusApp = "1",
+
+                    ReturnDocumentsType = 20001,
+                    ReturnDocumentsDate = DateTime.Today
+                },
+
             };
         }
 

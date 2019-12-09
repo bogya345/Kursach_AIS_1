@@ -1,35 +1,58 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
+using System.Xml.Serialization;
+
 namespace WpfAppAbit2.Models
 {
     public class Passport : Document
     {
+        [XmlElement("LastName")]
         public string LastName { get; set; }
+
+        [XmlElement("FirstName")]
         public string FirstName { get; set; }
+
+        [XmlElement("MiddleName")]
         public string MiddleName { get; set; }
+
+        [XmlElement("GenderID")]
         public bool GenderID { get; set; }
+
         /// <summary>
         /// место прописки
         /// </summary>
+        [XmlElement("Address")]
         public Address Address { get; set; }
+
         /// <summary>
         /// Код подразделения, выдавшего паспорт
         /// </summary>
+        [XmlIgnore]
         public string UnitCode { get; set; }
+
         /// <summary>
         /// дата рождения
         /// </summary>
+        [XmlElement("BirthDay")]
         public DateTime BirthDay { get; set; }
+
         /// <summary>
         /// место рождения
         /// </summary>
+        [XmlIgnore]
         public Address BirthPlace { get; set; }
+
         /// <summary>
         /// предыдущий пасспорт
         /// </summary>
+        [XmlIgnore]
         public Passport PreviusPassport { get; set; }
+
+        [XmlIgnore]
         public bool Actual { get; set; }
+        
+        
         public override string ToString()
         {
             return this.LastName + " "+this.FirstName + " " + this.MiddleName + " " +this.Series + " " +this.Number;

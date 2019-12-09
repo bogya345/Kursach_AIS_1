@@ -15,6 +15,7 @@ using WpfAppAbit2.ViewModels;
 
 using WpfAppAbit2.Models;
 using WpfAppAbit2.Repository;
+using WpfAppAbit2.XML;
 
 namespace WpfAppAbit2.Views
 {
@@ -29,6 +30,7 @@ namespace WpfAppAbit2.Views
         public static LocalStorage db = new LocalStorage();
 
         public RepositoryEntrant entrants = new RepositoryEntrant(db);
+        public RepositoryApplication apps = new RepositoryApplication(db);
 
         public MainView()
         {
@@ -41,6 +43,7 @@ namespace WpfAppAbit2.Views
             get => DataContext as IViewModel;
             set => DataContext = value;
         }
+
         public void OpenAdd(object sender, RoutedEventArgs e)
         {
 
@@ -78,6 +81,12 @@ namespace WpfAppAbit2.Views
         private void TreeView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //SelectItem = Transform.ttyt;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            xml _xml = new xml(apps.GetAll());
+            _xml.SetContent();
         }
     }
 }

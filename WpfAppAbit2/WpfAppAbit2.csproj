@@ -106,6 +106,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="XML\xml.cs" />
     <Page Include="Views\AbitAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resourses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="пройденное заявление.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
