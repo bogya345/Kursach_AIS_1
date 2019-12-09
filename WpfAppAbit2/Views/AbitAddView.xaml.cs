@@ -22,8 +22,8 @@ namespace WpfAppAbit2.Views
     {
         public AbitAddView()
         {
-            this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/Resourses/AbitAddView.xaml") };
-            this.Style = (Style)Application.Current.Resources["AddAbit"];
+           // this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/Resourses/AbitAddView.xaml") };
+           // this.Style = (Style)Application.Current.Resources["AddAbit"];
             InitializeComponent();
         }
         public IViewModel ViewModel
