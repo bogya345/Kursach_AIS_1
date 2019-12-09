@@ -44,4 +44,38 @@ namespace WpfAppAbit2.Repository
             return db.Entrants.First(func);
         }
     }
+    class RepositorApplication : IRepositor<EntrantApplication>
+    {
+        private readonly LocalStorage db;
+
+        public RepositorApplication(LocalStorage storage)
+        {
+            db = storage;
+        }
+
+        ObservableCollection<EntrantApplication> IRepositor<EntrantApplication>.GetAll()
+        {
+            return db.Applications;
+        }
+
+        public void Delete(EntrantApplication item)
+        {
+
+        }
+
+        public void Delete(Func<EntrantApplication, bool> func)
+        {
+            //db.Entrants.Remove(func);
+        }
+
+        public Entrant Get(EntrantApplication item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Entrant Get(Func<EntrantApplication, bool> func)
+        {
+            return db.Applications.First(func);
+        }
+    }
 }

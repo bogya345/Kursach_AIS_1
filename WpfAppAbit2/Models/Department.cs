@@ -15,7 +15,7 @@ namespace WpfAppAbit2.Models
         /// <summary>
         /// 0 - институт 1 - 
         /// </summary>
-        public int DepatrmentLevel { get; set; }
+        public int DepartmentLevel { get; set; }
         public override string ToString()
         {
             return ShortName;

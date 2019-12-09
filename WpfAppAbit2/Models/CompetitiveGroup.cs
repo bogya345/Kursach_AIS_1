@@ -7,6 +7,9 @@ using System.Collections.ObjectModel;
 
 namespace WpfAppAbit2.Models
 {
+    /// <summary>
+    /// конкурс на специальность
+    /// </summary>
     public class CompetitiveGroup
     {
         public Guid UID { get; set; }

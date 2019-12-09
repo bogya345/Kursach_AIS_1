@@ -11,7 +11,7 @@ namespace WpfAppAbit2.Models
         public Guid Guid { get; set; }
         public int EntranceTestType { get; set; }
         public int MinScore { get; set; }
-        public int EntranceTestPrority { get; set; }
+        public int EntranceTestPriority { get; set; }
         public Subject Subject { get; set; }
         public bool IsForSPOandVO { get; set; }
         public ObservableCollection<EntranceTestBenefitItem> EntranceTestBenefits = new ObservableCollection<EntranceTestBenefitItem>();

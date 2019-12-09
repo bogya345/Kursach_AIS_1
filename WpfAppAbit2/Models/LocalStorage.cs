@@ -8,18 +8,7 @@ namespace WpfAppAbit2.Models
 
         public ObservableCollection<Entrant> Entrants = new ObservableCollection<Entrant>();
         public ObservableCollection<Person> Persons = new ObservableCollection<Person>();
-        public ObservableCollection<Campaign> Campaigns = new ObservableCollection<Campaign>()
-        {
-            new Campaign()
-            {
-                Guid =  Guid.NewGuid(),
-                Name = "Приёмная кампания 2019",
-                YearStart = DateTime.Now.Year,
-                Status = "Ведётся набор"
 
-
-    }
-    };
         public ObservableCollection<CampaignType> CampaignTypes = new ObservableCollection<CampaignType>();
         public ObservableCollection<EducationLevel> EducationLevels = new ObservableCollection<EducationLevel>();
         public ObservableCollection<EducationForm> EducationForms = new ObservableCollection<EducationForm>();
@@ -34,7 +23,76 @@ namespace WpfAppAbit2.Models
         public ObservableCollection<TargetOrganization> TargetOrganizations = new ObservableCollection<TargetOrganization>();
         public ObservableCollection<Direction> Directions = new ObservableCollection<Direction>();
         public ObservableCollection<Subject> Subjects = new ObservableCollection<Subject>();
+        public ObservableCollection<Campaign> Campaigns = new ObservableCollection<Campaign>()
+        {
+            new Campaign()
+            {
+                Guid =  Guid.NewGuid(),
+                Name = "Приёмная кампания 2019",
+                YearStart = DateTime.Now.Year,
+                Status = "Ведётся набор"
+            }
+        };
+        private void FillCompGroups()
+        {
+            CompetitiveGroups = new ObservableCollection<CompetitiveGroup>()
+            {
+                new CompetitiveGroup(){UID = Guid.NewGuid(), Campaign =  Campaigns[0], Direction = Directions[1], }
+            };
+        }
+        private void FillLevels()
+        {
+            EducationLevels = new ObservableCollection<EducationLevel>()
+            {
+                new EducationLevel(){ID = 1, Name = "Бакалавриат"},
+                new EducationLevel(){ID = 2, Name = "Специалитет"},
+                new EducationLevel(){ID = 3, Name = "Магистратура"}
+            };
+        }
+        private void FillSubjects()
+        {
+            Subjects = new ObservableCollection<Subject>()
+            {
+                new Subject(){ ID = 1, Name = "Физика"},
+                new Subject(){ ID = 2, Name = "Математика"},
+                new Subject(){ ID = 3, Name = "Русский язык"},
+                new Subject(){ ID = 4, Name = "Обществознание"},
+                new Subject(){ ID = 5, Name = "Английский язык"}
+            };
+        }
 
+        public void FillDirections()
+        {
+            Directions = new ObservableCollection<Direction>()
+            {
+                new Direction(Guid.NewGuid(), "Реклама и Связи с общественностью","РиСО", Departments[3]),
+                new Direction(Guid.NewGuid(), "Информационные системы и технологии","ИСТ", Departments[2]),
+                new Direction(Guid.NewGuid(), "Информатика и вычислительная техника","ИВТ", Departments[2])
+
+            };
+        }
+        private void FillDepartments()
+        {
+            Departments = new ObservableCollection<Department>()
+            {
+                new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = null,
+                    Name = "ФГБОУ Ухтинский Государственный Технический Университет",
+                    ShortName = "ФГБОУ УГТУ", DepartmentLevel = 0},
+                new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = Departments[0],
+                    Name = "Институт Экономики Управления и Информационных Технологий",
+                    ShortName = "ИНЭУиИТ", DepartmentLevel = 1},
+                new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = Departments[1],
+                    Name = "Кафедра Вычислительной техники, информационных систем и технологий",
+                    ShortName = "ВТИСиТ", DepartmentLevel = 2},
+                new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = Departments[1],
+                    Name = "Кафедра Социально-коммуникативных технологий",
+                    ShortName = "СКТ", DepartmentLevel = 2},
+                 new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = Departments[1],
+                    Name = "Кафедра Менеджмента и маркетинга",
+                    ShortName = "МиМ", DepartmentLevel = 2}
+
+            };
+        }
         public LocalStorage()
         {
             FillEntrants();
