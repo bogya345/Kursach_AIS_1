@@ -29,12 +29,12 @@ namespace WpfAppAbit2.Views
         public static LocalStorage db = new LocalStorage();
 
         public RepositoryEntrant entrants = new RepositoryEntrant(db);
-
+        public RepositoryApplication applications = new RepositoryApplication(db);
         public MainView()
         {
             //entrantsGrid.ItemsSource = 
             InitializeComponent();
-            entrantsGrid.ItemsSource = entrants.GetAll();
+            entrantsGrid.ItemsSource = applications.GetAll();
         }
         public IViewModel ViewModel
         {

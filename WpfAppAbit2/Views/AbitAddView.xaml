@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfAppAbit2.Views"
         xmlns:viewmodel="clr-namespace:WpfAppAbit2.ViewModels"
         mc:Ignorable="d" 
-        Title="AbitAddView" Height="474" Width="887">
+        Title="Добавление абитуриента" Height="474" Width="887">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="114*">

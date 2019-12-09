@@ -27,7 +27,10 @@ namespace WpfAppAbit2.Models
         public TargetOrganization TargetOrganization { get; set; }
 
         public ObservableCollection<EntranceTestItem> EntranceTestItems = new ObservableCollection<EntranceTestItem>();
-
+        public override string ToString()
+        {
+            return Name;
+        }
 
     }
 }

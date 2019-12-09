@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WpfAppAbit2.Models
 {
@@ -19,7 +15,16 @@ namespace WpfAppAbit2.Models
             this.UID = UID;
             this.Department = department;
             this.Name = Name;
-            this.ShortName = ShortName;            
+            this.ShortName = ShortName;
+        }
+        public override string ToString()
+        {
+            return ShortName;
+        }
+
+        public string ToString2()
+        {
+            return Name;
         }
     }
 }

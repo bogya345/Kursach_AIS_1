@@ -27,6 +27,10 @@ namespace WpfAppAbit2.Models
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
         

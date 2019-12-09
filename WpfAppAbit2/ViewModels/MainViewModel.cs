@@ -24,7 +24,8 @@ namespace WpfAppAbit2.ViewModels
             get => new UserCommand(async () =>
             {
                 var displayRootRegistry = (Application.Current as App).displayRootRegistry;
-
+                LocalStorage localStorage = new LocalStorage();
+            
                 var otherWindowViewModel = new AbitAddViewModel();
                 await displayRootRegistry.ShowModalPresentation(otherWindowViewModel);
             }

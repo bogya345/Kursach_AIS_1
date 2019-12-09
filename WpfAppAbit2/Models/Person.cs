@@ -12,6 +12,11 @@ namespace WpfAppAbit2.Models
         /// <summary>
         /// список паспортов 
         /// </summary>
+        /// 
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+
         public ObservableCollection<Passport> PersonPassports { get; set; }
         public string CustomInformation { get; set; }
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
@@ -45,6 +50,9 @@ namespace WpfAppAbit2.Models
             this.UID = Guid.NewGuid();
             this.PersonPassports = new ObservableCollection<Passport>();
             this.PersonPassports.Add(passport);
+            this.LastName = PersonPassports[0].LastName;
+            this.FirstName = PersonPassports[0].FirstName;
+            this.MiddleName = PersonPassports[0].MiddleName;
         }
        
         //TODO добавление абитуриента (подача заявления), редактирование, зачисление.

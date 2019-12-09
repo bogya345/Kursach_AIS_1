@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace WpfAppAbit2.Models
 {
@@ -62,6 +63,12 @@ namespace WpfAppAbit2.Models
             this.IsFromKrym = IsFromKrym;
             this.DocumentForKrym = DocumentForKrym;
             this.EntranceTestResults = EntranceTestResults;
+        }
+        public override string ToString()
+        {
+            MessageBox.Show(Person.LastName + "  " + Person.FirstName + "  " + Person.MiddleName);
+            return Person.LastName + "  " + Person.FirstName + "  " + Person.MiddleName;
+
         }
     }
 }

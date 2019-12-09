@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace WpfAppAbit2.Models
 {
@@ -101,7 +102,7 @@ namespace WpfAppAbit2.Models
         {
             CompetitiveGroups = new ObservableCollection<CompetitiveGroup>()
             {
-                new CompetitiveGroup(){UID = Guid.NewGuid(), Campaign =  Campaigns[0], Direction = Directions[1],
+                new CompetitiveGroup(){UID = Guid.NewGuid(), Name = Directions[0].ToString()+"  "+ LevelBudgets[0].ToString(), Campaign =  Campaigns[0], Direction = Directions[1],
                     IsForKrym = false, IsAdditional = false,
                     CompetitiveGroupItem = new CompetitiveGroupItem(1, "Бюджетные места  "+ Directions[1].Name, 40),
                     LevelBudget = LevelBudgets[0],
@@ -142,42 +143,83 @@ namespace WpfAppAbit2.Models
         }
         private void FillDepartments()
         {
-            Departments = new ObservableCollection<Department>()
+            this.Departments = new ObservableCollection<Department>()
             {
                 new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = null,
                     Name = "ФГБОУ Ухтинский Государственный Технический Университет",
-                    ShortName = "ФГБОУ УГТУ", DepartmentLevel = 0},
-                new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = Departments[0],
-                    Name = "Институт Экономики Управления и Информационных Технологий",
-                    ShortName = "ИНЭУиИТ", DepartmentLevel = 1},
-                new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = Departments[1],
-                    Name = "Кафедра Вычислительной техники, информационных систем и технологий",
-                    ShortName = "ВТИСиТ", DepartmentLevel = 2},
-                new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = Departments[1],
-                    Name = "Кафедра Социально-коммуникативных технологий",
-                    ShortName = "СКТ", DepartmentLevel = 2},
-                 new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = Departments[1],
-                    Name = "Кафедра Менеджмента и маркетинга",
-                    ShortName = "МиМ", DepartmentLevel = 2}
+                    ShortName = "ФГБОУ УГТУ", DepartmentLevel = 0}
 
             };
-        }
-        public LocalStorage()
-        {
-            FillEntrants();
+            Departments.Add(
+                new Department()
+                {
+                    DepartmentGuid = Guid.NewGuid(),
+                    HeadDepartment = Departments[0],
+                    Name = "Институт Экономики Управления и Информационных Технологий",
+                    ShortName = "ИНЭУиИТ",
+                    DepartmentLevel = 1
+                });
+            Departments.Add(
+                new Department()
+                {
+                    DepartmentGuid = Guid.NewGuid(),
+                    HeadDepartment = Departments[1],
+                    Name = "Кафедра Вычислительной техники, информационных систем и технологий",
+                    ShortName = "ВТИСиТ",
+                    DepartmentLevel = 2
+                });
+            Departments.Add(
+                new Department()
+                {
+                    DepartmentGuid = Guid.NewGuid(),
+                    HeadDepartment = Departments[1],
+                    Name = "Кафедра Социально-коммуникативных технологий",
+                    ShortName = "СКТ",
+                    DepartmentLevel = 2
+                }
+                );
+            Departments.Add(
+                 new Department()
+                 {
+                     DepartmentGuid = Guid.NewGuid(),
+                     HeadDepartment = Departments[1],
+                     Name = "Кафедра Менеджмента и маркетинга",
+                     ShortName = "МиМ",
+                     DepartmentLevel = 2
+                 }
+                );
+          
         }
 
+        public void FillApplications()
+        {
+            Applications = new ObservableCollection<EntrantApplication>
+            {
+                new EntrantApplication()
+                {
+                    Entrant = Entrants[0],
+                    ApplicationNumber = 0,
+                    RegistrationDate = DateTime.Today,
+                    NeedHostel = false,
+                    StatusApp = "Неполное",
+                    CompetitiveGroup = CompetitiveGroups[0],
+                    ReturnDocumentsType = 0,
+                    ReturnDocumentsDate = DateTime.MinValue,
+                    FinSourceAndEduForms = new FinSourceAndEduForms(){ CompetitiveGroup = CompetitiveGroups[0],
+                        TargetOrganization = null, IsAgreedDate = DateTime.Today, IsDisagreedDate = DateTime.MinValue,
+                        IsForSPOandVO = false}
+                    
+
+                }
+            };
+        }
         private void FillEntrants()
         {
             Entrants = new ObservableCollection<Entrant>()
             {
-                new Entrant(){ Person = new Person()
-                {
-                    PersonPassports = new ObservableCollection<Passport>()
-                    {
-                        new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1" }
-                    }
-                }, IsFromKrym=true},
+                new Entrant(){ Person = new Person( new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1" }, null,
+                new EmailOrMailAddress("owlkek@gpepa.com", new Address(){ Town = "Сыктыкар", Street = "улица Пушкина", House = "Дом Колатушкина" } ) )
+               , IsFromKrym=true},
                 new Entrant(){ Person = new Person()
                 {
                     PersonPassports = new ObservableCollection<Passport>()
@@ -207,6 +249,21 @@ namespace WpfAppAbit2.Models
                 }, IsFromKrym=true }
             };
         }
+        public LocalStorage()
+        {
+            FillDepartments();
+            FillSubjects();
+            FillEntranceTestItems();
+            FillLevels();
+            FillDirections();
+            FillLevelBudjets();
+            FillCompGroups();
+            FillEntrants();
+            FillApplications();
+
+
+        }
+
 
         //public ObservableCollection<Passport> Passports = new ObservableCollection<Passport>();
 
