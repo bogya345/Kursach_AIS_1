@@ -47,12 +47,12 @@ namespace WpfAppAbit2.Models
                 if (application == Application) { db.Applications.Remove(application); }
             }
         }
-        public void Update(EntrantApplication Application)
+        public void Update(EntrantApplication Application, EntrantApplication Application_prev)
         {
             int i = 0;
             foreach (EntrantApplication application in db.Applications)
             {
-                if (application == Application) { db.Applications[i] = Application; }
+                if (application == Application_prev) { db.Applications[i] = Application; }
                 i++;
             }
         }

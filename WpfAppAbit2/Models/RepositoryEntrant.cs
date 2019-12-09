@@ -54,9 +54,9 @@ namespace WpfAppAbit2.Models
         {
             db.Entrants.Remove(Entrant);
         }
-        public void Update(Entrant Entrant)
+        public void Update(Entrant Entrant, Entrant entrant_prev)
         {
-            db.Entrants[db.Entrants.IndexOf(Entrant)] = Entrant;
+            db.Entrants[db.Entrants.IndexOf(entrant_prev)] = Entrant;
         }
         public ObservableCollection<EntrantApplication> GetApplicationsEntrant(Entrant entrant)
         {

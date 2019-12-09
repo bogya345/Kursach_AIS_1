@@ -44,38 +44,68 @@ namespace WpfAppAbit2.Repository
             return db.Entrants.First(func);
         }
     }
-    //class RepositorApplication : IRepositor<EntrantApplication>
+    //class RepositorDepartment : IRepository<Department>
     //{
     //    private readonly LocalStorage db;
 
-    //    public RepositorApplication(LocalStorage storage)
+    //    public RepositorDepartment(LocalStorage storage)
     //    {
     //        db = storage;
     //    }
 
-    //    ObservableCollection<EntrantApplication> IRepositor<EntrantApplication>.GetAll()
-    //    {
-    //        return db.Applications;
-    //    }
 
-    //    public void Delete(EntrantApplication item)
+    //    public void Delete(Entrant item)
     //    {
 
     //    }
 
-    //    public void Delete(Func<EntrantApplication, bool> func)
+    //    public void Delete(Func<Department, bool> func)
     //    {
     //        //db.Entrants.Remove(func);
     //    }
 
-    //    public Entrant Get(EntrantApplication item)
+    //    public Entrant Get(Department item)
     //    {
     //        throw new NotImplementedException();
     //    }
 
-    //    public Entrant Get(Func<EntrantApplication, bool> func)
+    //    public Department Get(Func<Department, bool> func)
     //    {
-    //        return db.Applications.First(func);
+    //        return db.Departments.First(func);
     //    }
     //}
+//    class RepositorApplication : IRepositor<EntrantApplication>
+//    {
+//        private readonly LocalStorage db;
+
+//        public RepositorApplication(LocalStorage storage)
+//        {
+//            db = storage;
+//        }
+
+//        ObservableCollection<EntrantApplication> IRepositor<EntrantApplication>.GetAll()
+//        {
+//            return db.Applications;
+//        }
+
+//        public void Delete(EntrantApplication item)
+//        {
+
+//        }
+
+//        public void Delete(Func<EntrantApplication, bool> func)
+//        {
+//            //db.Entrants.Remove(func);
+//        }
+
+//        public Entrant Get(EntrantApplication item)
+//        {
+//            throw new NotImplementedException();
+//        }
+
+//        public Entrant Get(Func<EntrantApplication, bool> func)
+//        {
+//            return db.Applications.First(func);
+//        }
+//    }
 }

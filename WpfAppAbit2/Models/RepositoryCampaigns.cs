@@ -29,7 +29,7 @@ namespace WpfAppAbit2.Models
             throw new NotImplementedException();
         }
 
-        public void Update(Campaign item)
+        public void Update(Campaign item, Campaign item_prev)
         {
             throw new NotImplementedException();
         }

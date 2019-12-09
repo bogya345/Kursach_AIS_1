@@ -13,7 +13,7 @@ namespace WpfAppAbit2.Models
 
         void Create(T item);
         T Get(T item);
-        void Update(T item);
+        void Update(T item, T item_prev);
         void Delete(T item);
     }
 

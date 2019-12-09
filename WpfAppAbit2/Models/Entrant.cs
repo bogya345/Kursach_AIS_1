@@ -31,6 +31,10 @@ namespace WpfAppAbit2.Models
 
             return EntrantApps;
         }
+        public void GetApps()
+        {
+            EntrantApps = GetApplications(this);
+        }
         public void AddDocument(Document AddDocument)
         {
             EntrantApps.Clear();

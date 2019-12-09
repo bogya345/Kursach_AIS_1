@@ -45,7 +45,7 @@ namespace WpfAppAbit2.Models
         {
             db.Persons.Remove(Person);
         }
-        public void Update(Person Person)
+        public void Update(Person Person, Person person_prev)
         {
             db.Persons[db.Persons.IndexOf(Person)] = Person;
         }
