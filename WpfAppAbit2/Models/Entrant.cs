@@ -21,13 +21,13 @@ namespace WpfAppAbit2.Models
         public ObservableCollection<Document> EntrantDocuments = new ObservableCollection<Document>();
         public ObservableCollection<EntranceTestResult> EntranceTestResults = new ObservableCollection<EntranceTestResult>();
        // public ObservableCollection<Document> EntrantDocuments = new ObservableCollection<Document>();
-        public ObservableCollection<EntrantApplication> GetApplications(Entrant entrant)
+        public ObservableCollection<EntrantApplication> GetApplications()
         {
             EntrantApps.Clear();
             ObservableCollection<EntrantApplication> Applications = repositoryApplication.GetAll();
             foreach (EntrantApplication application in Applications)
             {
-                if (application.Entrant == entrant) { EntrantApps.Add(application); }
+                if (application.Entrant == this) { EntrantApps.Add(application); }
             }
 
             return EntrantApps;

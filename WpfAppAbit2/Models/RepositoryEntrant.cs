@@ -10,6 +10,7 @@ namespace WpfAppAbit2.Models
         ObservableCollection<Entrant> GetAll();
 #pragma warning restore CS0108 // "IRepositoryEntrant.GetAll()" скрывает наследуемый член "IRepository<Entrant>.GetAll()". Если скрытие было намеренным, используйте ключевое слово new.
         Entrant Get(Entrant entrant);
+        Entrant Get(string Seria, string Number);
     }
     public class RepositoryEntrant : IRepositoryEntrant
     {
@@ -29,6 +30,14 @@ namespace WpfAppAbit2.Models
         //TODO Entrant заменить на другие функции и перегрузить под разные поисковые запросы
         //TODO В интерфейсах репозиториев можно дописывать новые функции 
         //TODO Что передавать в Get для репозиториев
+        public Entrant Get(string Seria, string Number)
+        {
+           foreach (Entrant entrant in db.Entrants)
+            {
+                if ((entrant.Person.PersonPassports[0].Series == Seria)&&(entrant.Person.PersonPassports[0].Number == Number)) { return entrant; }
+            }
+            return null;
+        }
         public Entrant Get(Entrant entrant)
         {
             bool IsExisted = false;

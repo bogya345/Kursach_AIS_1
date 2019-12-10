@@ -41,7 +41,6 @@ namespace WpfAppAbit2.Models
 
         public override string ToString()
         {
-
             return this.ApplicationNumber.ToString() + Entrant.Person.ToString();//TODO: dfgg
         }
         public EntrantApplication()

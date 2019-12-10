@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using WpfAppAbit2.Models;
-using WpfAppAbit2.Views;
 using WpfAppAbit2.Patterns;
-using System.Windows;
 
 namespace WpfAppAbit2.ViewModels
 {
     public class AbitAddViewModel
     {
         public Entrant Entrant;
-        public DateTime RegistrationDate;
+        public DateTime RegistrationDate { get; set; }
         public bool NeedHostel = false;
         public string StatusApp;
         public Address Address { get; set; }
-        public CompetitiveGroup competitiveGroup;
+        public CompetitiveGroup competitiveGroup { get; set; }
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
         public Person Person;
         // public Application Application; икупрукрку
@@ -28,6 +26,7 @@ namespace WpfAppAbit2.ViewModels
         public Passport _selectedpassport { get; set; } = new Passport();
         public string FormName = "Добавление абитуриента";
         public RepositoryApplication repositoryApplication;
+        public RepositoryEntrant repositoryEntrant;
         public LocalStorage db = new LocalStorage();
         public ObservableCollection<EntrantApplication> Applications;
         public bool IsExisted = true;
@@ -39,6 +38,19 @@ namespace WpfAppAbit2.ViewModels
         public AbitAddViewModel()
         {
 
+        }
+
+        public void FillEntrant(Entrant entrant)
+        {
+            _entrantApplications = entrant.GetApplications();
+            MessageBox.Show("Абитуриент с такими паспортными данными существует");
+        }
+        public void CheckPassport(string Seria, string Number)
+        {
+            repositoryEntrant = new RepositoryEntrant(db);
+            Entrant = repositoryEntrant.Get(Seria, Number);
+            if (Entrant != null) { FillEntrant(Entrant); }
+           
         }
         public ICommand AddPassport
         {
