@@ -80,6 +80,5 @@ namespace WpfAppAbit2.Models
             this.Original = Original;
         }
 
-
     }
 }
