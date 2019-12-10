@@ -51,7 +51,7 @@ namespace WpfAppAbit2.ViewModels
         }
         public void CreatePassport()
         {
-            _selectedpassport.Series = AbitAddView.tbPasSeria;
+           // _selectedpassport.Series = AbitAddView.tbPasSeria;
             _selectedpassport.Number = "21412543215";
             _entrantPassports.Add(_selectedpassport);
         }
