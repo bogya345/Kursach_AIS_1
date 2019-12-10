@@ -26,7 +26,7 @@ namespace WpfAppAbit2.ViewModels
                 var displayRootRegistry = (Application.Current as App).displayRootRegistry;
                 LocalStorage localStorage = new LocalStorage();
                 
-                var otherWindowViewModel = new AbitAddViewModel();
+                var otherWindowViewModel = new AbitAddViewModel(new AbitAddView());
                 await displayRootRegistry.ShowModalPresentation(otherWindowViewModel);
             }
             );

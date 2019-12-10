@@ -25,7 +25,15 @@ namespace WpfAppAbit2.Models
         {
             this.db = db;
         }
-
+        public Person Get(string Series, string Number)
+        {
+            ObservableCollection<Person> persons = GetAll();
+            foreach(Person person in persons)
+            {
+                if ((person.PersonPassports[0].Series == Series)&& (person.PersonPassports[0].Series == Series) ){ return person; }
+            }
+            return null;
+        }
         public Person Get(Person person)
         {
 #pragma warning disable CS0219 // Переменной "IsExisted" присвоено значение, но оно ни разу не использовано.

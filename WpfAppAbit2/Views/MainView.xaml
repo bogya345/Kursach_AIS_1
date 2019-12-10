@@ -46,7 +46,7 @@
 
         </Menu>
         <DataGrid HorizontalAlignment="Left" Height="auto" Margin="0,48,0,0" VerticalAlignment="Top" Width="auto"  AutoGenerateColumns="False"
-                  AutomationProperties.Name="AbitsGrid" x:Name="entrantsGrid" ItemsSource="{Binding applications.GetAll()}" Grid.Column="1">
+                  AutomationProperties.Name="AbitsGrid" x:Name="entrantsGrid" ItemsSource="{Binding applications.GetAll}" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Binding="{Binding Path=Entrant}" Width="190" />
                 <DataGridTextColumn Header="Дата подачи заявления" Binding="{Binding Path=RegistrationDate}" Width="190" />
