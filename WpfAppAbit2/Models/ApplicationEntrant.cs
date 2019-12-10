@@ -21,14 +21,15 @@ namespace WpfAppAbit2.Models
         public ObservableCollection<EntranceTestResult> EntranceTestResults = new ObservableCollection<EntranceTestResult>();
 
         public ObservableCollection<InstitutionAchievement> InstitutionAchievments = new ObservableCollection<InstitutionAchievement>();
+
         public void RefreshBall()
         {
             int balls = 0;
-           foreach(EntranceTestResult entranceTestResult in EntranceTestResults)
+            foreach (EntranceTestResult entranceTestResult in EntranceTestResults)
             {
                 balls += entranceTestResult.ResultValue;
             }
-           
+
         }
         public bool Original { get; set; }
         public bool IsMain { get; set; }

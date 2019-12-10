@@ -7,6 +7,8 @@ using WpfAppAbit2.Views;
 using WpfAppAbit2.Patterns;
 using System.Windows;
 
+using WpfAppAbit2.DAL;
+
 namespace WpfAppAbit2.ViewModels
 {
     public class AbitAddViewModel
@@ -27,10 +29,23 @@ namespace WpfAppAbit2.ViewModels
         public ObservableCollection<Department> Departments = new ObservableCollection<Department>();
         public Passport _selectedpassport { get; set; } = new Passport();
         public string FormName = "Добавление абитуриента";
-        public RepositoryApplication repositoryApplication;
-        public RepositoryEntrant repositoryEntrant;
+        
+        //public RepositoryApplication repositoryApplication;
+        //public RepositoryEntrant repositoryEntrant;
+        //insted use
+        public UnitOfWork unit = new UnitOfWork();
+
         public ObservableCollection<EntrantApplication> Applications;
         public bool IsExisted;
+
+
+        public EntrantApplication _selectedApplication { get; set; } = new EntrantApplication();
+        //public  _selectedInstitute { get; set; } = new ();
+        public Department _selectedKafedra { get; set; } = new Department();
+        //public Direction _selectedDirection { get; set; } = new Direction();
+        //public CompetitiveGroupItem _selectedCompetitiveGroup { get; set; } = new CompetitiveGroupItem();
+        public string _status { get; set; }
+
         public ObservableCollection<Passport> Passports
         {
             get => _entrantPassports;
@@ -58,7 +73,7 @@ namespace WpfAppAbit2.ViewModels
         }
         public EntrantApplication CreateApp()
         {
-            Applications = repositoryApplication.GetAll();
+            Applications = unit.Applications.GetAll();
             RegistrationDate = DateTime.UtcNow;
             EntrantApplication application = new EntrantApplication();
             // Application application = new Application(Entrant, Applications.Count, RegistrationDate, NeedHostel, StatusApp, competitiveGroup, 0, null, );
@@ -79,7 +94,7 @@ namespace WpfAppAbit2.ViewModels
         }
         public void BtAddApp()
         {
-            repositoryApplication.Create(CreateApp());
+            unit.Applications.Create(CreateApp());
         }
 
         //protected override void PrepareViewModel()
