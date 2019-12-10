@@ -1,20 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 using WpfAppAbit2.Models;
+using WpfAppAbit2.Views;
 using WpfAppAbit2.Patterns;
+using System.Windows;
+
+using WpfAppAbit2.DAL;
 
 namespace WpfAppAbit2.ViewModels
 {
     public class AbitAddViewModel
     {
         public Entrant Entrant;
-        public DateTime RegistrationDate { get; set; }
+        public DateTime RegistrationDate;
         public bool NeedHostel = false;
         public string StatusApp;
         public Address Address { get; set; }
-        public CompetitiveGroup competitiveGroup { get; set; }
+        public CompetitiveGroup competitiveGroup;
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
         public Person Person;
         // public Application Application; икупрукрку
@@ -25,32 +29,31 @@ namespace WpfAppAbit2.ViewModels
         public ObservableCollection<Department> Departments = new ObservableCollection<Department>();
         public Passport _selectedpassport { get; set; } = new Passport();
         public string FormName = "Добавление абитуриента";
-        public RepositoryApplication repositoryApplication;
-        public RepositoryEntrant repositoryEntrant;
-        public LocalStorage db = new LocalStorage();
+        
+        //public RepositoryApplication repositoryApplication;
+        //public RepositoryEntrant repositoryEntrant;
+        //insted use
+        public UnitOfWork unit = new UnitOfWork();
+
         public ObservableCollection<EntrantApplication> Applications;
-        public bool IsExisted = true;
+        public bool IsExisted;
+
+
+        public EntrantApplication _selectedApplication { get; set; } = new EntrantApplication();
+        //public  _selectedInstitute { get; set; } = new ();
+        public Department _selectedKafedra { get; set; } = new Department();
+        //public Direction _selectedDirection { get; set; } = new Direction();
+        //public CompetitiveGroupItem _selectedCompetitiveGroup { get; set; } = new CompetitiveGroupItem();
+        public string _status { get; set; }
+
         public ObservableCollection<Passport> Passports
         {
             get => _entrantPassports;
-            //set => Set(ref _entrantPassports, value);
+            // set => Set(ref _entrantPassports, value);
         }
         public AbitAddViewModel()
         {
 
-        }
-
-        public void FillEntrant(Entrant entrant)
-        {
-            _entrantApplications = entrant.GetApplications();
-            MessageBox.Show("Абитуриент с такими паспортными данными существует");
-        }
-        public void CheckPassport(string Seria, string Number)
-        {
-            repositoryEntrant = new RepositoryEntrant(db);
-            Entrant = repositoryEntrant.Get(Seria, Number);
-            if (Entrant != null) { FillEntrant(Entrant); }
-           
         }
         public ICommand AddPassport
         {
@@ -64,13 +67,13 @@ namespace WpfAppAbit2.ViewModels
         }
         public void CreatePassport()
         {
-            //_selectedpassport.Series = AbitAddView.tbPasSeria;
-            //_selectedpassport.Number = "21412543215";
+            // _selectedpassport.Series = AbitAddView.tbPasSeria;
+            _selectedpassport.Number = "21412543215";
             _entrantPassports.Add(_selectedpassport);
         }
         public EntrantApplication CreateApp()
         {
-            Applications = repositoryApplication.GetAll();
+            Applications = unit.Applications.GetAll();
             RegistrationDate = DateTime.UtcNow;
             EntrantApplication application = new EntrantApplication();
             // Application application = new Application(Entrant, Applications.Count, RegistrationDate, NeedHostel, StatusApp, competitiveGroup, 0, null, );
@@ -91,8 +94,20 @@ namespace WpfAppAbit2.ViewModels
         }
         public void BtAddApp()
         {
-            repositoryApplication.Create(CreateApp());
+            unit.Applications.Create(CreateApp());
         }
 
+        //protected override void PrepareViewModel()
+        //{
+        //    _entrantPassports = new List<Passport>
+        //    {
+
+        //    };
+        //    _entrantApplications = new List<EntrantApplication>
+        //    {
+
+        //    };
+
+        //}
     }
 }

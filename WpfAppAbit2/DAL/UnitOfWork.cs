@@ -10,6 +10,40 @@ namespace WpfAppAbit2.DAL
     public class UnitOfWork// : IDisposable
     {
         private LocalStorage db = new LocalStorage();
+
+        private RepositoryApplication reposApplication;
+        private RepositoryEntrant reposEnrant;
+
+        public RepositoryApplication Applications
+        {
+            get
+            {
+                if (reposApplication == null)
+                    reposApplication = new RepositoryApplication(db);
+                return reposApplication;
+            }
+        }
+
+        public RepositoryEntrant Entrants
+        {
+            get
+            {
+                if (reposEnrant == null)
+                    reposEnrant = new RepositoryEntrant(db);
+                return reposEnrant;
+            }
+        }
+
+        public void Save()
+        {
+            //
+        }
+
+        public void Dispose()
+        {
+            //
+        }
+
         //public void Save()
         //{
         //    db.SaveChanges();
