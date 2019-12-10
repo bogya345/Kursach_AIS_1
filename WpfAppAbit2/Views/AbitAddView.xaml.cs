@@ -26,6 +26,7 @@ namespace WpfAppAbit2.Views
         this.Style = (Style)Application.Current.Resources["AddAbit"];
             InitializeComponent();
         }
+        
         public IViewModel ViewModel
         {
             get => DataContext as IViewModel;
