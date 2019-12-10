@@ -19,7 +19,7 @@ namespace WpfAppAbit2.ViewModels
         public CompetitiveGroup competitiveGroup;
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
         public Person Person;
-        // public Application Application;
+        // public Application Application; икупрукрку
         public ObservableCollection<EntrantApplication> EntrantApplications;
         public ObservableCollection<Passport> _entrantPassports= new ObservableCollection<Passport>();
         public ObservableCollection<EntrantApplication> _entrantApplications = new ObservableCollection<EntrantApplication>();
