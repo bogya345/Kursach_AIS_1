@@ -18,7 +18,10 @@ namespace WpfAppAbit2.ViewModels
         {
             View.Show();
         }
+        public static LocalStorage db { get; set; } = new LocalStorage();
 
+        public RepositoryEntrant entrants { get; set; } = new RepositoryEntrant(db);
+        public RepositoryApplication applications { get; set; } = new RepositoryApplication(db);
         public ICommand ShowAddEntrant
         {
             get => new UserCommand(async () =>

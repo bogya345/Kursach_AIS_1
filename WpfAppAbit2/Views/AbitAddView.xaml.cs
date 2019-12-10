@@ -23,7 +23,7 @@ namespace WpfAppAbit2.Views
         public AbitAddView()
         {
            // this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/Resourses/AbitAddView.xaml") };
-            this.Style = (Style)Application.Current.Resources["AddAbit"];
+            //this.Style = (Style)Application.Current.Resources["AddAbit"];
             InitializeComponent();
         }
         
@@ -32,7 +32,11 @@ namespace WpfAppAbit2.Views
             get => DataContext as IViewModel;
             set => DataContext = value;
         }
-  
+
+        private void Changed_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
 
     }
 }

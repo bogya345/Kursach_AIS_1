@@ -25,6 +25,7 @@ namespace WpfAppAbit2.Models
         }
         public ObservableCollection<Department> GetAll()
         {
+            db.FillDepartments();
             return db.Departments;
         }
 

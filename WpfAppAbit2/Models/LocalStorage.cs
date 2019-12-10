@@ -90,7 +90,7 @@ namespace WpfAppAbit2.Models
 
             };
         }
-        private void FillLevelBudjets()
+        public void FillLevelBudjets()
         {
             LevelBudgets = new ObservableCollection<LevelBudget>()
             {
@@ -99,7 +99,7 @@ namespace WpfAppAbit2.Models
 
             };
         }
-        private void FillCompGroups()
+        public void FillCompGroups()
         {
             CompetitiveGroups = new ObservableCollection<CompetitiveGroup>()
             {
@@ -111,7 +111,7 @@ namespace WpfAppAbit2.Models
                     { new EntranceTestItem(){ } } }
             };
         }
-        private void FillLevels()
+        public void FillLevels()
         {
             EducationLevels = new ObservableCollection<EducationLevel>()
             {
@@ -120,7 +120,7 @@ namespace WpfAppAbit2.Models
                 new EducationLevel(){ID = 3, Name = "Магистратура"}
             };
         }
-        private void FillSubjects()
+        public void FillSubjects()
         {
             Subjects = new ObservableCollection<Subject>()
             {
@@ -142,8 +142,9 @@ namespace WpfAppAbit2.Models
 
             };
         }
-        private void FillDepartments()
+        public void FillDepartments()
         {
+            Departments.Clear();
             this.Departments = new ObservableCollection<Department>()
             {
                 new Department(){ DepartmentGuid = Guid.NewGuid(),  HeadDepartment = null,
@@ -189,7 +190,27 @@ namespace WpfAppAbit2.Models
                      DepartmentLevel = 2
                  }
                 );
-          
+            Departments.Add(
+                 new Department()
+                 {
+                     DepartmentGuid = Guid.NewGuid(),
+                     HeadDepartment = Departments[0],
+                     Name = "Строительно-технологический Институт",
+                     ShortName = "СТИ",
+                     DepartmentLevel = 1
+                 }
+                );
+            Departments.Add(
+                 new Department()
+                 {
+                     DepartmentGuid = Guid.NewGuid(),
+                     HeadDepartment = Departments[5],
+                     Name = "Кафедра Промышленного и гражданского строительства",
+                     ShortName = "ПГС",
+                     DepartmentLevel = 2
+                 }
+                );
+
         }
 
         public void FillApplications()

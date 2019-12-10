@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:WpfAppAbit2.Views"
         xmlns:viewmodel="clr-namespace:WpfAppAbit2.ViewModels"
         mc:Ignorable="d"
-        Title="ИС Абитуриент" Height="450" Width="1316.261" MinWidth="1039.8" MinHeight="450" MaxHeight="900000" MaxWidth="900000">
+        Title="ИС Абитуриент" Height="450" Width="1316.261" MinWidth="1039.8" MinHeight="450">
     <Grid Background="#FF004676" Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"/>

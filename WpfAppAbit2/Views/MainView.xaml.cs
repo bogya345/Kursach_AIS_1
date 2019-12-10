@@ -26,15 +26,12 @@ namespace WpfAppAbit2.Views
         //public List<IAbitAddViewModel> abits;
         private TreeViewItem priveousItem = null;
 
-        public static LocalStorage db = new LocalStorage();
         
-        public RepositoryEntrant entrants = new RepositoryEntrant(db);
-        public RepositoryApplication applications = new RepositoryApplication(db);
         public MainView()
         {
             //entrantsGrid.ItemsSource = 
             InitializeComponent();
-            entrantsGrid.ItemsSource =  applications.GetAll();
+           // entrantsGrid.ItemsSource =  applications.GetAll();
         }
         public IViewModel ViewModel
         {
@@ -65,14 +62,14 @@ namespace WpfAppAbit2.Views
         {
             //abits = new List<IAbitAddViewModel>();
 
-            switch (item.Header.ToString().ToLower())
-            {
-                case "втисит":
-                    {
-                        entrants.GetAll().Where(x => x.IsFromKrym);
-                        break;
-                    }
-            }
+            //switch (item.Header.ToString().ToLower())
+            //{
+            //    case "втисит":
+            //        {
+            //            entrants.GetAll().Where(x => x.IsFromKrym);
+            //            break;
+            //        }
+            //}
         }
 
         private void TreeView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
