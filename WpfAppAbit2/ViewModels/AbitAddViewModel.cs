@@ -28,13 +28,13 @@ namespace WpfAppAbit2.ViewModels
         public Passport _selectedpassport { get; set; } = new Passport();
         public string FormName = "Добавление абитуриента";
         public RepositoryApplication repositoryApplication;
-        public RepositoryEntrant repositoryEntrant;
+        public LocalStorage db = new LocalStorage();
         public ObservableCollection<EntrantApplication> Applications;
-        public bool IsExisted;
+        public bool IsExisted = true;
         public ObservableCollection<Passport> Passports
         {
             get => _entrantPassports;
-            // set => Set(ref _entrantPassports, value);
+            //set => Set(ref _entrantPassports, value);
         }
         public AbitAddViewModel()
         {
@@ -52,8 +52,8 @@ namespace WpfAppAbit2.ViewModels
         }
         public void CreatePassport()
         {
-            // _selectedpassport.Series = AbitAddView.tbPasSeria;
-            _selectedpassport.Number = "21412543215";
+            //_selectedpassport.Series = AbitAddView.tbPasSeria;
+            //_selectedpassport.Number = "21412543215";
             _entrantPassports.Add(_selectedpassport);
         }
         public EntrantApplication CreateApp()
@@ -82,17 +82,5 @@ namespace WpfAppAbit2.ViewModels
             repositoryApplication.Create(CreateApp());
         }
 
-        //protected override void PrepareViewModel()
-        //{
-        //    _entrantPassports = new List<Passport>
-        //    {
-
-        //    };
-        //    _entrantApplications = new List<EntrantApplication>
-        //    {
-
-        //    };
-
-        //}
     }
 }
