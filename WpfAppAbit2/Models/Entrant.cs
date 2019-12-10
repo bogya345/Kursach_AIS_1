@@ -34,7 +34,7 @@ namespace WpfAppAbit2.Models
         }
         public void GetApps()
         {
-            EntrantApps = GetApplications(this);
+            EntrantApps = GetApplications();
         }
         public void AddDocument(Document AddDocument)
         {
