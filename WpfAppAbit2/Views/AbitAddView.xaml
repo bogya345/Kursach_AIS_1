@@ -16,7 +16,7 @@
             <ColumnDefinition Width="291*"/>
 
         </Grid.ColumnDefinitions>
-        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,48,0,0" TextWrapping="Wrap" Text="{Binding _selectedpassport.Series, StringFormat={}({0})}" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbPasSeria"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,48,0,0" TextWrapping="Wrap" Text="{Binding _selectedpassport.Series, StringFormat={}({0}), UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbPasSeria"/>
         <Label Content="Серия паспорта" HorizontalAlignment="Left" Margin="13,47,0,0" VerticalAlignment="Top" Height="26" Width="101"/>
         <Label Content="Номер паспорта" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,75,0,0" TextWrapping="Wrap" Text="{Binding _selectedpassport.Number, StringFormat={}({0})}" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbPasNumber"/>

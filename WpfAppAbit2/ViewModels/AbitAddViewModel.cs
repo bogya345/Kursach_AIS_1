@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace WpfAppAbit2.ViewModels
 {
-    public class AbitAddViewModel 
+    public class AbitAddViewModel
     {
         public Entrant Entrant;
         public DateTime RegistrationDate;
@@ -21,11 +21,11 @@ namespace WpfAppAbit2.ViewModels
         public Person Person;
         // public Application Application; икупрукрку
         public ObservableCollection<EntrantApplication> EntrantApplications;
-        public ObservableCollection<Passport> _entrantPassports= new ObservableCollection<Passport>();
+        public ObservableCollection<Passport> _entrantPassports = new ObservableCollection<Passport>();
         public ObservableCollection<EntrantApplication> _entrantApplications = new ObservableCollection<EntrantApplication>();
         public ObservableCollection<CompetitiveGroup> _competitiveGroups = new ObservableCollection<CompetitiveGroup>();
         public ObservableCollection<Department> Departments = new ObservableCollection<Department>();
-        public Passport _selectedpassport= new Passport();
+        public Passport _selectedpassport { get; set; } = new Passport();
         public string FormName = "Добавление абитуриента";
         public RepositoryApplication repositoryApplication;
         public RepositoryEntrant repositoryEntrant;
@@ -34,7 +34,7 @@ namespace WpfAppAbit2.ViewModels
         public ObservableCollection<Passport> Passports
         {
             get => _entrantPassports;
-           // set => Set(ref _entrantPassports, value);
+            // set => Set(ref _entrantPassports, value);
         }
         public AbitAddViewModel()
         {
@@ -45,13 +45,14 @@ namespace WpfAppAbit2.ViewModels
             get => new UserCommand(() =>
             {
                 CreatePassport();
+                MessageBox.Show(_selectedpassport.Series);
                 MessageBox.Show(_entrantPassports[0].ToString());
             }
-            ); 
+            );
         }
         public void CreatePassport()
         {
-           // _selectedpassport.Series = AbitAddView.tbPasSeria;
+            // _selectedpassport.Series = AbitAddView.tbPasSeria;
             _selectedpassport.Number = "21412543215";
             _entrantPassports.Add(_selectedpassport);
         }
@@ -60,12 +61,12 @@ namespace WpfAppAbit2.ViewModels
             Applications = repositoryApplication.GetAll();
             RegistrationDate = DateTime.UtcNow;
             EntrantApplication application = new EntrantApplication();
-           // Application application = new Application(Entrant, Applications.Count, RegistrationDate, NeedHostel, StatusApp, competitiveGroup, 0, null, );
+            // Application application = new Application(Entrant, Applications.Count, RegistrationDate, NeedHostel, StatusApp, competitiveGroup, 0, null, );
             return application;
         }
         public void CreateEntrant()
         {
-          //  MessageBox.Show(_entrantPassports[0].ToString());
+            //  MessageBox.Show(_entrantPassports[0].ToString());
         }
         public ICommand CommandCreateEntrant
         {
