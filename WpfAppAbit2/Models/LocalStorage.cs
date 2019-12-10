@@ -9,6 +9,7 @@ namespace WpfAppAbit2.Models
 
         public ObservableCollection<Entrant> Entrants = new ObservableCollection<Entrant>();
         public ObservableCollection<Person> Persons = new ObservableCollection<Person>();
+        public ObservableCollection<Passport> Passports = new ObservableCollection<Passport>();
         public ObservableCollection<EntranceTestResult> EntranceTestResults = new ObservableCollection<EntranceTestResult>();
         public ObservableCollection<CampaignType> CampaignTypes = new ObservableCollection<CampaignType>();
         public ObservableCollection<EducationLevel> EducationLevels = new ObservableCollection<EducationLevel>();
@@ -218,7 +219,7 @@ namespace WpfAppAbit2.Models
         {
             Entrants = new ObservableCollection<Entrant>()
             {
-                new Entrant(){ Person = new Person( new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1" }, null,
+                new Entrant(){ Person = new Person( new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1", Series ="1243", Number = "214545" }, null,
                 new EmailOrMailAddress("owlkek@gpepa.com", new Address(){ Town = "Сыктыкар", Street = "улица Пушкина", House = "Дом Колатушкина" } ) )
                , IsFromKrym=true},
                 new Entrant(){ Person = new Person()
@@ -232,20 +233,20 @@ namespace WpfAppAbit2.Models
                 {
                         PersonPassports = new ObservableCollection<Passport>()
                         {
-                            new Passport() { FirstName="B3", LastName= "Volkov3", MiddleName="M3" }
+                            new Passport() { FirstName="B3", LastName= "Volkov3", MiddleName="M3", Series ="1243", Number = "214241" }
                         }
                 }, IsFromKrym=true },
                 new Entrant(){ Person = new Person()
                 {
                     PersonPassports = new ObservableCollection<Passport>()
                     {
-                        new Passport() { FirstName="B4", LastName= "Volkov4", MiddleName="M4" }
+                        new Passport() { FirstName="B4", LastName= "Volkov4", MiddleName="M4",Series ="1243", Number = "535423" }
                     }
                 }, IsFromKrym=false },
                 new Entrant(){ Person = new Person()
                 {
                     PersonPassports = new ObservableCollection<Passport>()
-                    { new Passport() { FirstName="B5", LastName= "Volkov5", MiddleName="M5" }
+                    { new Passport() { FirstName="B5", LastName= "Volkov5", MiddleName="M5",Series ="1243", Number = "754632" }
                     }
                 }, IsFromKrym=true }
             };

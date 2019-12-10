@@ -13,6 +13,7 @@ namespace WpfAppAbit2.DAL
 
         private RepositoryApplication reposApplication;
         private RepositoryEntrant reposEnrant;
+        private RepositoryPerson reposPerson;
 
         public RepositoryApplication Applications
         {
@@ -33,7 +34,15 @@ namespace WpfAppAbit2.DAL
                 return reposEnrant;
             }
         }
-
+        public RepositoryPerson Persons
+        {
+            get
+            {
+                if (reposPerson == null)
+                    reposPerson = new RepositoryPerson(db);
+                return reposPerson;
+            }
+        }
         public void Save()
         {
             //

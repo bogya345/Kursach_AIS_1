@@ -7,16 +7,16 @@
         xmlns:local="clr-namespace:WpfAppAbit2.Views"
         xmlns:viewmodel="clr-namespace:WpfAppAbit2.ViewModels"
         mc:Ignorable="d"
-        Title="ИС Абитуриент" Height="450" Width="1167.08" MinWidth="1039.8" MinHeight="450" MaxHeight="900000" MaxWidth="900000">
+        Title="ИС Абитуриент" Height="450" Width="1316.261" MinWidth="1039.8" MinHeight="450" MaxHeight="900000" MaxWidth="900000">
     <Grid Background="#FF004676" Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="249*"/>
-            <ColumnDefinition Width="824*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="85*"/>
+
+
         </Grid.ColumnDefinitions>
 
-        <DockPanel HorizontalAlignment="Left" Height="419" LastChildFill="False" VerticalAlignment="Top" Width="245" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
+        <DockPanel HorizontalAlignment="Left" Height="419" LastChildFill="False" VerticalAlignment="Top" Width="auto" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
             <TreeView Width="244"  Margin="0,10" MouseDoubleClick="TreeView_MouseDoubleClick">
                 <TreeViewItem Header="ИнЭУиИТ" FontWeight="Bold" FontStyle="Italic" FontSize="18" Background="White" Foreground="#FF6E6E6E" Selected="TreeViewItem_Selected"  >
                     <TreeViewItem Header="ВТИСиТ"  FontWeight="Bold" FontStyle="Italic" FontSize="18" Background="White" Foreground="#FF6E6E6E" Selected="TreeViewItem_Selected"  />
@@ -40,18 +40,18 @@
 
             </TreeView>
         </DockPanel>
-        <Menu HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Width="792" Grid.Column="1">
-            <MenuItem Header="Добавить абитуриента" Command="{Binding ShowAddEntrant}"></MenuItem>
-            <MenuItem Header="Редактировать абитуриента" ></MenuItem>
+        <Menu HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Width="1060" Grid.Column="1" Background="#FF004676">
+            <MenuItem Header="Добавить абитуриента" Command="{Binding ShowAddEntrant}" Foreground="#DDFFFFFF" FontWeight="Bold"></MenuItem>
+            <MenuItem Header="Редактировать абитуриента" Foreground="#DDFFFFFF" FontWeight="Bold" ></MenuItem>
 
         </Menu>
-        <DataGrid HorizontalAlignment="Left" Height="366" Margin="0,53,0,0" VerticalAlignment="Top" Width="792" 
+        <DataGrid HorizontalAlignment="Left" Height="auto" Margin="0,48,0,0" VerticalAlignment="Top" Width="auto"  AutoGenerateColumns="False"
                   AutomationProperties.Name="AbitsGrid" x:Name="entrantsGrid" ItemsSource="{Binding applications.GetAll()}" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Binding="{Binding Path=Entrant}" Width="190" />
                 <DataGridTextColumn Header="Дата подачи заявления" Binding="{Binding Path=RegistrationDate}" Width="190" />
-                <DataGridTextColumn Header="Статус заявления" Binding="{Binding Path=StatusApp}" Width="90" />
-                <DataGridHyperlinkColumn Header="Направление конкурса" Binding="{Binding Path=CompetitiveGroup}" Width="180" />
+                <DataGridTextColumn Header="Статус заявления" Binding="{Binding Path=StatusApp}" Width="190" />
+                <DataGridHyperlinkColumn Header="Направление конкурса" Binding="{Binding Path=CompetitiveGroup}" Width="300" />
                 <DataGridTextColumn Header="Сумма баллов" Binding="{Binding Path=balls}" Width="190" />
 
             </DataGrid.Columns>

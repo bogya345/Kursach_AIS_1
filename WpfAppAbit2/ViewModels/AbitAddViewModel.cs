@@ -8,6 +8,7 @@ using WpfAppAbit2.Patterns;
 using System.Windows;
 
 using WpfAppAbit2.DAL;
+using System.Linq;
 
 namespace WpfAppAbit2.ViewModels
 {
@@ -59,16 +60,23 @@ namespace WpfAppAbit2.ViewModels
         {
             get => new UserCommand(() =>
             {
-                CreatePassport();
+            CreatePassport(_selectedpassport.Series, _selectedpassport.Number);
                 MessageBox.Show(_selectedpassport.Series);
                 MessageBox.Show(_entrantPassports[0].ToString());
             }
             );
         }
-        public void CreatePassport()
+        public void CreatePassport(string Series, string Number)
         {
             // _selectedpassport.Series = AbitAddView.tbPasSeria;
-            _selectedpassport.Number = "21412543215";
+            //_selectedpassport.Number = "21412543215";
+            ObservableCollection<Entrant> entrants = unit.Entrants.GetAll();
+            //foreach (Entrant entrant in entrants)
+            //{
+            //    entrant.Person.PersonPassports.Any(x=> (x.exist));
+            //}
+            Passport passportNew = new Passport() { Series = Series, Number = Number };
+            if (passportNew.PassportChecked(unit.Persons.GetPassports(), Series, Number)) { };
             _entrantPassports.Add(_selectedpassport);
         }
         public EntrantApplication CreateApp()

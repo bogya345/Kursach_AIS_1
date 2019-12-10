@@ -49,7 +49,7 @@ namespace WpfAppAbit2.Models
         public void Create(Entrant Entrant)
         {
 
-            if (!(repositoryPerson.Existed(Entrant.Person)))
+            if (!(repositoryPerson.Existed(Entrant.Person.PersonPassports[0].Series, Entrant.Person.PersonPassports[0].Number)))
             { db.Entrants.Add(Entrant); };
         }
         public void Delete(Entrant Entrant)

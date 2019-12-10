@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 namespace WpfAppAbit2.Models
 {
     //заявление абитуриента
-    public class EntrantApplication
+    public class EntrantApplication : SimpleClass
     {
         public Entrant Entrant { get; set; }
         public int ApplicationNumber { get; set; }
@@ -22,6 +22,10 @@ namespace WpfAppAbit2.Models
 
         public ObservableCollection<InstitutionAchievement> InstitutionAchievments = new ObservableCollection<InstitutionAchievement>();
 
+
+        /// <summary>
+        /// обновление суммы баллов в заявлении
+        /// </summary>
         public void RefreshBall()
         {
             int balls = 0;
@@ -56,7 +60,6 @@ namespace WpfAppAbit2.Models
          string StatusApp,
          CompetitiveGroup CompetitiveGroup,
          int ReturnDocumentsType,
-
          FinSourceAndEduForms FinSourceAndEduForms,
          ObservableCollection<Document> ApplicationDocuments,
          ObservableCollection<EntranceTestResult> EntranceTestResults,

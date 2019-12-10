@@ -27,14 +27,14 @@ namespace WpfAppAbit2.Views
         private TreeViewItem priveousItem = null;
 
         public static LocalStorage db = new LocalStorage();
-
+        
         public RepositoryEntrant entrants = new RepositoryEntrant(db);
         public RepositoryApplication applications = new RepositoryApplication(db);
         public MainView()
         {
             //entrantsGrid.ItemsSource = 
             InitializeComponent();
-            entrantsGrid.ItemsSource = applications.GetAll();
+            entrantsGrid.ItemsSource =  applications.GetAll();
         }
         public IViewModel ViewModel
         {

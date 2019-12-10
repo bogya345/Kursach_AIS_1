@@ -8,17 +8,22 @@ namespace WpfAppAbit2.Models
 #pragma warning disable CS0108 // "IRepositoryPerson.GetAll()" скрывает наследуемый член "IRepository<Person>.GetAll()". Если скрытие было намеренным, используйте ключевое слово new.
         ObservableCollection<Person> GetAll();
 #pragma warning restore CS0108 // "IRepositoryPerson.GetAll()" скрывает наследуемый член "IRepository<Person>.GetAll()". Если скрытие было намеренным, используйте ключевое слово new.
-         bool Existed(Person Person);
+        bool Existed(string Seria, string Number);
     }
 
     public class RepositoryPerson : IRepositoryPerson
     {
 #pragma warning disable CS0649 // Полю "RepositoryPerson.db" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null.
         private LocalStorage db;
+
 #pragma warning restore CS0649 // Полю "RepositoryPerson.db" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null.
         public ObservableCollection<Person> GetAll()
         {
             return db.Persons;
+        }
+        public RepositoryPerson(LocalStorage db)
+        {
+            this.db = db;
         }
 
         public Person Get(Person person)
@@ -36,6 +41,11 @@ namespace WpfAppAbit2.Models
             return (db.Persons.Any(x => (x.PersonPassports[0].Series == Person.PersonPassports[0].Series)
             && (x.PersonPassports[0].Number == Person.PersonPassports[0].Number)));
         }
+        public bool Existed(string Series, string Number)
+        {
+            return (db.Persons.Any(x => (x.PersonPassports[0].Series == Series)
+            && (x.PersonPassports[0].Number == Number)));
+        }
         public void Create(Person Person)
         {
             if (!db.Persons.Any(x => (x.PersonPassports[0].Series == Person.PersonPassports[0].Series)
@@ -48,6 +58,18 @@ namespace WpfAppAbit2.Models
         public void Update(Person Person, Person person_prev)
         {
             db.Persons[db.Persons.IndexOf(Person)] = Person;
+        }
+        public ObservableCollection<Passport> GetPassports()
+        {
+            ObservableCollection<Passport> passports = new ObservableCollection<Passport>();
+            foreach(Person person in db.Persons)
+            {
+                foreach(Passport passport in person.PersonPassports)
+                {
+                    passports.Add(passport);
+                }
+            }
+            return passports;
         }
     }
 }

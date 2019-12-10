@@ -16,5 +16,17 @@ namespace WpfAppAbit2.Models
         public DateTime IsAgreedDate { get; set; }
         public DateTime IsDisagreedDate { get; set; }
         public bool IsForSPOandVO { get; set; }
+        public override string ToString()
+        {
+            if (TargetOrganization != null)
+            {
+                return CompetitiveGroup.ToString() + "  " + TargetOrganization.ToString();
+            }
+            else
+            {
+                return CompetitiveGroup.ToString() + "  не целевой приём";
+
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace WpfAppAbit2.Models
 {
     public class Passport : Document
     {
+
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
