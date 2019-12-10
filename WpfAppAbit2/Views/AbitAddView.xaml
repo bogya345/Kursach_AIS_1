@@ -62,7 +62,7 @@
         <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="127,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbEntrTestItem"/>
         <Label Content="Испытание 4" Grid.Column="2" HorizontalAlignment="Left" Margin="27,352,0,0" VerticalAlignment="Top" Height="26" Width="95" AutomationProperties.Name="lbEntrTestItem4"/>
         <Button Content="Добавить заявление" Grid.Column="2" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Width="220" Height="34" AutomationProperties.Name="btAddApp"/>
-        <Button Content="Добавить паспорт" Command="{Binding AddPassport}" HorizontalAlignment="Left" Margin="57,22,0,0" VerticalAlignment="Top" Width="185" Height="34" AutomationProperties.Name="btAddApp"/>
+        <Button Content="Добавить паспорт" Command="{Binding CommandCreateEntrant}" HorizontalAlignment="Left" Margin="57,22,0,0" VerticalAlignment="Top" Width="185" Height="34" AutomationProperties.Name="btAddApp"/>
         <ComboBox HorizontalAlignment="Left" Margin="123,77,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbPassport" Height="22"
                    ItemsSource="{Binding _entrantPassports}" Background="#19673AB7"/>
         <Label Content="Паспорт" HorizontalAlignment="Left" Margin="57,75,0,0" VerticalAlignment="Top" Height="26" Width="61" AutomationProperties.Name="lbPassport"/>
