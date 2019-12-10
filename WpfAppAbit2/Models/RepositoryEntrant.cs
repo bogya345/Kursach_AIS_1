@@ -10,14 +10,10 @@ namespace WpfAppAbit2.Models
         ObservableCollection<Entrant> GetAll();
 #pragma warning restore CS0108 // "IRepositoryEntrant.GetAll()" скрывает наследуемый член "IRepository<Entrant>.GetAll()". Если скрытие было намеренным, используйте ключевое слово new.
         Entrant Get(Entrant entrant);
-
-
     }
     public class RepositoryEntrant : IRepositoryEntrant
     {
-#pragma warning disable CS0649 // Полю "RepositoryEntrant.db" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null.
         private readonly LocalStorage db;
-#pragma warning restore CS0649 // Полю "RepositoryEntrant.db" нигде не присваивается значение, поэтому оно всегда будет иметь значение по умолчанию null.
         public IRepositoryApplication repositoryApplication;
         public IRepositoryPerson repositoryPerson;
 
@@ -35,9 +31,7 @@ namespace WpfAppAbit2.Models
         //TODO Что передавать в Get для репозиториев
         public Entrant Get(Entrant entrant)
         {
-#pragma warning disable CS0219 // Переменной "IsExisted" присвоено значение, но оно ни разу не использовано.
             bool IsExisted = false;
-#pragma warning restore CS0219 // Переменной "IsExisted" присвоено значение, но оно ни разу не использовано.
             Entrant Entrant = new Entrant();
             int ind = db.Entrants.IndexOf(entrant);
             if (ind >= 0) { return db.Entrants[ind]; }
