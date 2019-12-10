@@ -18,7 +18,7 @@ namespace WpfAppAbit2.ViewModels
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
         public Person Person;
         // public Application Application; икупрукрку
-        public ObservableCollection<EntrantApplication> EntrantApplications = new ObservableCollection<EntrantApplication>();
+        public ObservableCollection<EntrantApplication> EntrantApplications;
         public ObservableCollection<Passport> _entrantPassports = new ObservableCollection<Passport>();
         public ObservableCollection<EntrantApplication> _entrantApplications = new ObservableCollection<EntrantApplication>();
         public ObservableCollection<CompetitiveGroup> _competitiveGroups = new ObservableCollection<CompetitiveGroup>();
@@ -43,7 +43,6 @@ namespace WpfAppAbit2.ViewModels
         public void FillEntrant(Entrant entrant)
         {
             _entrantApplications = entrant.GetApplications();
-            _entrantPassports = entrant.Person.PersonPassports;
             MessageBox.Show("Абитуриент с такими паспортными данными существует");
         }
         public void CheckPassport(string Seria, string Number)
