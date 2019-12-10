@@ -5,7 +5,7 @@ namespace WpfAppAbit2.Models
 {
     public class LocalStorage
     {
-
+        //saedgsdfhtsd
         public ObservableCollection<Entrant> Entrants = new ObservableCollection<Entrant>();
         public ObservableCollection<Person> Persons = new ObservableCollection<Person>();
         public ObservableCollection<Campaign> Campaigns = new ObservableCollection<Campaign>()
