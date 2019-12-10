@@ -204,6 +204,7 @@ namespace WpfAppAbit2.Models
                     StatusApp = "Неполное",
                     CompetitiveGroup = CompetitiveGroups[0],
                     ReturnDocumentsType = 0,
+                    balls = 0,
                     ReturnDocumentsDate = DateTime.MinValue,
                     FinSourceAndEduForms = new FinSourceAndEduForms(){ CompetitiveGroup = CompetitiveGroups[0],
                         TargetOrganization = null, IsAgreedDate = DateTime.Today, IsDisagreedDate = DateTime.MinValue,

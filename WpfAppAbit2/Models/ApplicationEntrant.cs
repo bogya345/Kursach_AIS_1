@@ -15,15 +15,20 @@ namespace WpfAppAbit2.Models
         public int ReturnDocumentsType { get; set; }
         public DateTime ReturnDocumentsDate { get; set; }
         public FinSourceAndEduForms FinSourceAndEduForms { get; set; }
-
+        public int balls = 0;
         public ObservableCollection<Document> ApplicationDocuments = new ObservableCollection<Document>();
 
         public ObservableCollection<EntranceTestResult> EntranceTestResults = new ObservableCollection<EntranceTestResult>();
 
         public ObservableCollection<InstitutionAchievement> InstitutionAchievments = new ObservableCollection<InstitutionAchievement>();
-        public void balls()
+        public void RefreshBall()
         {
-           // CompetitiveGroup.Direction.
+            int balls = 0;
+           foreach(EntranceTestResult entranceTestResult in EntranceTestResults)
+            {
+                balls += entranceTestResult.ResultValue;
+            }
+           
         }
         public bool Original { get; set; }
         public bool IsMain { get; set; }
@@ -41,7 +46,7 @@ namespace WpfAppAbit2.Models
         }
         public EntrantApplication()
         {
-
+            balls = 0;
         }
         public EntrantApplication(
             Entrant Entrant,

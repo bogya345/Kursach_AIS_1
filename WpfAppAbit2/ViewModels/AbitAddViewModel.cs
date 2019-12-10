@@ -5,7 +5,7 @@ using System.Windows.Input;
 using WpfAppAbit2.Models;
 using WpfAppAbit2.Views;
 using WpfAppAbit2.Patterns;
-
+using System.Windows;
 
 namespace WpfAppAbit2.ViewModels
 {
@@ -21,25 +21,41 @@ namespace WpfAppAbit2.ViewModels
         public Person Person;
         // public Application Application;
         public ObservableCollection<EntrantApplication> EntrantApplications;
-        public List<Passport> _entrantPassports;
-        public List<EntrantApplication> _entrantApplications;
-        public List<CompetitiveGroup> _competitiveGroups;
-        public ObservableCollection<Department> Departments;
-        public Passport _selectedpassport;
+        public ObservableCollection<Passport> _entrantPassports= new ObservableCollection<Passport>();
+        public ObservableCollection<EntrantApplication> _entrantApplications = new ObservableCollection<EntrantApplication>();
+        public ObservableCollection<CompetitiveGroup> _competitiveGroups = new ObservableCollection<CompetitiveGroup>();
+        public ObservableCollection<Department> Departments = new ObservableCollection<Department>();
+        public Passport _selectedpassport= new Passport();
         public string FormName = "Добавление абитуриента";
-        public IRepositoryApplication repositoryApplication;
-        public IRepositoryEntrant repositoryEntrant;
+        public RepositoryApplication repositoryApplication;
+        public RepositoryEntrant repositoryEntrant;
         public ObservableCollection<EntrantApplication> Applications;
-        public List<Passport> Passports
+        public bool IsExisted;
+        public ObservableCollection<Passport> Passports
         {
             get => _entrantPassports;
            // set => Set(ref _entrantPassports, value);
         }
-        public AbitAddViewModel()  
+        public AbitAddViewModel()
         {
 
         }
-        public EntrantApplication CreatApp()
+        public ICommand AddPassport
+        {
+            get => new UserCommand(() =>
+            {
+                CreatePassport();
+                MessageBox.Show(_entrantPassports[0].ToString());
+            }
+            ); 
+        }
+        public void CreatePassport()
+        {
+            _selectedpassport.Series = "12312";
+            _selectedpassport.Number = "21412543215";
+            _entrantPassports.Add(_selectedpassport);
+        }
+        public EntrantApplication CreateApp()
         {
             Applications = repositoryApplication.GetAll();
             RegistrationDate = DateTime.UtcNow;
@@ -62,7 +78,7 @@ namespace WpfAppAbit2.ViewModels
         }
         public void BtAddApp()
         {
-            repositoryApplication.Create(CreatApp());
+            repositoryApplication.Create(CreateApp());
         }
 
         //protected override void PrepareViewModel()

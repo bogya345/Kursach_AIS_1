@@ -46,8 +46,7 @@ namespace WpfAppAbit2.Models
         public void Create(Entrant Entrant)
         {
 
-            if ((!db.Entrants.Any(x => (x.Person == Entrant.Person)))
-                && (repositoryPerson.Existed(Entrant.Person)))
+            if (!(repositoryPerson.Existed(Entrant.Person)))
             { db.Entrants.Add(Entrant); };
         }
         public void Delete(Entrant Entrant)

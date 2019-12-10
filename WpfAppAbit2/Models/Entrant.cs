@@ -66,7 +66,7 @@ namespace WpfAppAbit2.Models
         }
         public override string ToString()
         {
-            MessageBox.Show(Person.LastName + "  " + Person.FirstName + "  " + Person.MiddleName);
+        //    MessageBox.Show(Person.LastName + "  " + Person.FirstName + "  " + Person.MiddleName);
             return Person.LastName + "  " + Person.FirstName + "  " + Person.MiddleName;
 
         }

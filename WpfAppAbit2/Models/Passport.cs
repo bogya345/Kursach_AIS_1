@@ -55,7 +55,7 @@ namespace WpfAppAbit2.Models
         public Passport()
         {
         }
-
+        
         public bool PassportChecked(ObservableCollection<Passport> PersonPassports, string Series, string Number)
         {
             bool PassEx = false;
