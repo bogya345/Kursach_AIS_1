@@ -69,8 +69,11 @@ namespace WpfAppAbit2.ViewModels
         public string FormName = "Добавление абитуриента";
         private Department _selectedDepart1st = new Department();
         private Department _selectedDepart2nd = new Department();
-        private Department _selectedDepart1stMem = new Department();
-        private Department _selectedDepart2ndMem = new Department();
+        private Direction _selectedDirection = new Direction();
+        public Direction SelectedDirection { get=>_selectedDirection; set { _selectedDirection = value; } }
+        
+        //private Department _selectedDepart1stMem = new Department();
+        //private Department _selectedDepart2ndMem = new Department();
 
         //private LocalStorage db = new LocalStorage();
         //public RepositoryApplication repositoryApplication;
@@ -83,6 +86,18 @@ namespace WpfAppAbit2.ViewModels
         public bool Refreshed = false;
 
 
+        public void GetDepartments()
+        {
+            // RepositoryDepartment RepDep = new RepositoryDepartment(db);
+            ObservableCollection<Department> departsLocal = new ObservableCollection<Department>();
+            departsLocal = unit.Departments.GetAll();
+            _departments = new ObservableCollection<Department>();
+            foreach (Department department in departsLocal)
+            {
+                _departments.Add(department);
+            }
+        }
+
         public EntrantApplication _selectedApplication { get; set; } = new EntrantApplication();
         //public  _selectedInstitute { get; set; } = new ();
         public Department SelectedDepart1st
@@ -93,12 +108,12 @@ namespace WpfAppAbit2.ViewModels
             }
             set
             {
-                if (value == null) { _selectedDepart1st = _selectedDepart1stMem; }
-                else
+                //if (value == null) { _selectedDepart1st = _selectedDepart1stMem; }
+                //else
                 {
                     _selectedDepart1st = value;
-                    //RepositoryDepartment RepDep = new RepositoryDepartment(db);
-                    DepartmentsLoad();
+                    //  RepositoryDepartment RepDep = new RepositoryDepartment(db);
+                    GetDepartments();
                     // Refreshed = false;
                     _departments2ndLevel = unit.Departments.GetAll();
                     var _newdepart2ndlevel = _departments2ndLevel.Where(u => (u.HeadDepartment == _selectedDepart1st));
@@ -107,7 +122,7 @@ namespace WpfAppAbit2.ViewModels
                     {
                         newdepartments.Add(department);
                     }
-                    _departments2ndLevel.Clear();
+                    /// _departments2ndLevel.Clear();
                     _departments2ndLevel = newdepartments;
                     Departments2ndLevel = _departments2ndLevel;
                 }
@@ -135,10 +150,7 @@ namespace WpfAppAbit2.ViewModels
                 if (Set(ref _selectedpassport, value))
                 {
                     SelectedPassport = _selectedpassport;
-
-
                 }
-
             }
         }
 
@@ -155,22 +167,16 @@ namespace WpfAppAbit2.ViewModels
             get => _entrantPassports;
             // set => Set(ref _entrantPassports, value);
         }
-        public void DepartmentsLoad()
-        {
 
-        }
-        public void SelectedDepartsMemory()
-        {
-            SelectedDepart1st = Departments1stLevel.First(x => x == _selectedDepart1stMem);
-            SelectedDepart2nd = Departments2ndLevel.First(x => x == _selectedDepart2ndMem);
-        }
+
         public AbitAddViewModel(IView view) : base(view)
         {
             _departments1stLevel.Clear();
-            DepartmentsLoad();
-            _selectedDepart1stMem = _selectedDepart1st;
-            _selectedDepart2ndMem = _selectedDepart2nd;
-            //RepositoryDepartment repositoryDepartment = new RepositoryDepartment(db);
+            _departments2ndLevel.Clear();
+            GetDepartments();
+            //_selectedDepart1stMem = _selectedDepart1st;
+            //_selectedDepart2ndMem = _selectedDepart2nd;
+            // RepositoryDepartment repositoryDepartment = new RepositoryDepartment(db);
             Departments = unit.Departments.GetAll();
             _departments1stLevel.Clear();
             _departments2ndLevel.Clear();

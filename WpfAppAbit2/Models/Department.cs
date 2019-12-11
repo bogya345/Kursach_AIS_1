@@ -10,6 +10,10 @@ namespace WpfAppAbit2.Models
     //TODO конкурсные списки/итоговые списки - Excel , все специальности на разных листах
     //TODO заявление абитуиента  + согласие на обработку данных - Word
     //TODO приказ на зачисление Word
+    /*TODO
+     * 
+       Word - заявление абитуриента 
+    */
     public  class Department
     {
         IRepositoryDepartment _repositoryDepartment;
