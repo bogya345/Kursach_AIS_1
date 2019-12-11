@@ -104,6 +104,7 @@
     <Compile Include="Services\Patterns\Pattern.cs" />
     <Compile Include="Services\Word\Prikaz.cs" />
     <Compile Include="Services\Word\ServiceWord.cs" />
+    <Compile Include="Services\Word\word.cs" />
     <Compile Include="ViewModels\AbitAddViewModel.cs" />
     <Compile Include="ViewModels\IAbitAddViewModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />

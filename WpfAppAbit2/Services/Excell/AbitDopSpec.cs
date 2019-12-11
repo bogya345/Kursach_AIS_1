@@ -29,14 +29,17 @@ namespace WpfAppAbit2.Services.Excell
         {
             ws.Cells.Replace("#specNumber#", specNumber.ToString());
 
+            int i = 3;
             foreach (EntrantApplication item in apps.GetAll())
             {
                 //fullname
-                ws.Cells[3, 3].Value2 = item.Entrant.Person.Fullname();
+                ws.Cells[i, 3].Value2 = item.Entrant.Person.Fullname();
                 //application number
-                ws.Cells[3, 3].Value2 = item.ApplicationNumber;
+                ws.Cells[i, 4].Value2 = item.ApplicationNumber;
                 //summary of balls
-                ws.Cells[3, 3].Value2 = item.balls;
+                ws.Cells[i, 5].Value2 = item.balls;
+
+                i++;
             }
 
             app.Visible = true;
