@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfAppAbit2.ViewModels;
 
+using WpfAppAbit2.DAL;
 using WpfAppAbit2.Services;
 using WpfAppAbit2.Services.Excell;
 using WpfAppAbit2.Services.Word;
@@ -30,10 +31,10 @@ namespace WpfAppAbit2.Views
             //this.Style = (Style)Application.Current.Resources["AddAbit"];
             InitializeComponent();
 
-            ServiceExcell service = new ServiceExcell();
-            
-            service.AbitDopSpec = new AbitDopSpec(2);
-            //service.AbitDopSpec.SetContent();
+            UnitOfWork unit = new UnitOfWork();
+
+            Prikaz pr = new Prikaz();
+            pr.SetContent(unit.Applications);
         }
 
         public IViewModel ViewModel
