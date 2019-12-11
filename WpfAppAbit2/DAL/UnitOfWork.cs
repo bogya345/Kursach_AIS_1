@@ -14,6 +14,7 @@ namespace WpfAppAbit2.DAL
         private RepositoryApplication reposApplication;
         private RepositoryEntrant reposEnrant;
         private RepositoryPerson reposPerson;
+        private RepositoryDepartment reposDepartment;
 
         public RepositoryApplication Applications
         {
@@ -24,7 +25,6 @@ namespace WpfAppAbit2.DAL
                 return reposApplication;
             }
         }
-
         public RepositoryEntrant Entrants
         {
             get
@@ -43,6 +43,17 @@ namespace WpfAppAbit2.DAL
                 return reposPerson;
             }
         }
+        public RepositoryDepartment Departments
+        {
+            get
+            {
+                if (reposDepartment == null)
+                    reposDepartment = new RepositoryDepartment(db);
+                return reposDepartment;
+            }
+        }
+
+
         public void Save()
         {
             //
@@ -52,71 +63,5 @@ namespace WpfAppAbit2.DAL
         {
             //
         }
-
-        //public void Save()
-        //{
-        //    db.SaveChanges();
-        //}
-
-        //private bool disposed = false;
-
-        //public virtual void Dispose(bool disposing)
-        //{
-        //    if (!this.disposed)
-        //    {
-        //        if (disposing)
-        //        {
-        //            db.Dispose();
-        //        }
-        //        this.disposed = true;
-        //    }
-        //}
-        //private RepositoryApplication repositoryApplication;
-        //private RepositoryEntrant repositoryEntrant;
-
-        //public RepositoryApplication Books
-        //{
-        //    get
-        //    {
-        //        if (repositoryApplication == null)
-        //            repositoryApplication = new repositoryApplication(db);
-        //        return repositoryApplication;
-        //    }
-        //}
-
-        //public RepositoryEntrant Orders
-        //{
-        //    get
-        //    {
-        //        if (orderRepository == null)
-        //            orderRepository = new OrderRepository(db);
-        //        return orderRepository;
-        //    }
-        //}
-
-        //public void Save()
-        //{
-        //    db.SaveChanges();
-        //}
-
-        //private bool disposed = false;
-
-        //public virtual void Dispose(bool disposing)
-        //{
-        //    if (!this.disposed)
-        //    {
-        //        if (disposing)
-        //        {
-        //            db.Dispose();
-        //        }
-        //        this.disposed = true;
-        //    }
-        //}
-
-        //public void Dispose()
-        //{
-        //    Dispose(true);
-        //    GC.SuppressFinalize(this);
-        //}
     }
 }
