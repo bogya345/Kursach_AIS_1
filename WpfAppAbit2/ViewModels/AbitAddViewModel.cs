@@ -56,7 +56,6 @@ namespace WpfAppAbit2.ViewModels
 
         }
 
-        private LocalStorage db = new LocalStorage();
         // public Application Application; икупрукрку
         public ObservableCollection<EntrantApplication> EntrantApplications { get; set; } = new ObservableCollection<EntrantApplication>();
         public ObservableCollection<Passport> _entrantPassports = new ObservableCollection<Passport>();
@@ -73,6 +72,7 @@ namespace WpfAppAbit2.ViewModels
         private Department _selectedDepart1stMem = new Department();
         private Department _selectedDepart2ndMem = new Department();
 
+        //private LocalStorage db = new LocalStorage();
         //public RepositoryApplication repositoryApplication;
         //public RepositoryEntrant repositoryEntrant;
         //insted use
@@ -85,9 +85,9 @@ namespace WpfAppAbit2.ViewModels
         
         public void GetDepartments()
         {
-            RepositoryDepartment RepDep = new RepositoryDepartment(db);
+           // RepositoryDepartment RepDep = new RepositoryDepartment(db);
             ObservableCollection<Department> departsLocal = new ObservableCollection<Department>();
-            departsLocal = RepDep.GetAll();
+            departsLocal = unit.Departments.GetAll();
             _departments = new ObservableCollection<Department>();
             foreach (Department department in departsLocal)
             {
@@ -108,13 +108,11 @@ namespace WpfAppAbit2.ViewModels
                 else
                 {
                     _selectedDepart1st = value;
-                    RepositoryDepartment RepDep = new RepositoryDepartment(db);
-                  //DepartmentsLoad();
+                  //  RepositoryDepartment RepDep = new RepositoryDepartment(db);
+                    DepartmentsLoad();
                     // Refreshed = false;
-                    GetDepartments();
-                    //_departments = RepDep.GetAll();
-                    _departments2ndLevel = new ObservableCollection<Department>();
-                    var _newdepart2ndlevel = _departments.Where(u =>  (u.HeadDepartment != null) && (u.HeadDepartment.DepartmentGuid == _selectedDepart1st.DepartmentGuid));
+                    _departments2ndLevel = unit.Departments.GetAll();
+                     var _newdepart2ndlevel = _departments2ndLevel.Where(u => (u.HeadDepartment == _selectedDepart1st));
                     ObservableCollection<Department> newdepartments = new ObservableCollection<Department>();
                     foreach (Department department in _newdepart2ndlevel)
                     {
@@ -170,7 +168,7 @@ namespace WpfAppAbit2.ViewModels
         }
         public void DepartmentsLoad()
         {
-           
+
         }
         public void SelectedDepartsMemory()
         {
@@ -184,9 +182,10 @@ namespace WpfAppAbit2.ViewModels
             GetDepartments();
             _selectedDepart1stMem = _selectedDepart1st;
             _selectedDepart2ndMem = _selectedDepart2nd;
-            RepositoryDepartment repositoryDepartment = new RepositoryDepartment(db);
-            Departments = repositoryDepartment.GetAll();
-
+           // RepositoryDepartment repositoryDepartment = new RepositoryDepartment(db);
+            Departments = unit.Departments.GetAll();
+            _departments1stLevel.Clear();
+            _departments2ndLevel.Clear();
             foreach (Department department in Departments)
             {
                 switch (department.DepartmentLevel)
@@ -205,8 +204,8 @@ namespace WpfAppAbit2.ViewModels
         }
         public void RefreshSubs()
         {
-            RepositoryDepartment repositoryDepartment = new RepositoryDepartment(db);
-            _departments = repositoryDepartment.GetAll();
+            //RepositoryDepartment repositoryDepartment = new RepositoryDepartment(db);
+            _departments = unit.Departments.GetAll();
             Departments = _departments;
             _departments1stLevel.Clear();
             _departments2ndLevel.Clear();
