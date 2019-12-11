@@ -14,7 +14,7 @@ namespace WpfAppAbit2.Models
         public Entrant Entrant { get; set; }
         public int ResultSourceType { get; set; }
         public EntranceTestItem EntranceTestItem { get; set; }
-        public CompetitiveGroup CompetitiveGroup { get; set; }
+      //  public CompetitiveGroup CompetitiveGroup { get; set; }
 
     }
 }

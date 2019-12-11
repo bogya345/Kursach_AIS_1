@@ -31,7 +31,7 @@ namespace WpfAppAbit2.Views
         {
             //entrantsGrid.ItemsSource = 
             InitializeComponent();
-           // entrantsGrid.ItemsSource =  applications.GetAll();
+            //entrantsGrid.ItemsSource =  LoadApplications();
         }
         public IViewModel ViewModel
         {

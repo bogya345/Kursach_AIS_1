@@ -17,6 +17,10 @@ namespace WpfAppAbit2.Models
             this.Name = Name;
             this.ShortName = ShortName;
         }
+        public Direction()
+        {
+
+        }
         public override string ToString()
         {
             return ShortName;

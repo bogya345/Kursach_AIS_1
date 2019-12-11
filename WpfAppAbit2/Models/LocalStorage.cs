@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Windows;
 
 namespace WpfAppAbit2.Models
 {
@@ -108,7 +107,19 @@ namespace WpfAppAbit2.Models
                     CompetitiveGroupItem = new CompetitiveGroupItem(1, "Бюджетные места  "+ Directions[1].Name, 40),
                     LevelBudget = LevelBudgets[0],
                     EntranceTestItems = new ObservableCollection<EntranceTestItem>()
-                    { new EntranceTestItem(){ } } }
+                    { new EntranceTestItem(){ } } },
+                new CompetitiveGroup(){UID = Guid.NewGuid(), Name = Directions[0].ToString()+"  "+ LevelBudgets[0].ToString(), Campaign =  Campaigns[0], Direction = Directions[1],
+                    IsForKrym = false, IsAdditional = false,
+                    CompetitiveGroupItem = new CompetitiveGroupItem(2, "Контрактные места  "+ Directions[1].Name, 20),
+                    LevelBudget = LevelBudgets[0],
+                    EntranceTestItems = new ObservableCollection<EntranceTestItem>()
+                    { new EntranceTestItem(){ } } },
+                new CompetitiveGroup(){UID = Guid.NewGuid(), Name = Directions[0].ToString()+"  "+ LevelBudgets[0].ToString(), Campaign =  Campaigns[0], Direction = Directions[1],
+                    IsForKrym = false, IsAdditional = false,
+                    CompetitiveGroupItem = new CompetitiveGroupItem(3, "Бюджетные места  "+ Directions[3].Name, 35),
+                    LevelBudget = LevelBudgets[0],
+                    EntranceTestItems = new ObservableCollection<EntranceTestItem>()
+                    { } }
             };
         }
         public void FillLevels()
@@ -131,14 +142,26 @@ namespace WpfAppAbit2.Models
                 new Subject(){ ID = 5, Name = "Английский язык"}
             };
         }
-
+        public void FillentranceTestItems()
+        {
+            EntranceTestItems = new ObservableCollection<EntranceTestItem>()
+            {
+                new EntranceTestItem(){Guid = Guid.NewGuid(), EntranceTestType = 0,
+                     Subject = Subjects[0], IsForSPOandVO = false, MinScore = 36 },
+                new EntranceTestItem(){Guid = Guid.NewGuid(), EntranceTestType = 0,
+                     Subject = Subjects[1], IsForSPOandVO = false, MinScore = 45 },
+                new EntranceTestItem(){Guid = Guid.NewGuid(), EntranceTestType = 0,
+                     Subject = Subjects[2], IsForSPOandVO = false, MinScore = 40 }
+            };
+        }
         public void FillDirections()
         {
             Directions = new ObservableCollection<Direction>()
             {
                 new Direction(Guid.NewGuid(), "Реклама и Связи с общественностью","РиСО", Departments[3]),
                 new Direction(Guid.NewGuid(), "Информационные системы и технологии","ИСТ", Departments[2]),
-                new Direction(Guid.NewGuid(), "Информатика и вычислительная техника","ИВТ", Departments[2])
+                new Direction(Guid.NewGuid(), "Информатика и вычислительная техника","ИВТ", Departments[2]),
+                new Direction(Guid.NewGuid(), "Промышленное и гражданское строительство","ПГС", Departments[6])
 
             };
         }
@@ -231,7 +254,7 @@ namespace WpfAppAbit2.Models
                     FinSourceAndEduForms = new FinSourceAndEduForms(){ CompetitiveGroup = CompetitiveGroups[0],
                         TargetOrganization = null, IsAgreedDate = DateTime.Today, IsDisagreedDate = DateTime.MinValue,
                         IsForSPOandVO = false}
-                    
+
 
                 }
             };
@@ -280,10 +303,11 @@ namespace WpfAppAbit2.Models
             FillLevels();
             FillDirections();
             FillLevelBudjets();
+            FillentranceTestItems();
+
             FillCompGroups();
             FillEntrants();
             FillApplications();
-
 
         }
 
