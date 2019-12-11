@@ -50,6 +50,14 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -88,6 +96,13 @@
     <Compile Include="Patterns\UserCommand.cs" />
     <Compile Include="Repository\IRepositor.cs" />
     <Compile Include="Repository\Repositor.cs" />
+    <Compile Include="Services\Excell\AbitDopSpec.cs" />
+    <Compile Include="Services\Excell\Abitltogi.cs" />
+    <Compile Include="Services\Excell\Excell.cs" />
+    <Compile Include="Services\Excell\ServiceExcell.cs" />
+    <Compile Include="Services\Patterns\Pattern.cs" />
+    <Compile Include="Services\Word\Prikaz.cs" />
+    <Compile Include="Services\Word\ServiceWord.cs" />
     <Compile Include="ViewModels\AbitAddViewModel.cs" />
     <Compile Include="ViewModels\IAbitAddViewModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
