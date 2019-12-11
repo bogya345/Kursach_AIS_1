@@ -38,10 +38,14 @@ namespace WpfAppAbit2.Services.Word
 
             foreach (IGrouping<Direction, EntrantApplication> g in list)
             {
-                Range range = doc.Sections.Add().Range;
-                //Range range = doc.Paragraphs.Add().Range;
+                //Range range = doc.Sections.Add().Range;
+                Range range = doc.Paragraphs.Add().Range;
 
                 Table table = doc.Tables.Add(range, (g.Count() + 1), 3);
+                table = doc.Tables[doc.Tables.Count];
+
+                table.Range.ParagraphFormat.SpaceBefore = 5;
+                table.Range.ParagraphFormat.SpaceAfter = 7;
 
                 table.Borders[WdBorderType.wdBorderBottom].Visible = true;
                 table.Borders[WdBorderType.wdBorderHorizontal].Visible = true;
@@ -51,12 +55,12 @@ namespace WpfAppAbit2.Services.Word
                 table.Borders[WdBorderType.wdBorderVertical].Visible = true;
                 //table.Borders[WdBorderType].Visible = true;
 
-                int i = 0;
+                int i = 1;
                 foreach (var r in g)
                 {
-                    table.Cell(i, 0).Range.Text = i.ToString();
-                    table.Cell(i, 1).Range.Text = r.ToString();
-                    table.Cell(i, 2).Range.Text = r.balls.ToString();
+                    table.Cell(i, 1).Range.Text = i.ToString();
+                    table.Cell(i, 2).Range.Text = r.ToString();
+                    table.Cell(i, 3).Range.Text = r.balls.ToString();
                     i++;
                 }
             }
