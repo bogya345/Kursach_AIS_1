@@ -91,6 +91,7 @@
     <Compile Include="Models\RepositoryApplication.cs" />
     <Compile Include="Models\RepositoryCampaigns.cs" />
     <Compile Include="Models\RepositoryDepartment.cs" />
+    <Compile Include="Models\RepositoryDirection.cs" />
     <Compile Include="Models\RepositoryEntrant.cs" />
     <Compile Include="Models\RepositoryPerson.cs" />
     <Compile Include="Patterns\UserCommand.cs" />

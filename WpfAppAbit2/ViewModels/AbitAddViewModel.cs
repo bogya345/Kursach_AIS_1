@@ -65,13 +65,16 @@ namespace WpfAppAbit2.ViewModels
         public ObservableCollection<Department> Departments0stLevel { get; set; } = new ObservableCollection<Department>();
         private ObservableCollection<Department> _departments1stLevel = new ObservableCollection<Department>();
         private ObservableCollection<Department> _departments2ndLevel = new ObservableCollection<Department>();
+        private ObservableCollection<Direction> _directions = new ObservableCollection<Direction>();
         private Passport _selectedpassport = new Passport();
         public string FormName = "Добавление абитуриента";
         private Department _selectedDepart1st = new Department();
         private Department _selectedDepart2nd = new Department();
         private Direction _selectedDirection = new Direction();
-        public Direction SelectedDirection { get=>_selectedDirection; set { _selectedDirection = value; } }
-        
+        private EntrantApplication _selectedApplication = new EntrantApplication();
+
+        public Direction SelectedDirection { get => _selectedDirection; set { _selectedDirection = value; } }
+
         //private Department _selectedDepart1stMem = new Department();
         //private Department _selectedDepart2ndMem = new Department();
 
@@ -97,8 +100,18 @@ namespace WpfAppAbit2.ViewModels
                 _departments.Add(department);
             }
         }
-
-        public EntrantApplication _selectedApplication { get; set; } = new EntrantApplication();
+        public void GetDirections()
+        {
+            // RepositoryDepartment RepDep = new RepositoryDepartment(db);
+            ObservableCollection<Direction> directionLocal = new ObservableCollection<Direction>();
+            directionLocal = unit.Directions.GetAll();
+            _directions = new ObservableCollection<Direction>();
+            foreach (Direction direction in directionLocal)
+            {
+                _directions.Add(direction);
+            }
+        }
+        public EntrantApplication SelectedApplication { get=> _selectedApplication; set { _selectedApplication = value; } }
         //public  _selectedInstitute { get; set; } = new ();
         public Department SelectedDepart1st
         {
@@ -110,22 +123,22 @@ namespace WpfAppAbit2.ViewModels
             {
                 //if (value == null) { _selectedDepart1st = _selectedDepart1stMem; }
                 //else
+                //{
+                _selectedDepart1st = value;
+                //RepositoryDepartment RepDep = new RepositoryDepartment(db);
+                GetDepartments();
+                //Refreshed = false;
+                _departments2ndLevel = unit.Departments.GetAll();
+                var _newdepart2ndlevel = _departments2ndLevel.Where(u => (u.HeadDepartment == _selectedDepart1st));
+                ObservableCollection<Department> newdepartments = new ObservableCollection<Department>();
+                foreach (Department department in _newdepart2ndlevel)
                 {
-                    _selectedDepart1st = value;
-                    //  RepositoryDepartment RepDep = new RepositoryDepartment(db);
-                    GetDepartments();
-                    // Refreshed = false;
-                    _departments2ndLevel = unit.Departments.GetAll();
-                    var _newdepart2ndlevel = _departments2ndLevel.Where(u => (u.HeadDepartment == _selectedDepart1st));
-                    ObservableCollection<Department> newdepartments = new ObservableCollection<Department>();
-                    foreach (Department department in _newdepart2ndlevel)
-                    {
-                        newdepartments.Add(department);
-                    }
-                    /// _departments2ndLevel.Clear();
-                    _departments2ndLevel = newdepartments;
-                    Departments2ndLevel = _departments2ndLevel;
+                    newdepartments.Add(department);
                 }
+                /// _departments2ndLevel.Clear();
+                _departments2ndLevel = newdepartments;
+                Departments2ndLevel = _departments2ndLevel;
+                // }
                 //  RefreshSubs();
             }
         }
@@ -138,7 +151,18 @@ namespace WpfAppAbit2.ViewModels
             set
             {
                 _selectedDepart2nd = value;
-
+                GetDepartments();
+                // Refreshed = false;
+                _departments2ndLevel = unit.Directions.GetAll();
+                var _newdepart2ndlevel = _departments2ndLevel.Where(u => (u.HeadDepartment == _selectedDepart1st));
+                ObservableCollection<Department> newdepartments = new ObservableCollection<Department>();
+                foreach (Department department in _newdepart2ndlevel)
+                {
+                    newdepartments.Add(department);
+                }
+                /// _departments2ndLevel.Clear();
+                _departments2ndLevel = newdepartments;
+                Departments2ndLevel = _departments2ndLevel;
                 //MessageBox.Show(_selectedDepart2nd.ToString());
             }
         }

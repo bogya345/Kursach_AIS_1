@@ -15,6 +15,7 @@ namespace WpfAppAbit2.DAL
         private RepositoryEntrant reposEnrant;
         private RepositoryPerson reposPerson;
         private RepositoryDepartment reposDepartment;
+        private RepositoryDirection reposDirection;
 
         public RepositoryApplication Applications
         {
@@ -52,7 +53,15 @@ namespace WpfAppAbit2.DAL
                 return reposDepartment;
             }
         }
-
+        public RepositoryDirection Directions
+        {
+            get
+            {
+                if (reposDirection == null)
+                    reposDirection = new RepositoryDirection(db);
+                return reposDirection;
+            }
+        }
 
         public void Save()
         {
