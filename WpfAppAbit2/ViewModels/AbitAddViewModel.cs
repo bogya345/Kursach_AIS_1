@@ -82,7 +82,18 @@ namespace WpfAppAbit2.ViewModels
         public bool NotExisted = false;
         public bool Refreshed = false;
 
-
+        
+        public void GetDepartments()
+        {
+            RepositoryDepartment RepDep = new RepositoryDepartment(db);
+            ObservableCollection<Department> departsLocal = new ObservableCollection<Department>();
+            departsLocal = RepDep.GetAll();
+            _departments = new ObservableCollection<Department>();
+            foreach (Department department in departsLocal)
+            {
+                _departments.Add(department);
+            }
+        }
         public EntrantApplication _selectedApplication { get; set; } = new EntrantApplication();
         //public  _selectedInstitute { get; set; } = new ();
         public Department SelectedDepart1st
@@ -98,17 +109,19 @@ namespace WpfAppAbit2.ViewModels
                 {
                     _selectedDepart1st = value;
                     RepositoryDepartment RepDep = new RepositoryDepartment(db);
-                    DepartmentsLoad();
+                  //DepartmentsLoad();
                     // Refreshed = false;
-                    _departments2ndLevel = RepDep.GetAll();
-                     var _newdepart2ndlevel = _departments2ndLevel.Where(u => (u.HeadDepartment == _selectedDepart1st));
+                    GetDepartments();
+                    //_departments = RepDep.GetAll();
+                    _departments2ndLevel = new ObservableCollection<Department>();
+                    var _newdepart2ndlevel = _departments.Where(u =>  (u.HeadDepartment != null) && (u.HeadDepartment.DepartmentGuid == _selectedDepart1st.DepartmentGuid));
                     ObservableCollection<Department> newdepartments = new ObservableCollection<Department>();
                     foreach (Department department in _newdepart2ndlevel)
                     {
-                        newdepartments.Add(department);
+                        _departments2ndLevel.Add(department);
                     }
-                    _departments2ndLevel.Clear();
-                    _departments2ndLevel = newdepartments;
+                   /// _departments2ndLevel.Clear();
+                   
                     Departments2ndLevel = _departments2ndLevel;
                 }
                 //  RefreshSubs();
@@ -167,13 +180,13 @@ namespace WpfAppAbit2.ViewModels
         public AbitAddViewModel(IView view) : base(view)
         {
             _departments1stLevel.Clear();
-            DepartmentsLoad();
+            _departments2ndLevel.Clear();
+            GetDepartments();
             _selectedDepart1stMem = _selectedDepart1st;
             _selectedDepart2ndMem = _selectedDepart2nd;
             RepositoryDepartment repositoryDepartment = new RepositoryDepartment(db);
             Departments = repositoryDepartment.GetAll();
-            _departments1stLevel.Clear();
-            _departments2ndLevel.Clear();
+
             foreach (Department department in Departments)
             {
                 switch (department.DepartmentLevel)
