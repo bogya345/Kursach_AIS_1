@@ -14,7 +14,6 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="278*"/>
             <ColumnDefinition Width="702*"/>
-
         </Grid.ColumnDefinitions>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,48,0,0" TextWrapping="Wrap" Text="{Binding _selectedpassport.Series, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbPasSeria"/>
         <Label Content="Серия паспорта" HorizontalAlignment="Left" Margin="13,47,0,0" VerticalAlignment="Top" Height="26" Width="101"/>
@@ -49,11 +48,11 @@
         <!--Application-->
         <ComboBox SelectedItem="{Binding _selectedApplication, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,81,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbApplication" Height="32"/>
         <Label Content="Заявление" Grid.Column="3" HorizontalAlignment="Left" Margin="27,81,0,0" VerticalAlignment="Top" Height="26" Width="71"/>
-        <ComboBox x:Name="changed"   ItemsSource="{Binding Departments1stLevel, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDepart1st, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,126,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartInst" Height="38" SelectionChanged="Changed_SelectionChanged" FontSize="12"/>
+        <ComboBox x:Name="changed"   ItemsSource="{Binding Departments1stLevel,  UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDepart1st, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,126,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartInst" Height="38" SelectionChanged="Changed_SelectionChanged" FontSize="12"/>
         <Label Content="Институт" Grid.Column="3" HorizontalAlignment="Left" Margin="43,138,0,0" VerticalAlignment="Top" Height="26" Width="71"/>
-        <ComboBox ItemsSource="{Binding Departments2ndLevel, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDepart2nd, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,169,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartKaf" Height="37"/>
+        <ComboBox x:Name="changed2"   ItemsSource="{Binding Departments2ndLevel, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDepart2nd, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,169,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartKaf" Height="37"/>
         <Label Content="Кафедра" Grid.Column="3" HorizontalAlignment="Left" Margin="43,182,0,0" VerticalAlignment="Top" Height="26" Width="71"/>
-        <ComboBox SelectedItem="{Binding _selectedDirection, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,211,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartSpec" Height="39"/>
+        <ComboBox ItemsSource="{Binding Directions,  UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding _selectedDirection, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,211,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartSpec" Height="39"/>
         <Label Content="Специальность" Grid.Column="3" HorizontalAlignment="Left" Margin="10,224,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
         <ComboBox SelectedItem="{Binding _selectedCompetitiveGroupItem, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,255,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbCompetGroup" Height="33"/>
         <Label Content="Конкурс" Grid.Column="3" HorizontalAlignment="Left" Margin="43,262,0,0" VerticalAlignment="Top" Height="26" Width="95"/>

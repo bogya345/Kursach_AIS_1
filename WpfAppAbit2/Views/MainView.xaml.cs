@@ -25,7 +25,10 @@ namespace WpfAppAbit2.Views
     {
         //public List<IAbitAddViewModel> abits;
         private TreeViewItem priveousItem = null;
+        public void UpdateList()
+        {
 
+        }
         
         public MainView()
         {

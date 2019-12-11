@@ -21,8 +21,8 @@ namespace WpfAppAbit2.Services.Excell
 
             patternPath = Pattern.Excel.AbitDopSpec;
 
-            wb = app.Workbooks.Open(patternPath);
-            ws = wb.Worksheets[1];
+            //wb = app.Workbooks.Open(patternPath);
+            //ws = wb.Worksheets[1];
         }
 
         public void SetContent(RepositoryApplication apps)

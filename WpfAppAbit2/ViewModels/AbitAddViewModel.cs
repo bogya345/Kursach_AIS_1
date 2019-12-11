@@ -12,6 +12,7 @@ namespace WpfAppAbit2.ViewModels
 {
     public class AbitAddViewModel : ViewModelBase
     {
+
         public Entrant Entrant { get; set; }
         public DateTime RegistrationDate { get; set; }
         public bool NeedHostel { get; set; }
@@ -19,42 +20,12 @@ namespace WpfAppAbit2.ViewModels
         public CompetitiveGroup competitiveGroup { get; set; }
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
         public Person Person { get; set; }
-        public ObservableCollection<Department> Departments
-        {
-            get
-            {
-                return _departments;
-            }
-            set
-            {
-                _departments = value;
-            }
+       
+        //public ObservableCollection<Department> Departments2ndLevel
+        //{
+        //    get ; set _departments2ndLevel = value;
 
-        }
-        public ObservableCollection<Department> Departments1stLevel
-        {
-            get
-            {
-                return _departments1stLevel;
-            }
-            set
-            {
-                _departments1stLevel = value;
-            }
-
-        }
-        public ObservableCollection<Department> Departments2ndLevel
-        {
-            get
-            {
-                return _departments2ndLevel;
-            }
-            set
-            {
-                _departments2ndLevel = value;
-            }
-
-        }
+        //} = new ObservableCollection<Department>();
 
         // public Application Application; икупрукрку
         public ObservableCollection<EntrantApplication> EntrantApplications { get; set; } = new ObservableCollection<EntrantApplication>();
@@ -66,12 +37,18 @@ namespace WpfAppAbit2.ViewModels
         private ObservableCollection<Department> _departments1stLevel = new ObservableCollection<Department>();
         private ObservableCollection<Department> _departments2ndLevel = new ObservableCollection<Department>();
         private ObservableCollection<Direction> _directions = new ObservableCollection<Direction>();
+        //private ObservableCollection<CompetitiveGroup> _competitiveGroups = new ObservableCollection<CompetitiveGroup>();
+
+        public ObservableCollection<Direction> Directions { get => _directions; }
         private Passport _selectedpassport = new Passport();
         public string FormName = "Добавление абитуриента";
         private Department _selectedDepart1st = new Department();
         private Department _selectedDepart2nd = new Department();
         private Direction _selectedDirection = new Direction();
         private EntrantApplication _selectedApplication = new EntrantApplication();
+        private CompetitiveGroup _selectedcompetitiveGroup = new CompetitiveGroup();
+        public CompetitiveGroup SelectedcompetitiveGroup { get => _selectedcompetitiveGroup; set { _selectedcompetitiveGroup = value; } }
+        public ObservableCollection<CompetitiveGroup> CompetitiveGroups = new ObservableCollection<CompetitiveGroup>();
 
         public Direction SelectedDirection { get => _selectedDirection; set { _selectedDirection = value; } }
 
@@ -110,6 +87,43 @@ namespace WpfAppAbit2.ViewModels
             {
                 _directions.Add(direction);
             }
+        }
+         public ObservableCollection<Department> Departments
+        {
+            get
+            {
+                return _departments;
+            }
+            set
+            {
+                _departments = value;
+            }
+
+        }
+        public ObservableCollection<Department> Departments1stLevel
+        {
+            get
+            {
+                return _departments1stLevel;
+            }
+            set
+            {
+
+
+            }
+
+        }
+        public ObservableCollection<Department> Departments2ndLevel
+        {
+            get
+            {
+                return _departments2ndLevel;
+            }
+            set
+            {
+                _departments2ndLevel = value;
+            }
+
         }
         public EntrantApplication SelectedApplication { get=> _selectedApplication; set { _selectedApplication = value; } }
         //public  _selectedInstitute { get; set; } = new ();
@@ -153,16 +167,16 @@ namespace WpfAppAbit2.ViewModels
                 _selectedDepart2nd = value;
                 GetDepartments();
                 // Refreshed = false;
-                _departments2ndLevel = unit.Directions.GetAll();
-                var _newdepart2ndlevel = _departments2ndLevel.Where(u => (u.HeadDepartment == _selectedDepart1st));
-                ObservableCollection<Department> newdepartments = new ObservableCollection<Department>();
-                foreach (Department department in _newdepart2ndlevel)
+                _directions = unit.Directions.GetAll();
+                var _newdirection = _directions.Where(u => (u.Department == _selectedDepart2nd));
+                ObservableCollection<Direction> newdirections = new ObservableCollection<Direction>();
+                foreach (Direction direction in _newdirection)
                 {
-                    newdepartments.Add(department);
+                    newdirections.Add(direction);
                 }
                 /// _departments2ndLevel.Clear();
-                _departments2ndLevel = newdepartments;
-                Departments2ndLevel = _departments2ndLevel;
+                _directions = newdirections;
+                //Directions = _directions;
                 //MessageBox.Show(_selectedDepart2nd.ToString());
             }
         }
@@ -214,10 +228,10 @@ namespace WpfAppAbit2.ViewModels
             };
             Departments1stLevel = _departments1stLevel;
             Departments2ndLevel = _departments2ndLevel;
-            SelectedDepart1st = Departments1stLevel[1];
-            SelectedDepart2nd = Departments2ndLevel[0];
+            SelectedDepart1st = Departments1stLevel[0];
+            SelectedDepart2nd = Departments2ndLevel[1];
             View.Show();
-            MessageBox.Show(Departments1stLevel[0].ToString());
+          //  MessageBox.Show(Departments1stLevel[0].ToString());
 
         }
         public void RefreshSubs()
