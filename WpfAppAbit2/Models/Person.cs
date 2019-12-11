@@ -39,13 +39,13 @@ namespace WpfAppAbit2.Models
         {
             Passport Passport = new Passport(Series, Number, LastName, FirstName, MiddleName, GenderID, Address, UnitCode, BirthDay, BirthPlace, null, true);
 #pragma warning disable CS0219 // Переменной "IsNotExist" присвоено значение, но оно ни разу не использовано.
-            bool IsNotExist = false;         
+            bool IsNotExist = false;
 #pragma warning restore CS0219 // Переменной "IsNotExist" присвоено значение, но оно ни разу не использовано.
             if (CheckPasExisted(Series, Number)) { PersonPassports.Add(Passport); }
             else { return; }
         }
         public Person() { }
-        public Person(Passport passport, string CustomInformation , EmailOrMailAddress emailOrMailAddress)
+        public Person(Passport passport, string CustomInformation, EmailOrMailAddress emailOrMailAddress)
         {
             this.UID = Guid.NewGuid();
             this.PersonPassports = new ObservableCollection<Passport>();
@@ -54,12 +54,16 @@ namespace WpfAppAbit2.Models
             this.FirstName = PersonPassports[0].FirstName;
             this.MiddleName = PersonPassports[0].MiddleName;
         }
-       
+
         //TODO добавление абитуриента (подача заявления), редактирование, зачисление.
         public void PersonPassSort()
         {
             PersonPassports.OrderByDescending(x => x.DateGiven);
         }
 
+        public string Fullname()
+        {
+            return $"{LastName} {FirstName} {MiddleName}";
+        }
     }
 }

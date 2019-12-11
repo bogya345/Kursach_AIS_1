@@ -64,6 +64,7 @@ namespace WpfAppAbit2.Models
             this.DocumentForKrym = DocumentForKrym;
             this.EntranceTestResults = EntranceTestResults;
         }
+
         public override string ToString()
         {
         //    MessageBox.Show(Person.LastName + "  " + Person.FirstName + "  " + Person.MiddleName);
