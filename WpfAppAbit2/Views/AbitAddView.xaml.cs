@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfAppAbit2.ViewModels;
 
+using WpfAppAbit2.Services;
+using WpfAppAbit2.Services.Excell;
+using WpfAppAbit2.Services.Word;
+
 namespace WpfAppAbit2.Views
 {
     /// <summary>
@@ -22,11 +26,16 @@ namespace WpfAppAbit2.Views
     {
         public AbitAddView()
         {
-           // this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/Resourses/AbitAddView.xaml") };
+            // this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/Resourses/AbitAddView.xaml") };
             //this.Style = (Style)Application.Current.Resources["AddAbit"];
             InitializeComponent();
+
+            ServiceExcell service = new ServiceExcell();
+            
+            service.AbitDopSpec = new AbitDopSpec(2);
+            //service.AbitDopSpec.SetContent();
         }
-        
+
         public IViewModel ViewModel
         {
             get => DataContext as IViewModel;
@@ -35,7 +44,7 @@ namespace WpfAppAbit2.Views
 
         private void Changed_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
     }

@@ -10,9 +10,9 @@ namespace WpfAppAbit2.Services.Excell
 {
     public class Excell
     {
-        protected Application excelApp;
-        protected Workbook workBook;
-        protected Worksheet workSheet;
+        protected Application app = new Application();
+        protected Workbook wb;
+        protected Worksheet ws;
 
         protected string patternPath;
 
