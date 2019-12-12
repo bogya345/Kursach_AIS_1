@@ -20,7 +20,7 @@ namespace WpfAppAbit2.ViewModels
         public CompetitiveGroup competitiveGroup { get; set; }
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
         public Person Person { get; set; }
-       
+        //public Passport SelectedPassport { get => _selectedpassport; }
         //public ObservableCollection<Department> Departments2ndLevel
         //{
         //    get ; set _departments2ndLevel = value;
@@ -28,10 +28,10 @@ namespace WpfAppAbit2.ViewModels
         //} = new ObservableCollection<Department>();
 
         // public Application Application; икупрукрку
-        public ObservableCollection<EntrantApplication> EntrantApplications { get; set; } = new ObservableCollection<EntrantApplication>();
-        public ObservableCollection<Passport> _entrantPassports = new ObservableCollection<Passport>();
-        public ObservableCollection<EntrantApplication> _entrantApplications = new ObservableCollection<EntrantApplication>();
-        public ObservableCollection<CompetitiveGroup> _competitiveGroups = new ObservableCollection<CompetitiveGroup>();
+        private ObservableCollection<EntrantApplication> _entrantApplications = new ObservableCollection<EntrantApplication>();
+        public ObservableCollection<EntrantApplication> EntrantApplications { get => _entrantApplications;  set { _entrantApplications = value; } }
+        private ObservableCollection<Passport> _entrantPassports = new ObservableCollection<Passport>();
+        private ObservableCollection<CompetitiveGroup> _competitiveGroups = new ObservableCollection<CompetitiveGroup>();
         private ObservableCollection<Department> _departments = new ObservableCollection<Department>();
         public ObservableCollection<Department> Departments0stLevel { get; set; } = new ObservableCollection<Department>();
         private ObservableCollection<Department> _departments1stLevel = new ObservableCollection<Department>();
@@ -41,16 +41,15 @@ namespace WpfAppAbit2.ViewModels
 
         public ObservableCollection<Direction> Directions { get => _directions; }
         private Passport _selectedpassport = new Passport();
-        public string FormName = "Добавление абитуриента";
+        public string FormName { get => "Добавление абитуриента"; }
         private Department _selectedDepart1st = new Department();
         private Department _selectedDepart2nd = new Department();
         private Direction _selectedDirection = new Direction();
         private EntrantApplication _selectedApplication = new EntrantApplication();
         private CompetitiveGroup _selectedcompetitiveGroup = new CompetitiveGroup();
-        public CompetitiveGroup SelectedcompetitiveGroup { get => _selectedcompetitiveGroup; set { _selectedcompetitiveGroup = value; } }
-        public ObservableCollection<CompetitiveGroup> CompetitiveGroups = new ObservableCollection<CompetitiveGroup>();
+        public CompetitiveGroup SelectedCompetitiveGroup { get => _selectedcompetitiveGroup; set { _selectedcompetitiveGroup = value; } }
+        public ObservableCollection<CompetitiveGroup> CompetitiveGroups { get => _competitiveGroups; }
 
-        public Direction SelectedDirection { get => _selectedDirection; set { _selectedDirection = value; } }
 
         //private Department _selectedDepart1stMem = new Department();
         //private Department _selectedDepart2ndMem = new Department();
@@ -88,51 +87,36 @@ namespace WpfAppAbit2.ViewModels
                 _directions.Add(direction);
             }
         }
-         public ObservableCollection<Department> Departments
+        public ObservableCollection<Department> Departments
         {
             get
-            {
-                return _departments;
-            }
+            { return _departments; }
             set
-            {
-                _departments = value;
-            }
+            { _departments = value; }
 
         }
         public ObservableCollection<Department> Departments1stLevel
         {
             get
-            {
-                return _departments1stLevel;
-            }
+            { return _departments1stLevel; }
             set
-            {
-
-
-            }
+            { _departments1stLevel = value; }
 
         }
         public ObservableCollection<Department> Departments2ndLevel
         {
             get
-            {
-                return _departments2ndLevel;
-            }
+            { return _departments2ndLevel; }
             set
-            {
-                _departments2ndLevel = value;
-            }
+            { _departments2ndLevel = value; }
 
         }
-        public EntrantApplication SelectedApplication { get=> _selectedApplication; set { _selectedApplication = value; } }
+        public EntrantApplication SelectedApplication { get => _selectedApplication; set { _selectedApplication = value; } }
         //public  _selectedInstitute { get; set; } = new ();
         public Department SelectedDepart1st
         {
             get
-            {
-                return _selectedDepart1st;
-            }
+            { return _selectedDepart1st; }
             set
             {
                 //if (value == null) { _selectedDepart1st = _selectedDepart1stMem; }
@@ -152,6 +136,7 @@ namespace WpfAppAbit2.ViewModels
                 /// _departments2ndLevel.Clear();
                 _departments2ndLevel = newdepartments;
                 Departments2ndLevel = _departments2ndLevel;
+
                 // }
                 //  RefreshSubs();
             }
@@ -159,9 +144,7 @@ namespace WpfAppAbit2.ViewModels
         public Department SelectedDepart2nd
         {
             get
-            {
-                return _selectedDepart2nd;
-            }
+            { return _selectedDepart2nd; }
             set
             {
                 _selectedDepart2nd = value;
@@ -176,8 +159,29 @@ namespace WpfAppAbit2.ViewModels
                 }
                 /// _departments2ndLevel.Clear();
                 _directions = newdirections;
+                View.UpdateList();
                 //Directions = _directions;
                 //MessageBox.Show(_selectedDepart2nd.ToString());
+            }
+        }
+
+        public Direction SelectedDirection
+        {
+            get => _selectedDirection;
+            set
+            {
+                _selectedDirection = value;
+                GetDirections();
+                _competitiveGroups = unit.CompetitiveGroups.GetAll();
+                var _newcompetitivegroups = _competitiveGroups.Where(x => (x.Direction == _selectedDirection));
+                ObservableCollection<CompetitiveGroup> newcompetitiveGroups = new ObservableCollection<CompetitiveGroup>();
+                foreach (CompetitiveGroup competitiveGroup in _newcompetitivegroups)
+                {
+                    newcompetitiveGroups.Add(competitiveGroup);
+                }
+                _competitiveGroups = newcompetitiveGroups;
+                View.UpdateList();
+
             }
         }
         public Passport SelectedPassport
@@ -191,7 +195,7 @@ namespace WpfAppAbit2.ViewModels
                 }
             }
         }
-
+        
 
         // public Department _selectedInst { get; set; } = new Department();
         //public Direction _selectedDirection { get; set; } = new Direction();
@@ -200,7 +204,7 @@ namespace WpfAppAbit2.ViewModels
 
         public string _status { get; set; }
 
-        public ObservableCollection<Passport> Passports
+        public ObservableCollection<Passport> EntrantPassports
         {
             get => _entrantPassports;
             // set => Set(ref _entrantPassports, value);
@@ -229,9 +233,9 @@ namespace WpfAppAbit2.ViewModels
             Departments1stLevel = _departments1stLevel;
             Departments2ndLevel = _departments2ndLevel;
             SelectedDepart1st = Departments1stLevel[0];
-            SelectedDepart2nd = Departments2ndLevel[1];
+            //LoadEntrant();
             View.Show();
-          //  MessageBox.Show(Departments1stLevel[0].ToString());
+            //  MessageBox.Show(Departments1stLevel[0].ToString());
 
         }
         public void RefreshSubs()
@@ -270,25 +274,34 @@ namespace WpfAppAbit2.ViewModels
             }
             );
         }
+        private bool CheckPersonExist(string Series, string Number)
+        {
+            return unit.Entrants.GetAll().Any(x => (x.Person.PersonPassports[0].Series == Series) && (x.Person.PersonPassports[0].Number == Number));
+        }
         public void CreatePassport(string Series, string Number)
         {
-            // _selectedpassport.Series = AbitAddView.tbPasSeria;
-            //_selectedpassport.Number = "21412543215";
+
             ObservableCollection<Entrant> entrants = unit.Entrants.GetAll();
-            //foreach (Entrant entrant in entrants)
-            //{
-            //    entrant.Person.PersonPassports.Any(x=> (x.exist));
-            //}
             Entrant = null;
             Passport passportNew = new Passport() { Series = Series, Number = Number };
-            if (passportNew.PassportChecked(unit.Persons.GetPassports(), Series, Number))
+            if (passportNew.PassportChecked(unit.Persons.GetPassports(), Series, Number) || (CheckPersonExist(Series, Number)))
             {
-                Person = unit.Persons.Get(Series, Number);
-                _selectedpassport = Person.PersonPassports[0];
-                foreach (Entrant entrant in entrants)
+                Entrant = unit.Entrants.Get(Series, Number);
+                if (Entrant != null)
                 {
-                    if (entrant.Person == Person) { Entrant = entrant; }
-                };
+                    _selectedpassport = Entrant.Person.PersonPassports[0];
+                    Person = Entrant.Person;
+                    _entrantPassports = Person.PersonPassports;
+                    LoadEntrant(Series, Number);
+                }
+                //foreach (Entrant entrant in entrants)
+                //{
+                //    if (entrant.Person == Person)
+                //    {
+                //        Entrant = entrant;
+                //        LoadEntrant();
+                //    }
+                //};
                 if (Entrant == null) { Entrant = new Entrant(); }
             }
             else
@@ -296,6 +309,14 @@ namespace WpfAppAbit2.ViewModels
                 _entrantPassports.Add(_selectedpassport);
                 NotExisted = true;
             }
+        }
+        private void LoadEntrant(string Series, string Number)
+        {
+            Entrant = unit.Entrants.Get(Series, Number);
+            Person = Entrant.Person;
+            _selectedpassport = Person.PersonPassports[0];
+            MessageBox.Show(Entrant.ToString());
+         //   SelectedDepart2nd = Departments2ndLevel[1];
         }
         public EntrantApplication CreateApp()
         {

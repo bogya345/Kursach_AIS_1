@@ -17,7 +17,7 @@ namespace WpfAppAbit2.Services.Word
             patternPath = Pattern.Doc.Prikaz;
 
             doc = app.Documents.Open(patternPath);
-            //Paragraph freeSpace = doc.Paragraphs.Add();
+            Paragraph freeSpace = doc.Paragraphs.Add();
         }
 
         public void SetContent(RepositoryApplication apps)

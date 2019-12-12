@@ -90,6 +90,7 @@
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\RepositoryApplication.cs" />
     <Compile Include="Models\RepositoryCampaigns.cs" />
+    <Compile Include="Models\RepositoryCompetitiveGroup.cs" />
     <Compile Include="Models\RepositoryDepartment.cs" />
     <Compile Include="Models\RepositoryDirection.cs" />
     <Compile Include="Models\RepositoryEntrant.cs" />

@@ -7,6 +7,7 @@ using WpfAppAbit2.ViewModels;
 using WpfAppAbit2.Services;
 using WpfAppAbit2.Services.Excell;
 using WpfAppAbit2.Services.Word;
+using WpfAppAbit2.DAL;
 
 namespace WpfAppAbit2.Views
 {
@@ -21,11 +22,15 @@ namespace WpfAppAbit2.Views
             // this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/Resourses/AbitAddView.xaml") };
             //this.Style = (Style)Application.Current.Resources["AddAbit"];
             InitializeComponent();
-          //  uiContext = SynchronizationContext.Current;
+            //  uiContext = SynchronizationContext.Current;
+            UnitOfWork unit = new UnitOfWork();
 
-            ServiceExcell service = new ServiceExcell();
+            //Prikaz pr = new Prikaz();
+            //pr.SetContent(unit.Applications);
+
+            //ServiceExcell service = new ServiceExcell();
             
-            service.AbitDopSpec = new AbitDopSpec(2);
+            //service.AbitDopSpec = new AbitDopSpec(2);
             //service.AbitDopSpec.SetContent();
         }
 

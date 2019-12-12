@@ -16,6 +16,7 @@ namespace WpfAppAbit2.DAL
         private RepositoryPerson reposPerson;
         private RepositoryDepartment reposDepartment;
         private RepositoryDirection reposDirection;
+        private RepositoryCompetitiveGroup reposCompetitiveGroup;
 
         public RepositoryApplication Applications
         {
@@ -62,7 +63,16 @@ namespace WpfAppAbit2.DAL
                 return reposDirection;
             }
         }
-
+        public RepositoryCompetitiveGroup  CompetitiveGroups
+        {
+            get
+            {
+                if (reposCompetitiveGroup == null)
+                    reposCompetitiveGroup = new RepositoryCompetitiveGroup(db);
+                return reposCompetitiveGroup;
+            }
+        }
+        
         public void Save()
         {
             //
