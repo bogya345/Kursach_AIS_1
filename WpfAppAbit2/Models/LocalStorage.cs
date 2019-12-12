@@ -102,19 +102,19 @@ namespace WpfAppAbit2.Models
         {
             CompetitiveGroups = new ObservableCollection<CompetitiveGroup>()
             {
-                new CompetitiveGroup(){UID = Guid.NewGuid(), Name = Directions[0].ToString()+"  "+ LevelBudgets[0].ToString(), Campaign =  Campaigns[0], Direction = Directions[1],
+                new CompetitiveGroup(){UID = Guid.NewGuid(), Name = Directions[1].ToString()+"  "+ LevelBudgets[0].ToString(), Campaign =  Campaigns[0], Direction = Directions[1],
                     IsForKrym = false, IsAdditional = false,
                     CompetitiveGroupItem = new CompetitiveGroupItem(1, "Бюджетные места  "+ Directions[1].Name, 40),
                     LevelBudget = LevelBudgets[0],
                     EntranceTestItems = new ObservableCollection<EntranceTestItem>()
                     { new EntranceTestItem(){ } } },
-                new CompetitiveGroup(){UID = Guid.NewGuid(), Name = Directions[0].ToString()+"  "+ LevelBudgets[0].ToString(), Campaign =  Campaigns[0], Direction = Directions[1],
+                new CompetitiveGroup(){UID = Guid.NewGuid(), Name = Directions[1].ToString()+"  "+ LevelBudgets[1].ToString(), Campaign =  Campaigns[0], Direction = Directions[1],
                     IsForKrym = false, IsAdditional = false,
                     CompetitiveGroupItem = new CompetitiveGroupItem(2, "Контрактные места  "+ Directions[1].Name, 20),
                     LevelBudget = LevelBudgets[0],
                     EntranceTestItems = new ObservableCollection<EntranceTestItem>()
                     { new EntranceTestItem(){ } } },
-                new CompetitiveGroup(){UID = Guid.NewGuid(), Name = Directions[0].ToString()+"  "+ LevelBudgets[0].ToString(), Campaign =  Campaigns[0], Direction = Directions[1],
+                new CompetitiveGroup(){UID = Guid.NewGuid(), Name = Directions[3].ToString()+"  "+ LevelBudgets[1].ToString(), Campaign =  Campaigns[0], Direction = Directions[3],
                     IsForKrym = false, IsAdditional = false,
                     CompetitiveGroupItem = new CompetitiveGroupItem(3, "Бюджетные места  "+ Directions[3].Name, 35),
                     LevelBudget = LevelBudgets[0],
@@ -235,7 +235,18 @@ namespace WpfAppAbit2.Models
                 );
 
         }
-
+        public void FillEntranceTestResults()
+        {
+            EntranceTestResults = new ObservableCollection<EntranceTestResult>()
+            {
+                new EntranceTestResult(){ UID = Guid.NewGuid(), EntranceTestItem = EntranceTestItems[0],
+                    Entrant = Entrants[0], ResultValue = 60},
+                new EntranceTestResult(){ UID = Guid.NewGuid(), EntranceTestItem = EntranceTestItems[1],
+                    Entrant = Entrants[0], ResultValue = 68},
+                new EntranceTestResult(){ UID = Guid.NewGuid(), EntranceTestItem = EntranceTestItems[2],
+                    Entrant = Entrants[0], ResultValue = 73}
+            };
+        }
         public void FillApplications()
         {
             Applications = new ObservableCollection<EntrantApplication>
@@ -270,7 +281,7 @@ namespace WpfAppAbit2.Models
                 {
                     PersonPassports = new ObservableCollection<Passport>()
                     { new Passport()
-                    { FirstName="B2", LastName= "Volkov2", MiddleName="M2" }
+                    { FirstName="B2", LastName= "Volkov2", MiddleName="M2" , Series ="1243", Number = "346679"}
                     }
                 }, IsFromKrym=false },
                 new Entrant(){ Person = new Person()
@@ -307,7 +318,10 @@ namespace WpfAppAbit2.Models
 
             FillCompGroups();
             FillEntrants();
+            FillEntranceTestResults();
+
             FillApplications();
+
 
         }
 

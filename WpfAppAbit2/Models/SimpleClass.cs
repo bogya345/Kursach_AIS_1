@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace WpfAppAbit2.Models
 {
     /// <summary>
     /// Основной класс
     /// </summary>
-    public class SimpleClass : INotifyPropertyChanged
+    public class SimpleClass : DependencyObject, INotifyPropertyChanged
     {
         public int ID { get; set; }
         public string Name  { get; set; }

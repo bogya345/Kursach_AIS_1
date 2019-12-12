@@ -6,23 +6,24 @@
         xmlns:local="clr-namespace:WpfAppAbit2.Views"
         xmlns:viewmodel="clr-namespace:WpfAppAbit2.ViewModels"
         mc:Ignorable="d" 
-        Title="{Binding FormName}" Height="580.5" Width="1477">
+        Title="{Binding FormName}" Height="420.5" Width="1551">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="489*">
+            <ColumnDefinition Width="404*">
             </ColumnDefinition>
             <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="278*"/>
-            <ColumnDefinition Width="702*"/>
+            <ColumnDefinition Width="374*"/>
+            <ColumnDefinition Width="58*"/>
+            <ColumnDefinition Width="887*"/>
         </Grid.ColumnDefinitions>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,48,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.Series, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbPasSeria"/>
         <Label Content="Серия паспорта" HorizontalAlignment="Left" Margin="13,47,0,0" VerticalAlignment="Top" Height="26" Width="101"/>
         <Label Content="Номер паспорта" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,75,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.Number, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbPasNumber"/>
         <Label Content="Фамилия " HorizontalAlignment="Left" Margin="53,158,0,0" VerticalAlignment="Top" Height="26" Width="63"/>
-        <TextBox  HorizontalAlignment="Left" Height="22" Margin="124,160,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.LastName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbLastName" IsEnabled="{Binding NotExisted}"/>
+        <TextBox  HorizontalAlignment="Left" Height="22" Margin="124,160,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.LastName, UpdateSourceTrigger=Explicit}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbLastName" IsEnabled="{Binding NotExisted}"/>
         <Label Content="Имя " HorizontalAlignment="Left" Margin="77,186,0,0" VerticalAlignment="Top" Height="26" Width="37"/>
-        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,187,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbFirstName" IsEnabled="{Binding NotExisted}"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,187,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.FirstName, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbFirstName" IsEnabled="{Binding NotExisted}"/>
         <Label Content="Отчество" HorizontalAlignment="Left" Margin="53,213,0,0" VerticalAlignment="Top" Height="26" Width="61"/>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,214,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.MiddleName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbMiddleName" IsEnabled="{Binding NotExisted}"/>
         <RichTextBox HorizontalAlignment="Left" Height="99" Margin="124,245,0,0" VerticalAlignment="Top" Width="158" AutomationProperties.Name="rtbIfo" IsEnabled="{Binding NotExisted}">
@@ -46,38 +47,43 @@
 
 
         <!--Application-->
-        <ComboBox ItemsSource="{Binding Departments1stLevel,  UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding SelectedApplication, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,81,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbApplication" Height="32"/>
-        <Label Content="Заявление" Grid.Column="3" HorizontalAlignment="Left" Margin="27,81,0,0" VerticalAlignment="Top" Height="26" Width="71"/>
-        <ComboBox x:Name="changed"   ItemsSource="{Binding Departments1stLevel,  UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDepart1st, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,126,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartInst" Height="38" SelectionChanged="Changed_SelectionChanged" FontSize="12"/>
-        <Label Content="Институт" Grid.Column="3" HorizontalAlignment="Left" Margin="43,138,0,0" VerticalAlignment="Top" Height="26" Width="71"/>
-        <ComboBox x:Name="changed2"   ItemsSource="{Binding Departments2ndLevel, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDepart2nd, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,169,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartKaf" Height="37"/>
-        <Label Content="Кафедра" Grid.Column="3" HorizontalAlignment="Left" Margin="43,182,0,0" VerticalAlignment="Top" Height="26" Width="71"/>
-        <ComboBox ItemsSource="{Binding Directions,  UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDirection, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,211,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartSpec" Height="39"/>
-        <Label Content="Специальность" Grid.Column="3" HorizontalAlignment="Left" Margin="10,224,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
-        <ComboBox SelectedItem="{Binding _selectedCompetitiveGroupItem, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" HorizontalAlignment="Left" Margin="127,255,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbCompetGroup" Height="33"/>
-        <Label Content="Конкурс" Grid.Column="3" HorizontalAlignment="Left" Margin="43,262,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
-        <TextBox Grid.Column="3" HorizontalAlignment="Left" Height="24" Margin="127,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbStatus"/>
-        <Label Content="Статус" Grid.Column="3" HorizontalAlignment="Left" Margin="54,312,0,0" VerticalAlignment="Top" Height="26" Width="55"/>
+        <ComboBox ItemsSource="{Binding SelectedApplication,  UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding SelectedApplication, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Margin="69,81,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbApplication" Height="32"/>
+        <Label Content="Заявление" Grid.Column="3" HorizontalAlignment="Left" Margin="27,81,0,0" VerticalAlignment="Top" Height="26" Width="71" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="changed"   ItemsSource="{Binding Departments1stLevel,  UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDepart1st, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Margin="69,126,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartInst" Height="38" SelectionChanged="Changed_SelectionChanged" FontSize="12"/>
+        <Label Content="Институт" Grid.Column="3" HorizontalAlignment="Left" Margin="43,138,0,0" VerticalAlignment="Top" Height="26" Width="71" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="changed2"   ItemsSource="{Binding Departments2ndLevel, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDepart2nd, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Margin="69,169,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartKaf" Height="37"/>
+        <Label Content="Кафедра" Grid.Column="3" HorizontalAlignment="Left" Margin="43,182,0,0" VerticalAlignment="Top" Height="26" Width="71" Grid.ColumnSpan="2"/>
+        <ComboBox ItemsSource="{Binding Directions,  UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDirection, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Margin="69,211,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartSpec" Height="39"/>
+        <Label Content="Специальность" Grid.Column="3" HorizontalAlignment="Left" Margin="10,224,0,0" VerticalAlignment="Top" Height="26" Width="95" Grid.ColumnSpan="2"/>
+        <ComboBox SelectedItem="{Binding _selectedCompetitiveGroupItem, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Margin="69,255,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbCompetGroup" Height="33"/>
+        <Label Content="Конкурс" Grid.Column="3" HorizontalAlignment="Left" Margin="43,262,0,0" VerticalAlignment="Top" Height="26" Width="95" Grid.ColumnSpan="2"/>
+        <TextBox Grid.Column="4" HorizontalAlignment="Left" Height="24" Margin="362,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbStatus"/>
+        <Label Content="Статус" Grid.Column="4" HorizontalAlignment="Left" Margin="289,89,0,0" VerticalAlignment="Top" Height="26" Width="55"/>
 
         <!--Tests-->
-        <TextBox Text="{Binding __selectedApplication.EntranceTestResults[0].ResultValue}" Grid.Column="3" HorizontalAlignment="Left" Height="22" Margin="127,348,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbEntrTestItem1"/>
-        <Label Content="{Binding __selectedApplication.EntranceTestResults[0].EntranceTestItem.Subject.Name}" Grid.Column="3" HorizontalAlignment="Left" Margin="27,343,0,0" VerticalAlignment="Top" Height="26" Width="95" AutomationProperties.Name="lbEntrTestItem1"/>
-        <TextBox Text="{Binding __selectedApplication.EntranceTestResults[1].ResultValue}" Grid.Column="3" HorizontalAlignment="Left" Height="24" Margin="127,374,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbEntrTestItem"/>
-        <Label Content="{Binding __selectedApplication.EntranceTestResults[1].EntranceTestItem.Subject.Name}" Grid.Column="3" HorizontalAlignment="Left" Margin="27,372,0,0" VerticalAlignment="Top" Height="26" Width="95" AutomationProperties.Name="lbEntrTestItem2"/>
-        <TextBox Text="{Binding __selectedApplication.EntranceTestResults[2].ResultValue}" Grid.Column="3" HorizontalAlignment="Left" Height="22" Margin="127,406,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbEntrTestItem"/>
-        <Label Content="{Binding __selectedApplication.EntranceTestResults[2].EntranceTestItem.Subject.Name}" Grid.Column="3" HorizontalAlignment="Left" Margin="27,406,0,0" VerticalAlignment="Top" Height="26" Width="95" AutomationProperties.Name="lbEntrTestItem3"/>
-        <TextBox Text="{Binding __selectedApplication.EntranceTestResults[3].ResultValue}" Grid.Column="3" HorizontalAlignment="Left" Height="24" Margin="127,436,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbEntrTestItem"/>
-        <Label Content="{Binding __selectedApplication.EntranceTestResults[3].EntranceTestItem.Subject.Name}" Grid.Column="3" HorizontalAlignment="Left" Margin="27,436,0,0" VerticalAlignment="Top" Height="26" Width="95" AutomationProperties.Name="lbEntrTestItem4"/>
+        <TextBox Text="{Binding _selectedApplication.EntranceTestResults[0].ResultValue}" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="362,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbEntrTestItem1"/>
+        <Label Content="{Binding  _selectedApplication.EntranceTestResults[0].EntranceTestItem.Subject.Name}" Grid.Column="4" HorizontalAlignment="Left" Margin="262,120,0,0" VerticalAlignment="Top" Height="26" Width="95" AutomationProperties.Name="lbEntrTestItem1"/>
+        <TextBox Text="{Binding  _selectedApplication.EntranceTestResults[1].ResultValue}" Grid.Column="4" HorizontalAlignment="Left" Height="24" Margin="362,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbEntrTestItem"/>
+        <Label Content="{Binding  _selectedApplication.EntranceTestResults[1].EntranceTestItem.Subject.Name}" Grid.Column="4" HorizontalAlignment="Left" Margin="262,149,0,0" VerticalAlignment="Top" Height="26" Width="95" AutomationProperties.Name="lbEntrTestItem2"/>
+        <TextBox Text="{Binding _selectedApplication.EntranceTestResults[2].ResultValue}" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="362,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbEntrTestItem"/>
+        <Label Content="{Binding _selectedApplication.EntranceTestResults[2].EntranceTestItem.Subject.Name}" Grid.Column="4" HorizontalAlignment="Left" Margin="262,183,0,0" VerticalAlignment="Top" Height="26" Width="95" AutomationProperties.Name="lbEntrTestItem3"/>
+        <TextBox Text="{Binding _selectedApplication.EntranceTestResults[3].ResultValue}" Grid.Column="4" HorizontalAlignment="Left" Height="24" Margin="362,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbEntrTestItem"/>
+        <Label Content="{Binding _selectedApplication.EntranceTestResults[3].EntranceTestItem.Subject.Name}" Grid.Column="4" HorizontalAlignment="Left" Margin="262,213,0,0" VerticalAlignment="Top" Height="26" Width="95" AutomationProperties.Name="lbEntrTestItem4"/>
         <!--Tests-->
 
-        <Button Content="Добавить заявление" Grid.Column="3" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Width="177" Height="34" AutomationProperties.Name="btAddApp"/>
-        <Button Content="Печатать заявление" Grid.Column="3" HorizontalAlignment="Left" Margin="221,27,0,0" VerticalAlignment="Top" Width="176" Height="34" AutomationProperties.Name="btAddApp"/>
-        <Button Content="Удалить заявление" Grid.Column="3" HorizontalAlignment="Left" Margin="415,27,0,0" VerticalAlignment="Top" Width="176" Height="34" AutomationProperties.Name="btAddApp"/>
-        <Button Content="Добавить паспорт" Command="{Binding AddPassport}" HorizontalAlignment="Left" Margin="57,110,0,0" VerticalAlignment="Top" Width="185" Height="34" AutomationProperties.Name="btAddApp"/>
+        <Button Content="Добавить заявление" Grid.Column="3" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Width="177" Height="34" AutomationProperties.Name="btAddApp" Grid.ColumnSpan="2"/>
+        <Button Content="Печатать заявление" Grid.Column="4" HorizontalAlignment="Left" Margin="163,27,0,0" VerticalAlignment="Top" Width="176" Height="34" AutomationProperties.Name="btAddApp"/>
+        <Button Content="Проверить паспорт" Command="{Binding CheckPassport}" HorizontalAlignment="Left" Margin="57,110,0,0" VerticalAlignment="Top" Width="185" Height="34" AutomationProperties.Name="btAddApp" Click="Button_Click"/>
         <ComboBox HorizontalAlignment="Left" Margin="123,19,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbPassport" Height="22"
                    ItemsSource="{Binding EntrantPassports}" Background="#19673AB7"/>
         <Label Content="Паспорт" HorizontalAlignment="Left" Margin="57,17,0,0" VerticalAlignment="Top" Height="26" Width="61" AutomationProperties.Name="lbPassport"/>
-        <Button Command="{Binding CommandCreateEntrant}" Content="Создать абитуриента" Grid.Column="3" HorizontalAlignment="Left" Margin="60,477,0,0" VerticalAlignment="Top" Width="220" AutomationProperties.Name="btSave" Height="34"/>
+        <Button Command="{Binding CommandCreateEntrant}" Content="Создать абитуриента" Grid.Column="4" HorizontalAlignment="Left" Margin="295,254,0,0" VerticalAlignment="Top" Width="220" AutomationProperties.Name="btSave" Height="34"/>
+        <Button Content="Сохранить заявление" Grid.Column="4" HorizontalAlignment="Left" Margin="357,27,0,0" VerticalAlignment="Top" Width="176" Height="34" AutomationProperties.Name="btAddApp"/>
+        <Button Content="Удалить заявление" Grid.Column="4" HorizontalAlignment="Left" Margin="549,27,0,0" VerticalAlignment="Top" Width="176" Height="34" AutomationProperties.Name="btAddApp"/>
+        <Label Content="Дата регистрации заявления" Grid.Column="4" HorizontalAlignment="Left" Margin="510,89,0,0" VerticalAlignment="Top"/>
+        <DatePicker SelectedDate="{Binding RegistrationDate}" Grid.Column="4" HorizontalAlignment="Left" Margin="678,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.36,0.44"/>
+        <CheckBox IsChecked ="{Binding SelectedApplication.IsMain}"  Content="Основное заявление" Grid.Column="4" HorizontalAlignment="Left" Margin="510,129,0,0" VerticalAlignment="Top"/>
+
         <!--Application-->
 
 

@@ -14,12 +14,14 @@ namespace WpfAppAbit2.ViewModels
     {
 
         public Entrant Entrant { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public DateTime RegistrationDate { get => _registrationDate; set { _registrationDate = value; } }
         public bool NeedHostel { get; set; }
         public Address Address { get; set; }
         public CompetitiveGroup competitiveGroup { get; set; }
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
         public Person Person { get; set; }
+        public bool IsEditApp { get => _isEditApp; }
+        private bool _isEditApp = false;
         //public Passport SelectedPassport { get => _selectedpassport; }
         //public ObservableCollection<Department> Departments2ndLevel
         //{
@@ -28,8 +30,10 @@ namespace WpfAppAbit2.ViewModels
         //} = new ObservableCollection<Department>();
 
         // public Application Application; икупрукрку
+        private DateTime _registrationDate;
+
         private ObservableCollection<EntrantApplication> _entrantApplications = new ObservableCollection<EntrantApplication>();
-        public ObservableCollection<EntrantApplication> EntrantApplications { get => _entrantApplications;  set { _entrantApplications = value; } }
+        public ObservableCollection<EntrantApplication> EntrantApplications { get => _entrantApplications; set { _entrantApplications = value; } }
         private ObservableCollection<Passport> _entrantPassports = new ObservableCollection<Passport>();
         private ObservableCollection<CompetitiveGroup> _competitiveGroups = new ObservableCollection<CompetitiveGroup>();
         private ObservableCollection<Department> _departments = new ObservableCollection<Department>();
@@ -111,7 +115,16 @@ namespace WpfAppAbit2.ViewModels
             { _departments2ndLevel = value; }
 
         }
-        public EntrantApplication SelectedApplication { get => _selectedApplication; set { _selectedApplication = value; } }
+        public EntrantApplication SelectedApplication
+        {
+            get => _selectedApplication;
+            set
+            {
+                _selectedApplication = value;
+                _selectedcompetitiveGroup = _selectedApplication.CompetitiveGroup;
+                _registrationDate = _selectedApplication.RegistrationDate;
+            }
+        }
         //public  _selectedInstitute { get; set; } = new ();
         public Department SelectedDepart1st
         {
@@ -195,15 +208,12 @@ namespace WpfAppAbit2.ViewModels
                 }
             }
         }
-        
-
         // public Department _selectedInst { get; set; } = new Department();
         //public Direction _selectedDirection { get; set; } = new Direction();
         //public CompetitiveGroupItem _selectedCompetitiveGroup { get; set; } = new CompetitiveGroupItem();
         //TODO РЕШИТЬ ВОПРОС С ОБНОВЛЕНИЕМ ДОЧЕРНИХ КОЛЛЕКЦИЙ
-
-        public string _status { get; set; }
-
+        private string _status;
+        public string Status { get => _status; set { _status = value; } }
         public ObservableCollection<Passport> EntrantPassports
         {
             get => _entrantPassports;
@@ -233,9 +243,9 @@ namespace WpfAppAbit2.ViewModels
             Departments1stLevel = _departments1stLevel;
             Departments2ndLevel = _departments2ndLevel;
             SelectedDepart1st = Departments1stLevel[0];
-            //LoadEntrant();
+            SelectedDepart2nd = Departments2ndLevel[0];
+
             View.Show();
-            //  MessageBox.Show(Departments1stLevel[0].ToString());
 
         }
         public void RefreshSubs()
@@ -264,7 +274,7 @@ namespace WpfAppAbit2.ViewModels
         //    }
         //    );
         //}
-        public ICommand AddPassport
+        public ICommand CheckPassport
         {
             get => new UserCommand(() =>
             {
@@ -310,18 +320,39 @@ namespace WpfAppAbit2.ViewModels
                 NotExisted = true;
             }
         }
+
+        /// <summary>
+        /// загрузка абитуриента по поиску.
+        /// </summary>
+        /// <param name="Series"></param>
+        /// <param name="Number"></param>
+        /// 
+        //TODO доделать поиск результатов экзаменов, загрузка результатов происходит, проблемы с фильтрацией.
         private void LoadEntrant(string Series, string Number)
         {
             Entrant = unit.Entrants.Get(Series, Number);
             Person = Entrant.Person;
+            ObservableCollection<EntrantApplication> entrantApplications = unit.Applications.GetAll();
+            ObservableCollection<EntranceTestResult> allTestResults = unit.EntranceTestResults.GetAll();
+            Entrant.EntrantApps = unit.Entrants.GetApplicationsEntrant(entrantApplications, Entrant);
+
+            foreach (EntrantApplication entrantApp in Entrant.EntrantApps)
+            {
+                var entrTesResult = unit.EntranceTestResults.GetAll().Where(x => (x.Entrant == Entrant)
+                &&(entrantApp.CompetitiveGroup.EntranceTestItems.Any(y=> y == x.EntranceTestItem)));
+                foreach (EntranceTestResult entranceTestResult in entrTesResult)
+                {
+                    entrantApp.EntranceTestResults.Add(entranceTestResult);
+                }
+            }
             _selectedpassport = Person.PersonPassports[0];
             MessageBox.Show(Entrant.ToString());
-         //   SelectedDepart2nd = Departments2ndLevel[1];
+            //   SelectedDepart2nd = Departments2ndLevel[1];
         }
         public EntrantApplication CreateApp()
         {
             Applications = unit.Applications.GetAll();
-            RegistrationDate = DateTime.UtcNow;
+            _registrationDate = DateTime.UtcNow;
             EntrantApplication application = new EntrantApplication();
             // Application application = new Application(Entrant, Applications.Count, RegistrationDate, NeedHostel, StatusApp, competitiveGroup, 0, null, );
             return application;

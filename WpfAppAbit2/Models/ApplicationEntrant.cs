@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace WpfAppAbit2.Models
 {
@@ -22,7 +23,15 @@ namespace WpfAppAbit2.Models
 
         public ObservableCollection<InstitutionAchievement> InstitutionAchievments = new ObservableCollection<InstitutionAchievement>();
 
-
+        public void EntrTestResults(ObservableCollection<EntranceTestResult> entranceTestResults)
+        {
+            //LocalStorage db = new LocalStorage();
+           // RepositoryEntranceTestResult repositoryEntranceTestResult = new RepositoryEntranceTestResult(db);
+            var TestResults = entranceTestResults
+                .Where(x => (x.Entrant.Person.PersonPassports[0].Series == this.Entrant.Person.PersonPassports[0].Series)
+                &&(x.Entrant.Person.PersonPassports[0].Number == this.Entrant.Person.PersonPassports[0].Number));
+            TestResults.Where(x => x.EntranceTestItem == this.CompetitiveGroup.EntranceTestItems.First(y => y == x.EntranceTestItem));
+        }
         /// <summary>
         /// обновление суммы баллов в заявлении
         /// </summary>
@@ -33,7 +42,6 @@ namespace WpfAppAbit2.Models
             {
                 balls += entranceTestResult.ResultValue;
             }
-
         }
         public bool Original { get; set; }
         public bool IsMain { get; set; }

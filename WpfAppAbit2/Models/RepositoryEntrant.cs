@@ -32,11 +32,15 @@ namespace WpfAppAbit2.Models
         //TODO Что передавать в Get для репозиториев
         public Entrant Get(string Seria, string Number)
         {
-           foreach (Entrant entrant in db.Entrants)
+            Entrant entrant = db.Entrants.First(x => (x.Person.PersonPassports[0].Series == Seria) && (x.Person.PersonPassports[0].Number == Number));
+            
+            if (entrant!=null)
             {
-                if ((entrant.Person.PersonPassports[0].Series == Seria)&&(entrant.Person.PersonPassports[0].Number == Number)) { return entrant; }
+                
+                return entrant;
             }
-            return null;
+            else
+                return null;
         }
         public Entrant Get(Entrant entrant)
         {
@@ -60,10 +64,11 @@ namespace WpfAppAbit2.Models
         {
             db.Entrants[db.Entrants.IndexOf(entrant_prev)] = Entrant;
         }
-        public ObservableCollection<EntrantApplication> GetApplicationsEntrant(Entrant entrant)
+        public ObservableCollection<EntrantApplication> GetApplicationsEntrant(ObservableCollection<EntrantApplication> AllApps,
+            Entrant entrant)
         {
             ObservableCollection<EntrantApplication> ApplicationsEntrant = new ObservableCollection<EntrantApplication>();
-            ObservableCollection<EntrantApplication> AllApps = repositoryApplication.GetAll();
+       
             foreach (EntrantApplication application in AllApps)
             {
                 if (application.Entrant == entrant) ApplicationsEntrant.Add(application);

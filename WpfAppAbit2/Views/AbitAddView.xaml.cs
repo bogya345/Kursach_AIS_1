@@ -4,6 +4,11 @@ using System.Windows.Controls;
 using WpfAppAbit2.Services.Excell;
 using WpfAppAbit2.ViewModels;
 
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using WpfAppAbit2.Services;
 using WpfAppAbit2.Services.Excell;
 using WpfAppAbit2.Services.Word;
@@ -29,10 +34,11 @@ namespace WpfAppAbit2.Views
             //pr.SetContent(unit.Applications);
 
             //ServiceExcell service = new ServiceExcell();
-            
+
             //service.AbitDopSpec = new AbitDopSpec(2);
             //service.AbitDopSpec.SetContent();
         }
+        Binding binding = new Binding();
 
         public void UpdateList()
         {
@@ -57,5 +63,16 @@ namespace WpfAppAbit2.Views
             UpdateList();
         }
 
+        private void DatePicker_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+          //  BindingExpression BindingExpression = new BindingExpression(binding) ;
+          //  BindingExpression.UpdateSource();
+
+        }
     }
 }

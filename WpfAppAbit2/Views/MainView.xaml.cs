@@ -29,11 +29,12 @@ namespace WpfAppAbit2.Views
         {
 
         }
-        
+        Binding Binding = new Binding();
         public MainView()
         {
             //entrantsGrid.ItemsSource = 
             InitializeComponent();
+           
             //entrantsGrid.ItemsSource =  LoadApplications();
         }
         public IViewModel ViewModel

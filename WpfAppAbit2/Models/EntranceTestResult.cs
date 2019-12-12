@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WpfAppAbit2.Models
 {
     //Результаты вступительных испытаний
-    public class EntranceTestResult
+    public class EntranceTestResult : SimpleClass
     {
         public Guid UID { get; set; }
         public int ResultValue { get; set; }

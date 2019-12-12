@@ -17,6 +17,7 @@ namespace WpfAppAbit2.DAL
         private RepositoryDepartment reposDepartment;
         private RepositoryDirection reposDirection;
         private RepositoryCompetitiveGroup reposCompetitiveGroup;
+        private RepositoryEntranceTestResult reposEntrantceTestResult;
 
         public RepositoryApplication Applications
         {
@@ -72,7 +73,15 @@ namespace WpfAppAbit2.DAL
                 return reposCompetitiveGroup;
             }
         }
-        
+        public RepositoryEntranceTestResult EntranceTestResults
+        {
+            get
+            {
+                if (reposEntrantceTestResult == null)
+                    reposEntrantceTestResult = new RepositoryEntranceTestResult(db);
+                return reposEntrantceTestResult;
+            }
+        }
         public void Save()
         {
             //
