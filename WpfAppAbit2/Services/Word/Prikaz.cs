@@ -65,6 +65,7 @@ namespace WpfAppAbit2.Services.Word
                 }
             }
 
+            #region comments
             //foreach (var item in list)
             //{
             //    Range range = doc.Range();
@@ -103,6 +104,7 @@ namespace WpfAppAbit2.Services.Word
             //{
             //    Table table = doc.Tables.Add(doc.Bookmarks.g);
             //}
+            #endregion
 
             app.Visible = true;
         }
