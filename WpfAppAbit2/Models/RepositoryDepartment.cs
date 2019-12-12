@@ -10,7 +10,7 @@ namespace WpfAppAbit2.Models
     public interface IRepositoryDepartment : IRepository<Department>
     {
         ObservableCollection<Department> GetAll();
-        Department Get(Department entrant);
+        Department Get(Department item);
 
 
 

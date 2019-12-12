@@ -27,6 +27,18 @@ namespace WpfAppAbit2.Models
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName]string propertyName = "")
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+            field = value;
+            //вызываем событие, уведомляем все подписчиков об изменении свойства
+            NotifyPropertyChanged(propertyName);
+            return true;
+        }
+        protected virtual void NotifyPropertyChanged([CallerMemberName]string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public override string ToString()
         {
             return Name;
