@@ -20,7 +20,7 @@ namespace WpfAppAbit2.Models
         public Department Department { get; set; }
         public Direction(Guid UID, string Name, string ShortName, Department department)
         {
-            this.UID = UID;
+            this.Guid = UID;
             this.Department = department;
             this.Name = Name;
             this.ShortName = ShortName;

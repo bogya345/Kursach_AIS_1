@@ -15,6 +15,8 @@ namespace WpfAppAbit2.Models
 
         [XmlElement("MiddleName")]
         public string MiddleName { get; set; }
+
+        [XmlIgnore]
         public Person Person { get; set; }
 
         [XmlElement("GenderID")]

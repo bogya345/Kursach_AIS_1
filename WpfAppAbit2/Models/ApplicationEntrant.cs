@@ -23,7 +23,6 @@ namespace WpfAppAbit2.Models
 
     //заявление абитуриента
     [Serializable]
-    public class EntrantApplication
     public class EntrantApplication : SimpleClass
     {
         [XmlElement("UID")]
@@ -48,6 +47,9 @@ namespace WpfAppAbit2.Models
         public CompetitiveGroup CompetitiveGroup { get; set; }
 
         [XmlIgnore]
+        public int balls=0;
+
+        [XmlIgnore]
         public int ReturnDocumentsType { get; set; }
 
         [XmlIgnore]
@@ -60,7 +62,7 @@ namespace WpfAppAbit2.Models
         public ObservableCollection<Document> ApplicationDocuments = new ObservableCollection<Document>();
 
         [XmlArray]
-        public ObservableCollection<EntranceTestResults> EntranceTestResults = new ObservableCollection<EntranceTestResults>();
+        public ObservableCollection<EntranceTestResult> EntranceTestResults = new ObservableCollection<EntranceTestResult>();
 
         [XmlIgnore]
         public ObservableCollection<InstitutionAchievement> InstitutionAchievments = new ObservableCollection<InstitutionAchievement>();
@@ -74,6 +76,7 @@ namespace WpfAppAbit2.Models
                 && (x.Entrant.Person.PersonPassports[0].Number == this.Entrant.Person.PersonPassports[0].Number));
             TestResults.Where(x => x.EntranceTestItem == this.CompetitiveGroup.EntranceTestItems.First(y => y == x.EntranceTestItem));
         }
+
         /// <summary>
         /// обновление суммы баллов в заявлении
         /// </summary>
@@ -129,7 +132,7 @@ namespace WpfAppAbit2.Models
             this.ReturnDocumentsType = ReturnDocumentsType;
             this.FinSourceAndEduForms = FinSourceAndEduForms;
             this.ApplicationDocuments = ApplicationDocuments;
-            this.EntranceTestResults = EntranceTestResults;
+            //this.EntranceTestResults = EntranceTestResults;
             this.InstitutionAchievments = InstitutionAchievments;
             this.Original = Original;
         }

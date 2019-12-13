@@ -47,6 +47,7 @@
         <Menu HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Width="1060" Grid.Column="1" Background="#FF004676">
             <MenuItem Header="Добавить абитуриента" Command="{Binding ShowAddEntrant}" Foreground="#DDFFFFFF" FontWeight="Bold"></MenuItem>
             <MenuItem Header="Редактировать абитуриента" Foreground="#DDFFFFFF" FontWeight="Bold" ></MenuItem>
+            <MenuItem Header="XML Test" Click="MenuItem_Click" Foreground="#DDFFFFFF" FontWeight="Bold" ></MenuItem>
 
         </Menu>
         <DataGrid HorizontalAlignment="Left" Height="371" Margin="0,48,0,0" VerticalAlignment="Top" Width="1352"  AutoGenerateColumns="False"

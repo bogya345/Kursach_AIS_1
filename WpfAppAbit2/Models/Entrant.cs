@@ -36,7 +36,7 @@ namespace WpfAppAbit2.Models
         public ObservableCollection<Document> EntrantDocuments = new ObservableCollection<Document>();
 
         [NonSerialized]
-        public ObservableCollection<EntranceTestResults> EntranceTestResults = new ObservableCollection<EntranceTestResults>();
+        public ObservableCollection<EntranceTestResult> EntranceTestResults = new ObservableCollection<EntranceTestResult>();
        // public ObservableCollection<Document> EntrantDocuments = new ObservableCollection<Document>();
         public ObservableCollection<EntrantApplication> GetApplications(ObservableCollection<EntrantApplication> Applications)
         {

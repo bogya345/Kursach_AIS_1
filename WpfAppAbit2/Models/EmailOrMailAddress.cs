@@ -20,5 +20,9 @@
             this.Email = email;
             this.Address = address;
         }
+        public EmailOrMailAddress()
+        {
+
+        }
     }
 }

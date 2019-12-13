@@ -15,6 +15,8 @@ using WpfAppAbit2.ViewModels;
 
 using WpfAppAbit2.Models;
 using WpfAppAbit2.Repository;
+using WpfAppAbit2.XML;
+using WpfAppAbit2.DAL;
 
 namespace WpfAppAbit2.Views
 {
@@ -79,6 +81,14 @@ namespace WpfAppAbit2.Views
         private void TreeView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //SelectItem = Transform.ttyt;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            UnitOfWork unit = new UnitOfWork();
+
+            xml xml = new xml(unit.Applications.GetAll());
+            xml.SetContent();
         }
     }
 }

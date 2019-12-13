@@ -9,33 +9,12 @@
   </Class>
   <Class Name="WpfAppAbit2.DAL.UnitOfWork">
     <Position X="71" Y="33.75" Width="2" />
-    <AssociationLine Name="reposDirection" Type="WpfAppAbit2.Models.RepositoryDirection">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.161" Y="0.198" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="reposApplication" Type="WpfAppAbit2.Models.RepositoryApplication">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.4" Y="0.148" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="reposCompetitiveGroup" Type="WpfAppAbit2.Models.RepositoryCompetitiveGroup">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.84" Y="0.148" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAIAAALAQCAADACAAAAgAAAAQAAAABAAAAAkAAAA=</HashCode>
+      <HashCode>AAAAAIAAALAQCAADACAAAAgAAAAQAAAABAAAABkAgAA=</HashCode>
       <FileName>DAL\UnitOfWork.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="reposApplication" />
-      <Field Name="reposCompetitiveGroup" />
-      <Field Name="reposDepartment" />
-      <Field Name="reposDirection" />
       <Field Name="db" />
-      <Field Name="reposEnrant" />
-      <Field Name="reposPerson" />
     </ShowAsAssociation>
   </Class>
   <Class Name="WpfAppAbit2.Models.Address">
@@ -54,16 +33,8 @@
   </Class>
   <Class Name="WpfAppAbit2.Models.EntrantApplication">
     <Position X="19.5" Y="17" Width="2" />
-    <InheritanceLine Type="WpfAppAbit2.Models.SimpleClass" ManuallyRouted="true">
-      <Path>
-        <Point X="20.75" Y="5.276" />
-        <Point X="20.75" Y="7.625" />
-        <Point X="20.375" Y="7.625" />
-        <Point X="20.375" Y="17" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>kAAAAAABIAAAAAIMCAAABQQACQAAAQAAAAAAAAEAgAQ=</HashCode>
+      <HashCode>kAAAAAABIAAAAAIMCAAAFQQACQAAAQAAAAAAAAEAgAQ=</HashCode>
       <FileName>Models\ApplicationEntrant.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -195,8 +166,8 @@
       <FileName>Models\EntranceTestBenefitItem.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="LevelForAllOlympic" />
       <Property Name="BenefitKind" />
+      <Property Name="LevelForAllOlympic" />
     </ShowAsAssociation>
   </Class>
   <Class Name="WpfAppAbit2.Models.EntranceTestItem">
@@ -239,6 +210,8 @@
     <AssociationLine Name="TargetOrganization" Type="WpfAppAbit2.Models.TargetOrganization" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="21.5" Y="8.618" />
+        <Point X="20.833" Y="8.618" Type="JumpStart" />
+        <Point X="20.667" Y="8.618" Type="JumpEnd" />
         <Point X="20.382" Y="8.618" />
         <Point X="20.382" Y="6.5" />
         <Point X="19.5" Y="6.5" />
@@ -286,7 +259,7 @@
   <Class Name="WpfAppAbit2.Models.LocalStorage">
     <Position X="67.5" Y="31.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAIBCACgIAATCABQAAAAEFgCAADCAAAAkggIA=</HashCode>
+      <HashCode>AAAAAEAAIBCACgIAATCABQAAAAEFgCAADCAAgAkggIA=</HashCode>
       <FileName>Models\LocalStorage.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -385,22 +358,22 @@
     </TypeIdentifier>
   </Class>
   <Class Name="WpfAppAbit2.Models.Repository">
-    <Position X="73.25" Y="10" Width="1.5" />
+    <Position X="53.75" Y="30.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAACAAAAABCACgAAACCABAAACAEEAAEAAQAAAAAEAIA=</HashCode>
       <FileName>Models\Repository.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WpfAppAbit2.Models.RepositoryApplication" BaseTypeListCollapsed="true">
-    <Position X="77" Y="34.5" Width="4.75" />
+    <Position X="54.25" Y="40.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAQAABAAAAAAAAACAEAQEAAAgAAAAAAAAA=</HashCode>
       <FileName>Models\RepositoryApplication.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.186" />
   </Class>
   <Class Name="WpfAppAbit2.Models.RepositoryCompetitiveGroup" BaseTypeListCollapsed="true">
-    <Position X="72.25" Y="30.75" Width="2.25" />
+    <Position X="58.75" Y="40.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
       <FileName>Models\RepositoryCompetitiveGroup.cs</FileName>
@@ -408,7 +381,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="WpfAppAbit2.Models.RepositoryDepartment" BaseTypeListCollapsed="true">
-    <Position X="76.5" Y="37.75" Width="2" />
+    <Position X="61.25" Y="40.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
       <FileName>Models\RepositoryDepartment.cs</FileName>
@@ -416,7 +389,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="WpfAppAbit2.Models.RepositoryDirection" BaseTypeListCollapsed="true">
-    <Position X="75.5" Y="31" Width="2.5" />
+    <Position X="63.75" Y="40.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
       <FileName>Models\RepositoryDirection.cs</FileName>
@@ -424,7 +397,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="WpfAppAbit2.Models.RepositoryEntrant" BaseTypeListCollapsed="true">
-    <Position X="70.25" Y="29.25" Width="1.5" />
+    <Position X="51.25" Y="40.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAQAQAAAAAAQAABAACAAEAAAAAEAAEAAAgAAAAAEAAA=</HashCode>
       <FileName>Models\RepositoryEntrant.cs</FileName>
@@ -432,7 +405,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="WpfAppAbit2.Models.RepositoryPerson" BaseTypeListCollapsed="true">
-    <Position X="74.75" Y="34.5" Width="1.5" />
+    <Position X="57" Y="40.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAQABBAAAAAAAAAAAEAAEAAAgAAEAAAAAA=</HashCode>
       <FileName>Models\RepositoryPerson.cs</FileName>
@@ -529,7 +502,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="WpfAppAbit2.Services.Excell.Abitltogi">
-    <Position X="74" Y="20.75" Width="1.5" />
+    <Position X="74.25" Y="21" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Services\Excell\Abitltogi.cs</FileName>
@@ -581,24 +554,10 @@
         <Point X="24.5" Y="23.438" />
       </Path>
     </InheritanceLine>
-    <AssociationLine Name="SelectedCompetitiveGroup" Type="WpfAppAbit2.Models.CompetitiveGroup" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="24.125" Y="32.251" />
-        <Point X="24.125" Y="33.688" />
-        <Point X="21.5" Y="33.688" />
-      </Path>
-    </AssociationLine>
     <AssociationLine Name="SelectedDepart1st" Type="WpfAppAbit2.Models.Department" FixedToPoint="true">
       <Path>
         <Point X="24.5" Y="27.125" />
         <Point X="31.5" Y="27.125" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="competitiveGroup" Type="WpfAppAbit2.Models.CompetitiveGroup" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="23.562" Y="32.251" />
-        <Point X="23.562" Y="33" />
-        <Point X="21.5" Y="33" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="SelectedDepart2nd" Type="WpfAppAbit2.Models.Department" FixedToPoint="true">
@@ -622,18 +581,18 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>EcAECEIDAJQgCFAIAPCBCQAAAQIBAgBCBSUAYABCGAE=</HashCode>
+      <HashCode>EcAESEJHQJQgCFAIAPCBCwAAAQMBEgBCBSUAYABAGgE=</HashCode>
       <FileName>ViewModels\AbitAddViewModel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Address" />
-      <Property Name="EmailOrMailAddress" />
       <Property Name="Entrant" />
-      <Property Name="Person" />
-      <Property Name="SelectedApplication" />
-      <Property Name="SelectedCompetitiveGroup" />
-      <Property Name="SelectedDepart1st" />
+      <Property Name="Address" />
       <Property Name="competitiveGroup" />
+      <Property Name="EmailOrMailAddress" />
+      <Property Name="Person" />
+      <Property Name="SelectedCompetitiveGroup" />
+      <Property Name="SelectedApplication" />
+      <Property Name="SelectedDepart1st" />
       <Property Name="SelectedDepart2nd" />
       <Property Name="SelectedDirection" />
       <Property Name="SelectedPassport" />
@@ -660,7 +619,7 @@
   <Class Name="WpfAppAbit2.Views.AbitAddView" BaseTypeListCollapsed="true">
     <Position X="60" Y="28.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAIAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAEAAAACAAAAAIAAAAAAAEAEAAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Views\AbitAddView.xaml.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -684,7 +643,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAUBAAAAAAAAIACAAAAAAAUAAAAAAAAAAAAAAAAAE=</HashCode>
+      <HashCode>AAAAUBAAAAAAAAIACAAAAAAAEAAAAAAAAAAAAAAAACE=</HashCode>
       <FileName>Views\MainView.xaml.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

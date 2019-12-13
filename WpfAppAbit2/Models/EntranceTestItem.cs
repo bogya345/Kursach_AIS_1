@@ -19,6 +19,8 @@ namespace WpfAppAbit2.Models
 
         [XmlIgnore]
         public int MinScore { get; set; }
+
+        [XmlIgnore]
         public int EntranceTestPriority { get; set; }
 
         [XmlIgnore]

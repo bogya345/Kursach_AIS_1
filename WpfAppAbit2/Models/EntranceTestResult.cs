@@ -17,6 +17,8 @@ namespace WpfAppAbit2.Models
 
         [XmlElement("ResultValue")]
         public int ResultValue { get; set; }
+
+        [XmlIgnore]
         public Entrant Entrant { get; set; }
 
         [XmlElement("ResultSourceType")]
