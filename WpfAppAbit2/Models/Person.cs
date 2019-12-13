@@ -2,12 +2,16 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 
+using System.Xml.Serialization;
+
 namespace WpfAppAbit2.Models
 {
+    [Serializable]
     public class Person
     {
-
+        [XmlElement("UID")]
         public Guid UID { get; set; }
+
         //public Passport Passport { get; set; }
         /// <summary>
         /// список паспортов 
@@ -17,9 +21,15 @@ namespace WpfAppAbit2.Models
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
 
+        [XmlElement("Person")]
         public ObservableCollection<Passport> PersonPassports { get; set; }
+        
+        [XmlIgnore]
         public string CustomInformation { get; set; }
+
+        [XmlElement("EmailOrMailAddress")]
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
+
         public override string ToString()
         {
             string FIO = this.PersonPassports[0].LastName + " " + this.PersonPassports[0].FirstName + " " + this.PersonPassports[0].MiddleName;

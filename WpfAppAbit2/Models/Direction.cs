@@ -1,14 +1,22 @@
 ﻿using System;
 
+using System.Xml.Serialization;
+
 namespace WpfAppAbit2.Models
 {
     /// <summary>
     /// направление подготовки
     /// </summary>
+    [Serializable]
     public class Direction : SimpleClass
     {
-        public Guid UID { get; set; }
+        [XmlElement("UID")]
+        public Guid Guid { get; set; }
+
+        [XmlElement("ShortName")]
         public string ShortName { get; set; }
+
+        [XmlIgnore]
         public Department Department { get; set; }
         public Direction(Guid UID, string Name, string ShortName, Department department)
         {
