@@ -24,7 +24,7 @@ namespace WpfAppAbit2.Views
     public partial class MainView : Window, IView
     {
         //public List<IAbitAddViewModel> abits;
-        private TreeViewItem priveousItem = null;
+      //  private TreeViewItem priveousItem = null;
         public void UpdateList()
         {
 
@@ -58,8 +58,8 @@ namespace WpfAppAbit2.Views
             TreeViewItem tvItem = (TreeViewItem)sender;
             MessageBox.Show("Выбран узел: " + tvItem.Header.ToString());
 
-            if (priveousItem == null || priveousItem != tvItem)
-                SwitchAbitsList(tvItem);
+            //if (priveousItem == null || priveousItem != tvItem)
+            //    SwitchAbitsList(tvItem);
         }
 
         private void SwitchAbitsList(TreeViewItem item)

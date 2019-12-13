@@ -17,7 +17,8 @@
         }
         public EmailOrMailAddress(string email, Address address)
         {
-
+            this.Email = email;
+            this.Address = address;
         }
     }
 }

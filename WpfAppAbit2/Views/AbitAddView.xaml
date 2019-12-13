@@ -79,10 +79,12 @@
         <Label Content="Паспорт" HorizontalAlignment="Left" Margin="57,17,0,0" VerticalAlignment="Top" Height="26" Width="61" AutomationProperties.Name="lbPassport"/>
         <Button Command="{Binding CommandCreateEntrant}" Content="Создать абитуриента" Grid.Column="4" HorizontalAlignment="Left" Margin="295,254,0,0" VerticalAlignment="Top" Width="220" AutomationProperties.Name="btSave" Height="34"/>
         <Button Content="Сохранить заявление" Grid.Column="4" HorizontalAlignment="Left" Margin="357,27,0,0" VerticalAlignment="Top" Width="176" Height="34" AutomationProperties.Name="btAddApp"/>
-        <Button Content="Удалить заявление" Grid.Column="4" HorizontalAlignment="Left" Margin="549,27,0,0" VerticalAlignment="Top" Width="176" Height="34" AutomationProperties.Name="btAddApp"/>
+        <Button Command="{Binding DeleteApp}"  Content="Удалить заявление" Grid.Column="4" HorizontalAlignment="Left" Margin="549,27,0,0" VerticalAlignment="Top" Width="176" Height="34" AutomationProperties.Name="btAddApp"/>
         <Label Content="Дата регистрации заявления" Grid.Column="4" HorizontalAlignment="Left" Margin="510,89,0,0" VerticalAlignment="Top"/>
         <DatePicker SelectedDate="{Binding RegistrationDate}" Grid.Column="4" HorizontalAlignment="Left" Margin="678,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.36,0.44"/>
         <CheckBox IsChecked ="{Binding SelectedApplication.IsMain}"  Content="Основное заявление" Grid.Column="4" HorizontalAlignment="Left" Margin="510,129,0,0" VerticalAlignment="Top"/>
+        <Button Content="Удалить абитуриента" Command="{Binding CheckPassport}" HorizontalAlignment="Left" Margin="10,202,0,0" VerticalAlignment="Top" Width="185" Height="34" AutomationProperties.Name="btAddApp" Click="Button_Click" Grid.Column="2"/>
+        <CheckBox IsChecked ="{Binding SelectedApplication.IsMain}"  Content="Необходимость в общежитии" Grid.Column="4" HorizontalAlignment="Left" Margin="510,156,0,0" VerticalAlignment="Top"/>
 
         <!--Application-->
 

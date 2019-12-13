@@ -21,10 +21,10 @@ namespace WpfAppAbit2.Models
         public ObservableCollection<Document> EntrantDocuments = new ObservableCollection<Document>();
         public ObservableCollection<EntranceTestResult> EntranceTestResults = new ObservableCollection<EntranceTestResult>();
        // public ObservableCollection<Document> EntrantDocuments = new ObservableCollection<Document>();
-        public ObservableCollection<EntrantApplication> GetApplications()
+        public ObservableCollection<EntrantApplication> GetApplications(ObservableCollection<EntrantApplication> Applications)
         {
             EntrantApps.Clear();
-            ObservableCollection<EntrantApplication> Applications = repositoryApplication.GetAll();
+            //ObservableCollection<EntrantApplication> Applications = repositoryApplication.GetAll();
             foreach (EntrantApplication application in Applications)
             {
                 if (application.Entrant == this) { EntrantApps.Add(application); }
@@ -32,9 +32,9 @@ namespace WpfAppAbit2.Models
 
             return EntrantApps;
         }
-        public void GetApps()
+        public void GetApps(ObservableCollection<EntrantApplication> Applications)
         {
-            EntrantApps = GetApplications();
+            EntrantApps = GetApplications(Applications);
         }
         public void AddDocument(Document AddDocument)
         {

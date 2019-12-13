@@ -47,6 +47,13 @@ namespace WpfAppAbit2.Models
                 if (application == Application) { db.Applications.Remove(application); }
             }
         }
+        public void Delete(int ApplicationNumber)
+        {
+            foreach (EntrantApplication application in db.Applications)
+            {
+                if (application.ApplicationNumber == ApplicationNumber) { db.Applications.Remove(application); }
+            }
+        }
         public void Update(EntrantApplication Application, EntrantApplication Application_prev)
         {
             int i = 0;

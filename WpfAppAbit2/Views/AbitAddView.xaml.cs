@@ -28,7 +28,7 @@ namespace WpfAppAbit2.Views
             //this.Style = (Style)Application.Current.Resources["AddAbit"];
             InitializeComponent();
             //  uiContext = SynchronizationContext.Current;
-            UnitOfWork unit = new UnitOfWork();
+          //  UnitOfWork unit = new UnitOfWork();
 
             //Prikaz pr = new Prikaz();
             //pr.SetContent(unit.Applications);

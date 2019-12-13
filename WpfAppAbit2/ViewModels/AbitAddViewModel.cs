@@ -104,7 +104,7 @@ namespace WpfAppAbit2.ViewModels
             get
             { return _departments1stLevel; }
             set
-            { _departments1stLevel = value; }
+            { Set(ref _departments1stLevel, value); }
 
         }
         public ObservableCollection<Department> Departments2ndLevel
@@ -112,7 +112,13 @@ namespace WpfAppAbit2.ViewModels
             get
             { return _departments2ndLevel; }
             set
-            { _departments2ndLevel = value; }
+            {
+                Set(ref _departments2ndLevel, value);
+            }
+
+        }
+        public void ChooseEntrant()
+        {
 
         }
         public EntrantApplication SelectedApplication
@@ -123,6 +129,9 @@ namespace WpfAppAbit2.ViewModels
                 _selectedApplication = value;
                 _selectedcompetitiveGroup = _selectedApplication.CompetitiveGroup;
                 _registrationDate = _selectedApplication.RegistrationDate;
+                _selectedDirection = _selectedcompetitiveGroup.Direction;
+                _selectedDepart2nd = _selectedDirection.Department;
+                _selectedDepart1st = SelectedDepart2nd.HeadDepartment;
             }
         }
         //public  _selectedInstitute { get; set; } = new ();
@@ -146,10 +155,16 @@ namespace WpfAppAbit2.ViewModels
                 {
                     newdepartments.Add(department);
                 }
+                
                 /// _departments2ndLevel.Clear();
                 _departments2ndLevel = newdepartments;
-                Departments2ndLevel = _departments2ndLevel;
-
+                //Departments2ndLevel = _departments2ndLevel;
+                Departments2ndLevel = new ObservableCollection<Department>();
+                foreach(Department department in newdepartments)
+                {
+                    Departments2ndLevel.Add(department);
+                }
+                
                 // }
                 //  RefreshSubs();
             }
@@ -244,7 +259,14 @@ namespace WpfAppAbit2.ViewModels
             Departments2ndLevel = _departments2ndLevel;
             SelectedDepart1st = Departments1stLevel[0];
             SelectedDepart2nd = Departments2ndLevel[0];
+            //Entrant = unit.Entrants.GetAll()[0];
+            //Person = Entrant.Person;
+            //_selectedpassport = Entrant.Person.PersonPassports[0];
+            //ObservableCollection<EntrantApplication> Applications = unit.Applications.GetAll();
+            //_selectedApplication = Entrant.GetApplications(Applications)[0]; Series ="1243", Number = "214545" },
+          //  LoadEntrant("1243", "214545");
 
+            //.Show(Person.EmailOrMailAddress.Email);
             View.Show();
 
         }
@@ -274,6 +296,47 @@ namespace WpfAppAbit2.ViewModels
         //    }
         //    );
         //}
+        public void DeleteEntrApp()
+        {
+            if (_selectedApplication != null)
+            {
+                try
+                {
+                    unit.Applications.Delete(_selectedApplication.ApplicationNumber);
+                }
+                catch
+                {
+                    MessageBox.Show("Усп, что-то пошло не так. Возможно это заявление уже удалено");
+                }
+            }
+        }
+        public void SaveEntrApplication()
+        {
+            if (_selectedApplication != null)
+            {
+                try
+                {
+                    _selectedApplication.CompetitiveGroup = _selectedcompetitiveGroup;
+                    _selectedApplication.Entrant = Entrant;
+                    unit.Applications.Delete(_selectedApplication.ApplicationNumber);
+
+                }
+                catch
+                {
+                    MessageBox.Show("Усп, что-то пошло не так. Возможно это заявление уже удалено");
+                }
+            }
+        }
+        public ICommand SaveAppChanges
+        {
+            get => new UserCommand(() =>
+            {
+
+                SaveEntrApplication();
+            }
+            );
+        }
+    
         public ICommand CheckPassport
         {
             get => new UserCommand(() =>
@@ -281,6 +344,15 @@ namespace WpfAppAbit2.ViewModels
                 CreatePassport(_selectedpassport.Series, _selectedpassport.Number);
                 MessageBox.Show(_selectedpassport.Series);
                 MessageBox.Show(_entrantPassports[0].ToString());
+            }
+            );
+        }
+        public ICommand DeleteApp
+        {
+            get => new UserCommand(() =>
+            {
+
+                DeleteEntrApp();
             }
             );
         }
@@ -344,6 +416,10 @@ namespace WpfAppAbit2.ViewModels
                 {
                     entrantApp.EntranceTestResults.Add(entranceTestResult);
                 }
+            }
+            if (Entrant.EntrantApps.Count > 0)
+            {
+                _selectedApplication = Entrant.EntrantApps[0];
             }
             _selectedpassport = Person.PersonPassports[0];
             MessageBox.Show(Entrant.ToString());

@@ -26,10 +26,10 @@ namespace WpfAppAbit2.Models
         public void EntrTestResults(ObservableCollection<EntranceTestResult> entranceTestResults)
         {
             //LocalStorage db = new LocalStorage();
-           // RepositoryEntranceTestResult repositoryEntranceTestResult = new RepositoryEntranceTestResult(db);
+            // RepositoryEntranceTestResult repositoryEntranceTestResult = new RepositoryEntranceTestResult(db);
             var TestResults = entranceTestResults
                 .Where(x => (x.Entrant.Person.PersonPassports[0].Series == this.Entrant.Person.PersonPassports[0].Series)
-                &&(x.Entrant.Person.PersonPassports[0].Number == this.Entrant.Person.PersonPassports[0].Number));
+                && (x.Entrant.Person.PersonPassports[0].Number == this.Entrant.Person.PersonPassports[0].Number));
             TestResults.Where(x => x.EntranceTestItem == this.CompetitiveGroup.EntranceTestItems.First(y => y == x.EntranceTestItem));
         }
         /// <summary>
@@ -54,7 +54,7 @@ namespace WpfAppAbit2.Models
 
         public override string ToString()
         {
-            return this.ApplicationNumber.ToString() + Entrant.Person.ToString();//TODO: dfgg
+            return this.ApplicationNumber.ToString() + "    " + Entrant.Person.ToString();//TODO: dfgg
         }
         public EntrantApplication()
         {

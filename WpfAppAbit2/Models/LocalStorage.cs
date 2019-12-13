@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace WpfAppAbit2.Models
 {
@@ -268,15 +269,20 @@ namespace WpfAppAbit2.Models
 
 
                 }
+
             };
+
         }
         private void FillEntrants()
         {
             Entrants = new ObservableCollection<Entrant>()
             {
-                new Entrant(){ Person = new Person( new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1", Series ="1243", Number = "214545" }, null,
+                new Entrant()
+                { Person = new Person( new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1",
+                    Series ="1243", Number = "214545" }, null,
                 new EmailOrMailAddress("owlkek@gpepa.com", new Address(){ Town = "Сыктыкар", Street = "улица Пушкина", House = "Дом Колатушкина" } ) )
-               , IsFromKrym=true},
+               , IsFromKrym=true
+                },
                 new Entrant(){ Person = new Person()
                 {
                     PersonPassports = new ObservableCollection<Passport>()
@@ -305,6 +311,7 @@ namespace WpfAppAbit2.Models
                     }
                 }, IsFromKrym=true }
             };
+          //  MessageBox.Show(Entrants[0].Person.FirstName);
         }
         public LocalStorage()
         {
