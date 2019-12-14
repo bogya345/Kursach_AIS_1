@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 
 using System.Xml.Serialization;
@@ -7,7 +8,7 @@ using System.Xml.Serialization;
 namespace WpfAppAbit2.Models
 {
     [Serializable]
-    public class Person
+    public class Person /*: INotifyPropertyChanged*/
     {
         [XmlElement("UID")]
         public Guid UID { get; set; }
@@ -29,6 +30,17 @@ namespace WpfAppAbit2.Models
 
         [XmlElement("EmailOrMailAddress")]
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
+
+
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //protected void OnPropertyChanged(string name)
+        //{
+        //    PropertyChangedEventHandler handler = PropertyChanged;
+        //    if (handler != null)
+        //    {
+        //        handler(this, new PropertyChangedEventArgs(name));
+        //    }
+        //}
 
         public override string ToString()
         {

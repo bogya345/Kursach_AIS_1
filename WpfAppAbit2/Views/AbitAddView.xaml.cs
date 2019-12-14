@@ -65,7 +65,7 @@ namespace WpfAppAbit2.Views
 
         private void DatePicker_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
-
+            //lastNametb.Re
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
