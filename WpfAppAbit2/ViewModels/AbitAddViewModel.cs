@@ -43,7 +43,6 @@ namespace WpfAppAbit2.ViewModels
         private ObservableCollection<Direction> _directions = new ObservableCollection<Direction>();
         //private ObservableCollection<CompetitiveGroup> _competitiveGroups = new ObservableCollection<CompetitiveGroup>();
 
-        public ObservableCollection<Direction> Directions { get => _directions; }
         private Passport _selectedpassport = new Passport();
         public string FormName { get => "Добавление абитуриента"; }
         private Department _selectedDepart1st = new Department();
@@ -51,8 +50,13 @@ namespace WpfAppAbit2.ViewModels
         private Direction _selectedDirection = new Direction();
         private EntrantApplication _selectedApplication = new EntrantApplication();
         private CompetitiveGroup _selectedcompetitiveGroup = new CompetitiveGroup();
-        public CompetitiveGroup SelectedCompetitiveGroup { get => _selectedcompetitiveGroup; set { _selectedcompetitiveGroup = value; } }
-        public ObservableCollection<CompetitiveGroup> CompetitiveGroups { get => _competitiveGroups; }
+        public ObservableCollection<CompetitiveGroup> CompetitiveGroups
+        {
+            get
+            { return _competitiveGroups; }
+            set
+            { Set(ref _competitiveGroups, value); }
+        }
 
 
         //private Department _selectedDepart1stMem = new Department();
@@ -117,16 +121,26 @@ namespace WpfAppAbit2.ViewModels
             }
 
         }
+        public ObservableCollection<Direction> Directions
+        {
+            get
+            { return _directions; }
+            set
+            {
+                Set(ref _directions, value);
+            }
+        }
+
         public void ChooseEntrant()
         {
 
         }
         public EntrantApplication SelectedApplication
         {
-            get => _selectedApplication;
+            get { return _selectedApplication; }
             set
             {
-                _selectedApplication = value;
+                Set(ref _selectedApplication, value  );
                 _selectedcompetitiveGroup = _selectedApplication.CompetitiveGroup;
                 _registrationDate = _selectedApplication.RegistrationDate;
                 _selectedDirection = _selectedcompetitiveGroup.Direction;
@@ -155,18 +169,14 @@ namespace WpfAppAbit2.ViewModels
                 {
                     newdepartments.Add(department);
                 }
-                
-                /// _departments2ndLevel.Clear();
+
                 _departments2ndLevel = newdepartments;
-                //Departments2ndLevel = _departments2ndLevel;
                 Departments2ndLevel = new ObservableCollection<Department>();
-                foreach(Department department in newdepartments)
+                foreach (Department department in newdepartments)
                 {
                     Departments2ndLevel.Add(department);
                 }
-                
-                // }
-                //  RefreshSubs();
+
             }
         }
         public Department SelectedDepart2nd
@@ -177,25 +187,27 @@ namespace WpfAppAbit2.ViewModels
             {
                 _selectedDepart2nd = value;
                 GetDepartments();
-                // Refreshed = false;
                 _directions = unit.Directions.GetAll();
+                if (!_selectedDepart2nd.AllGorups) { }
                 var _newdirection = _directions.Where(u => (u.Department == _selectedDepart2nd));
                 ObservableCollection<Direction> newdirections = new ObservableCollection<Direction>();
                 foreach (Direction direction in _newdirection)
                 {
                     newdirections.Add(direction);
                 }
-                /// _departments2ndLevel.Clear();
                 _directions = newdirections;
                 View.UpdateList();
-                //Directions = _directions;
-                //MessageBox.Show(_selectedDepart2nd.ToString());
+                Directions = new ObservableCollection<Direction>();
+                foreach (Direction direction in newdirections)
+                {
+                    Directions.Add(direction);
+                }
             }
         }
 
         public Direction SelectedDirection
         {
-            get => _selectedDirection;
+            get { return _selectedDirection; }
             set
             {
                 _selectedDirection = value;
@@ -209,12 +221,47 @@ namespace WpfAppAbit2.ViewModels
                 }
                 _competitiveGroups = newcompetitiveGroups;
                 View.UpdateList();
+                CompetitiveGroups = new ObservableCollection<CompetitiveGroup>();
+                foreach (CompetitiveGroup сompetitiveGroup in _newcompetitivegroups)
+                {
+                    CompetitiveGroups.Add(сompetitiveGroup);
+                }
 
             }
         }
+        public CompetitiveGroup SelectedCompetitiveGroup
+        {
+            get => _selectedcompetitiveGroup;
+            set { _selectedcompetitiveGroup = value; }
+        }
+
+        //public Direction SelectedDirection
+        //{
+        //    get => _selectedDirection;
+        //    set
+        //    {
+        //        _selectedDirection = value;
+        //        GetDirections();
+        //        _competitiveGroups = unit.CompetitiveGroups.GetAll();
+        //        var _newcompetitivegroups = _competitiveGroups.Where(x => (x.Direction == _selectedDirection));
+        //        ObservableCollection<CompetitiveGroup> newcompetitiveGroups = new ObservableCollection<CompetitiveGroup>();
+        //        foreach (CompetitiveGroup competitiveGroup in _newcompetitivegroups)
+        //        {
+        //            newcompetitiveGroups.Add(competitiveGroup);
+        //        }
+        //        _competitiveGroups = newcompetitiveGroups;
+        //        View.UpdateList();
+        //        CompetitiveGroups = new ObservableCollection<CompetitiveGroup>();
+        //        foreach (CompetitiveGroup сompetitiveGroup in _newcompetitivegroups)
+        //        {
+        //            CompetitiveGroups.Add(сompetitiveGroup);
+        //        }
+
+        //    }
+        //}
         public Passport SelectedPassport
         {
-            get => _selectedpassport;
+            get { return _selectedpassport; }
             set
             {
                 if (Set(ref _selectedpassport, value))
@@ -264,7 +311,7 @@ namespace WpfAppAbit2.ViewModels
             //_selectedpassport = Entrant.Person.PersonPassports[0];
             //ObservableCollection<EntrantApplication> Applications = unit.Applications.GetAll();
             //_selectedApplication = Entrant.GetApplications(Applications)[0]; Series ="1243", Number = "214545" },
-          //  LoadEntrant("1243", "214545");
+            //  LoadEntrant("1243", "214545");
 
             //.Show(Person.EmailOrMailAddress.Email);
             View.Show();
@@ -336,7 +383,7 @@ namespace WpfAppAbit2.ViewModels
             }
             );
         }
-    
+
         public ICommand CheckPassport
         {
             get => new UserCommand(() =>
@@ -411,7 +458,7 @@ namespace WpfAppAbit2.ViewModels
             foreach (EntrantApplication entrantApp in Entrant.EntrantApps)
             {
                 var entrTesResult = unit.EntranceTestResults.GetAll().Where(x => (x.Entrant == Entrant)
-                &&(entrantApp.CompetitiveGroup.EntranceTestItems.Any(y=> y == x.EntranceTestItem)));
+                && (entrantApp.CompetitiveGroup.EntranceTestItems.Any(y => y == x.EntranceTestItem)));
                 foreach (EntranceTestResult entranceTestResult in entrTesResult)
                 {
                     entrantApp.EntranceTestResults.Add(entranceTestResult);
