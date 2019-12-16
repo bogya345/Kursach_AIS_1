@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 using System.Xml.Serialization;
 
@@ -54,8 +55,18 @@ namespace WpfAppAbit2.Models
 
         [XmlIgnore]
         public bool Actual { get; set; }
-        
-        
+
+
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //protected void OnPropertyChanged(string name)
+        //{
+        //    PropertyChangedEventHandler handler = PropertyChanged;
+        //    if (handler != null)
+        //    {
+        //        handler(this, new PropertyChangedEventArgs(name));
+        //    }
+        //}
+
         public override string ToString()
         {
             return this.LastName + " "+this.FirstName + " " + this.MiddleName + " " +this.Series + " " +this.Number;

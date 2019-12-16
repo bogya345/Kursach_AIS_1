@@ -16,14 +16,16 @@
             <ColumnDefinition Width="58*"/>
             <ColumnDefinition Width="887*"/>
         </Grid.ColumnDefinitions>
+
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,48,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.Series, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbPasSeria"/>
         <Label Content="Серия паспорта" HorizontalAlignment="Left" Margin="13,47,0,0" VerticalAlignment="Top" Height="26" Width="101"/>
         <Label Content="Номер паспорта" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,75,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.Number, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbPasNumber"/>
+
         <Label Content="Фамилия " HorizontalAlignment="Left" Margin="53,158,0,0" VerticalAlignment="Top" Height="26" Width="63"/>
-        <TextBox  HorizontalAlignment="Left" Height="22" Margin="124,160,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.LastName, UpdateSourceTrigger=Explicit}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbLastName" IsEnabled="{Binding NotExisted}"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,160,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.LastName, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, TargetNullValue=WTF}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbLastName" IsEnabled="{Binding NotExisted}"/>
         <Label Content="Имя " HorizontalAlignment="Left" Margin="77,186,0,0" VerticalAlignment="Top" Height="26" Width="37"/>
-        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,187,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.FirstName, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbFirstName" IsEnabled="{Binding NotExisted}"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,187,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbFirstName" IsEnabled="{Binding NotExisted}"/>
         <Label Content="Отчество" HorizontalAlignment="Left" Margin="53,213,0,0" VerticalAlignment="Top" Height="26" Width="61"/>
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,214,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.MiddleName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbMiddleName" IsEnabled="{Binding NotExisted}"/>
         <RichTextBox HorizontalAlignment="Left" Height="99" Margin="124,245,0,0" VerticalAlignment="Top" Width="158" AutomationProperties.Name="rtbIfo" IsEnabled="{Binding NotExisted}">

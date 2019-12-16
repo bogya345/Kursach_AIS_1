@@ -288,27 +288,27 @@ namespace WpfAppAbit2.Models
                 {
                     PersonPassports = new ObservableCollection<Passport>()
                     { new Passport()
-                    { FirstName="B2", LastName= "Volkov2", MiddleName="M2" , Series ="1243", Number = "346679"}
+                    { FirstName="B2", LastName= "Volkov2", MiddleName="M2" , Series ="0000", Number = "000000"}
                     }
                 }, IsFromKrym=false },
                 new Entrant(){ Person = new Person()
                 {
                         PersonPassports = new ObservableCollection<Passport>()
                         {
-                            new Passport() { FirstName="B3", LastName= "Volkov3", MiddleName="M3", Series ="1243", Number = "214241" }
+                            new Passport() { FirstName="B3", LastName= "Volkov3", MiddleName="M3", Series ="0001", Number = "000001" }
                         }
                 }, IsFromKrym=true },
                 new Entrant(){ Person = new Person()
                 {
                     PersonPassports = new ObservableCollection<Passport>()
                     {
-                        new Passport() { FirstName="B4", LastName= "Volkov4", MiddleName="M4",Series ="1243", Number = "535423" }
+                        new Passport() { FirstName="B4", LastName= "Volkov4", MiddleName="M4",Series ="0002", Number = "000002" }
                     }
                 }, IsFromKrym=false },
                 new Entrant(){ Person = new Person()
                 {
                     PersonPassports = new ObservableCollection<Passport>()
-                    { new Passport() { FirstName="B5", LastName= "Volkov5", MiddleName="M5",Series ="1243", Number = "754632" }
+                    { new Passport() { FirstName="B5", LastName= "Volkov5", MiddleName="M5",Series ="0003", Number = "000003" }
                     }
                 }, IsFromKrym=true }
             };
