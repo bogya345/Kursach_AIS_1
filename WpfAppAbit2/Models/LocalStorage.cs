@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Windows;
 
 namespace WpfAppAbit2.Models
 {
@@ -255,6 +254,7 @@ namespace WpfAppAbit2.Models
             {
                 new EntrantApplication()
                 {
+                    UID = Guid.NewGuid(),
                     Entrant = Entrants[0],
                     ApplicationNumber = 0,
                     RegistrationDate = DateTime.Today,
@@ -266,6 +266,24 @@ namespace WpfAppAbit2.Models
                     ReturnDocumentsDate = DateTime.MinValue,
                     FinSourceAndEduForms = new FinSourceAndEduForms(){ CompetitiveGroup = CompetitiveGroups[0],
                         TargetOrganization = null, IsAgreedDate = DateTime.Today, IsDisagreedDate = DateTime.MinValue,
+                        IsForSPOandVO = false}
+
+
+                },
+                 new EntrantApplication()
+                {
+                    UID = Guid.NewGuid(),
+                    Entrant = Entrants[0],
+                    ApplicationNumber = 1,
+                    RegistrationDate = DateTime.Today,
+                    NeedHostel = false,
+                    StatusApp = "Неполное",
+                    CompetitiveGroup = CompetitiveGroups[1],
+                    ReturnDocumentsType = 0,
+                    balls = 0,
+                    ReturnDocumentsDate = DateTime.MinValue,
+                    FinSourceAndEduForms = new FinSourceAndEduForms(){ CompetitiveGroup = CompetitiveGroups[1],
+                        TargetOrganization = null, IsAgreedDate = DateTime.Now, IsDisagreedDate = DateTime.MinValue,
                         IsForSPOandVO = false}
 
 

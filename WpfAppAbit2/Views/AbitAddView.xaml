@@ -49,7 +49,7 @@
 
 
         <!--Application-->
-        <ComboBox ItemsSource="{Binding SelectedApplication,  UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding SelectedApplication, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Margin="69,81,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbApplication" Height="32"/>
+        <ComboBox ItemsSource="{Binding EntrantApplications,  UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding SelectedApplication, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Margin="69,81,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbApplication" Height="32"/>
         <Label Content="Заявление" Grid.Column="3" HorizontalAlignment="Left" Margin="27,81,0,0" VerticalAlignment="Top" Height="26" Width="71" Grid.ColumnSpan="2"/>
         <ComboBox x:Name="changed"   ItemsSource="{Binding Departments1stLevel,  UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDepart1st, UpdateSourceTrigger=PropertyChanged}" Grid.Column="4" HorizontalAlignment="Left" Margin="69,126,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbDepartInst" Height="38" SelectionChanged="Changed_SelectionChanged" FontSize="12"/>
         <Label Content="Институт" Grid.Column="3" HorizontalAlignment="Left" Margin="43,138,0,0" VerticalAlignment="Top" Height="26" Width="71" Grid.ColumnSpan="2"/>

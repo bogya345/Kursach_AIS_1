@@ -36,7 +36,7 @@ namespace WpfAppAbit2.ViewModels
         private Passport _selectedpassport = new Passport();
         public Passport SelectedPassport
         {
-            get => _selectedpassport;
+            get { return _selectedpassport; }
             set
             {
                 _selectedpassport = value;
@@ -52,7 +52,7 @@ namespace WpfAppAbit2.ViewModels
             //    }
             //}
         }
-
+    
         //public event PropertyChangedEventHandler PropertyChanged;
         //protected void OnPropertyChanged(string name)
         //{
@@ -77,7 +77,7 @@ namespace WpfAppAbit2.ViewModels
         private DateTime _registrationDate;
 
         private ObservableCollection<EntrantApplication> _entrantApplications = new ObservableCollection<EntrantApplication>();
-        public ObservableCollection<EntrantApplication> EntrantApplications { get => _entrantApplications; set { _entrantApplications = value; } }
+        public ObservableCollection<EntrantApplication> EntrantApplications { get { return _entrantApplications; } set { _entrantApplications = value; } }
         private ObservableCollection<Passport> _entrantPassports = new ObservableCollection<Passport>();
         private ObservableCollection<CompetitiveGroup> _competitiveGroups = new ObservableCollection<CompetitiveGroup>();
         private ObservableCollection<Department> _departments = new ObservableCollection<Department>();
@@ -483,7 +483,7 @@ namespace WpfAppAbit2.ViewModels
             foreach (EntrantApplication entrantApp in Entrant.EntrantApps)
             {
                 var entrTesResult = unit.EntranceTestResults.GetAll().Where(x => (x.Entrant == Entrant)
-                && (entrantApp.CompetitiveGroup.EntranceTestItems.Any(y => y == x.EntranceTestItem)));
+                && (entrantApp.CompetitiveGroup.EntranceTestItems.Any(y => y.Guid == x.EntranceTestItem.Guid)));
                 foreach (EntranceTestResult entranceTestResult in entrTesResult)
                 {
                     entrantApp.EntranceTestResults.Add(entranceTestResult);

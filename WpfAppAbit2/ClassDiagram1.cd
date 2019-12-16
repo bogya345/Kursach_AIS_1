@@ -543,53 +543,6 @@
       <FileName>Services\Word\word.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WpfAppAbit2.ViewModels.AbitAddViewModel">
-    <Position X="22.25" Y="23" Width="2.25" />
-    <Members>
-      <Field Name="unit" Hidden="true" />
-    </Members>
-    <InheritanceLine Type="WpfAppAbit2.ViewModels.ViewModelBase" FixedToPoint="true">
-      <Path>
-        <Point X="26.5" Y="23.446" />
-        <Point X="24.5" Y="23.446" />
-      </Path>
-    </InheritanceLine>
-    <AssociationLine Name="SelectedDepart1st" Type="WpfAppAbit2.Models.Department" FixedToPoint="true">
-      <Path>
-        <Point X="24.5" Y="27.178" />
-        <Point X="31.5" Y="27.178" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="SelectedDepart2nd" Type="WpfAppAbit2.Models.Department" FixedToPoint="true">
-      <Path>
-        <Point X="24.5" Y="26.581" />
-        <Point X="31.5" Y="26.581" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="SelectedPassport" Type="WpfAppAbit2.Models.Passport" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="22.25" Y="25.162" />
-        <Point X="20.812" Y="25.162" />
-        <Point X="20.812" Y="25.5" />
-      </Path>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>EcAESEJHQJQgCFAIAPCBCwAAAQMBEgBCBSUAYABAGgE=</HashCode>
-      <FileName>ViewModels\AbitAddViewModel.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Entrant" />
-      <Property Name="Address" />
-      <Property Name="competitiveGroup" />
-      <Property Name="EmailOrMailAddress" />
-      <Property Name="Person" />
-      <Property Name="SelectedApplication" />
-      <Property Name="SelectedDepart1st" />
-      <Property Name="SelectedDepart2nd" />
-      <Property Name="SelectedPassport" />
-      <Property Name="SelectedCompetitiveGroup" />
-    </ShowAsAssociation>
-  </Class>
   <Class Name="WpfAppAbit2.ViewModels.MainViewModel">
     <Position X="30.75" Y="22.75" Width="2.25" />
     <TypeIdentifier>
@@ -646,6 +599,54 @@
   <Class Name="System.Windows.Window" Collapsed="true">
     <Position X="62.5" Y="26.75" Width="1.5" />
     <TypeIdentifier />
+  </Class>
+  <Class Name="WpfAppAbit2.ViewModels.AbitAddViewModel">
+    <Position X="22.25" Y="23" Width="2.25" />
+    <Members>
+      <Field Name="unit" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="WpfAppAbit2.ViewModels.ViewModelBase" FixedToPoint="true">
+      <Path>
+        <Point X="26.5" Y="23.461" />
+        <Point X="24.5" Y="23.461" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="SelectedPassport" Type="WpfAppAbit2.Models.Passport" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="22.25" Y="25.235" />
+        <Point X="20.812" Y="25.235" />
+        <Point X="20.812" Y="25.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="SelectedDepart1st" Type="WpfAppAbit2.Models.Department" FixedToPoint="true">
+      <Path>
+        <Point X="24.5" Y="27.178" />
+        <Point X="31.5" Y="27.178" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="SelectedDepart2nd" Type="WpfAppAbit2.Models.Department" FixedToPoint="true">
+      <Path>
+        <Point X="24.5" Y="26.581" />
+        <Point X="31.5" Y="26.581" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EcAESEJHQJQgCFAIAPCBCxAAAQMBEgBCBSUAYBBAGgE=</HashCode>
+      <FileName>ViewModels\AbitAddViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Entrant" />
+      <Property Name="Address" />
+      <Property Name="competitiveGroup" />
+      <Property Name="EmailOrMailAddress" />
+      <Property Name="Person" />
+      <Property Name="SelectedPassport" />
+      <Property Name="SelectedApplication" />
+      <Property Name="SelectedDepart1st" />
+      <Property Name="SelectedDepart2nd" />
+      <Property Name="SelectedCompetitiveGroup" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="WpfAppAbit2.Models.IRepository&lt;T&gt;">
     <Position X="58" Y="35.5" Width="1.5" />
