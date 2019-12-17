@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using WpfAppAbit2.DAL;
 
 namespace WpfAppAbit2.Models
 {
@@ -84,10 +85,10 @@ namespace WpfAppAbit2.Models
             SimpleClass ReturnDocumentsType,
             FinSourceAndEduForms FinSourceAndEduForms,
             ObservableCollection<Document> ApplicationDocuments,
-            ObservableCollection<EntranceTestResult> EntranceTestResults,
+            //ObservableCollection<EntranceTestResult> EntranceTestResults,
             ObservableCollection<InstitutionAchievement> InstitutionAchievments,
             bool Original,
-            ObservableCollection<EntrantApplication> applications)
+            ObservableCollection<EntrantApplication> applications, UnitOfWork unit)
         {
             bool isAcheived = false;
             foreach (EntrantApplication application in applications)
@@ -97,15 +98,15 @@ namespace WpfAppAbit2.Models
             }
             if (isAcheived == true)
             {
-                int ApplicationNumber = applications.Count;
-                EntrantApplication app = new EntrantApplication(
-                    entrant, ApplicationNumber, RegistrationDate,
-                    NeedHostel, StatusApp, CompetitiveGroup,
-                    1, FinSourceAndEduForms,
-                    ApplicationDocuments, EntranceTestResults,
-                    InstitutionAchievments, Original);
+                //int ApplicationNumber = applications.Count;
+                //EntrantApplication app = new EntrantApplication(
+                //    entrant, ApplicationNumber, RegistrationDate,
+                //    NeedHostel, StatusApp, CompetitiveGroup,
+                //    1, FinSourceAndEduForms,
+                //    ApplicationDocuments, EntranceTestResults,
+                //    InstitutionAchievments, Original);
 
-                applications.Add(app);
+                //unit.Applications.Create(app);
             }
             else
             {

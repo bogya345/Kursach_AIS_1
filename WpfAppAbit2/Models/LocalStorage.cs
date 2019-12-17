@@ -234,6 +234,16 @@ namespace WpfAppAbit2.Models
                      DepartmentLevel = 2
                  }
                 );
+            Departments.Add(
+                 new Department()
+                 {
+                     DepartmentGuid = Guid.NewGuid(),
+                     HeadDepartment = Departments[5],
+                     Name = "Все специальности",
+                     ShortName = "Все",
+                     DepartmentLevel = 2
+                 }
+                );
 
         }
         public void FillEntranceTestResults()

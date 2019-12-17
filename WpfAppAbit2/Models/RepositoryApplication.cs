@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using WpfAppAbit2.DAL;
+using System.Linq;
 
 namespace WpfAppAbit2.Models
 {
@@ -81,7 +83,19 @@ namespace WpfAppAbit2.Models
             }
             return ApplicationCompGroup;
         }
-
+        public void CheckEntranceTestResults(ObservableCollection<EntranceTestResult> entranceTestResults, Entrant entrant, UnitOfWork unit)
+        {
+            foreach (EntranceTestResult entranceTestResult in entranceTestResults)
+            {
+                ObservableCollection<EntranceTestResult> entranceTestResultsAll = unit.EntranceTestResults.GetAll();
+                if (!entranceTestResultsAll.Any(
+                    x=>(x.Entrant.Person.PersonPassports[0].Series == entranceTestResult.Entrant.Person.PersonPassports[0].Series)
+                    &&(x.Entrant.Person.PersonPassports[0].Number == entranceTestResult.Entrant.Person.PersonPassports[0].Number)&&(entranceTestResult.EntranceTestItem.Guid==x.EntranceTestItem.Guid)))
+                {
+                    unit.EntranceTestResults.Create(entranceTestResult);
+                }
+            }
+        }
         /// <summary>
         /// Получить все заявления в подразделении
         /// </summary>
