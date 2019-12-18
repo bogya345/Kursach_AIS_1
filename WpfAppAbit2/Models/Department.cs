@@ -21,6 +21,7 @@ namespace WpfAppAbit2.Models
         public Department HeadDepartment { get; set; }
         public string Name { get; set; }
         public string ShortName { get; set; }
+        public bool AllGorups { get; set; }
         public ObservableCollection<Department> DougthersDepartments = new ObservableCollection<Department>();
         /// <summary>
         /// 0 - институт 1 - 

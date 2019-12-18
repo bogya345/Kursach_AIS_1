@@ -26,7 +26,7 @@ namespace WpfAppAbit2.Models
     public class EntrantApplication : SimpleClass
     {
         [XmlElement("UID")]
-        public string UID { get; set; }
+        public Guid UID { get; set; }
 
         [XmlElement("Entrant")]
         public Entrant Entrant { get; set; }
