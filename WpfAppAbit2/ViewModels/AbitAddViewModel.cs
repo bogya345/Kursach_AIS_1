@@ -28,7 +28,7 @@ namespace WpfAppAbit2.ViewModels
             set
             {
                 _person = value;
-                //OnPropertyChanged("SelectedPerson");
+                OnPropertyChanged("Person");
                 Set(ref _person, value);
             }
         }
@@ -40,9 +40,10 @@ namespace WpfAppAbit2.ViewModels
             set
             {
                 _selectedpassport = value;
-                //OnPropertyChanged("SelectedPassport");
+                OnPropertyChanged("SelectedPassport");
                 Set(ref _selectedpassport, value);
-                _selectedpassport.LastName = value.LastName;
+                //WpfAppAbit2.Views.AbitAddView.tbL.GetBindingExpression().UpdateSource();
+                //_selectedpassport.LastName = value.LastName;
             }
             //set
             //{
@@ -53,15 +54,15 @@ namespace WpfAppAbit2.ViewModels
             //}
         }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //protected void OnPropertyChanged(string name)
-        //{
-        //    PropertyChangedEventHandler handler = PropertyChanged;
-        //    if (handler != null)
-        //    {
-        //        handler(this, new PropertyChangedEventArgs(name));
-        //    }
-        //}
+        public new event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
 
 
         public bool IsEditApp { get => _isEditApp; }

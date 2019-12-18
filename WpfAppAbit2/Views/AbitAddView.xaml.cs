@@ -21,14 +21,14 @@ namespace WpfAppAbit2.Views
     /// </summary>
     public partial class AbitAddView : Window, IView
     {
-       // private SynchronizationContext uiContext;
+        // private SynchronizationContext uiContext;
         public AbitAddView()
         {
             // this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/Resourses/AbitAddView.xaml") };
             //this.Style = (Style)Application.Current.Resources["AddAbit"];
             InitializeComponent();
             //  uiContext = SynchronizationContext.Current;
-          //  UnitOfWork unit = new UnitOfWork();
+            //UnitOfWork unit = new UnitOfWork();
 
             //Prikaz pr = new Prikaz();
             //pr.SetContent(unit.Applications);
@@ -37,12 +37,18 @@ namespace WpfAppAbit2.Views
 
             //service.AbitDopSpec = new AbitDopSpec(2);
             //service.AbitDopSpec.SetContent();
+            tbL = lastNametb;
+
+            //AbitDopSpec ex = new AbitDopSpec(56);
+            //ex.SetContent(unit.Applications);
         }
         Binding binding = new Binding();
 
+        public static TextBox tbL;
+
         public void UpdateList()
         {
-           // changed2.Items.Refresh();
+            // changed2.Items.Refresh();
             //changed.Items.Refresh();
         }
         public IViewModel ViewModel
@@ -57,7 +63,7 @@ namespace WpfAppAbit2.Views
 
             try
             {
-              //  MessageBox.Show(changed2.Items[0].ToString());
+                //  MessageBox.Show(changed2.Items[0].ToString());
             }
             catch { }
             UpdateList();
@@ -70,8 +76,8 @@ namespace WpfAppAbit2.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          //  BindingExpression BindingExpression = new BindingExpression(binding) ;
-          //  BindingExpression.UpdateSource();
+            //  BindingExpression BindingExpression = new BindingExpression(binding) ;
+            //  BindingExpression.UpdateSource();
 
         }
     }

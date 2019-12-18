@@ -14,8 +14,6 @@ namespace WpfAppAbit2.Services.Excell
 
         }
 
-        private AbitDopSpec abitDocSpec;
-
         public AbitDopSpec AbitDopSpec { get; set; }
         public Abitltogi Abitltogi { get; set; }
     }

@@ -14,35 +14,62 @@ namespace WpfAppAbit2.Services.Excell
     public class AbitDopSpec : Excell
     {
         private int specNumber;
+        private bool _specNum;
+
+        public AbitDopSpec()
+        {
+            _specNum = false;
+
+            patternPath = Pattern.Excel.AbitDopSpec;
+
+            wb = app.Workbooks.Open(patternPath);
+            ws = wb.Worksheets[1];
+        }
 
         public AbitDopSpec(int specNum)
         {
             this.specNumber = specNum;
+            this._specNum = true;
 
             patternPath = Pattern.Excel.AbitDopSpec;
 
-            //wb = app.Workbooks.Open(patternPath);
-            //ws = wb.Worksheets[1];
+            wb = app.Workbooks.Open(patternPath);
+            ws = wb.Worksheets[1];
         }
 
-        public void SetContent(RepositoryApplication apps)
+        public void SetSpecNumber(int num)
         {
-            ws.Cells.Replace("#specNumber#", specNumber.ToString());
+            specNumber = num;
+            _specNum = true;
+        }
 
-            int i = 3;
-            foreach (EntrantApplication item in apps.GetAll())
+        public bool SetContent(RepositoryApplication apps)
+        {
+            if (_specNum)
             {
-                //fullname
-                ws.Cells[i, 3].Value2 = item.Entrant.Person.Fullname();
-                //application number
-                ws.Cells[i, 4].Value2 = item.ApplicationNumber;
-                //summary of balls
-                ws.Cells[i, 5].Value2 = item.balls;
+                ws.Cells.Replace("#specNumber#", specNumber.ToString());
+                ws.Range["A1:G2"].Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.LightBlue);
 
-                i++;
+                int i = 3;
+                foreach (EntrantApplication item in apps.GetAll())
+                {
+                    //fullname
+                    ws.Cells[i, 3].Value2 = item.Entrant.Person.Fullname();
+                    //application number
+                    ws.Cells[i, 4].Value2 = item.ApplicationNumber;
+                    //summary of balls
+                    ws.Cells[i, 5].Value2 = item.balls;
+
+                    i++;
+                }
+
+                ws.Range[ws.Cells[i + 1, 1], ws.Cells[i + 1, 2]].Merge();
+                ws.Cells[i + 1, 1].Value2 = DateTime.Today.ToString("dd/MM/yyyy");
+
+                app.Visible = true;
             }
 
-            app.Visible = true;
+            return _specNum;
         }
     }
 }
