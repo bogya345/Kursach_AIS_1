@@ -211,7 +211,9 @@ namespace WpfAppAbit2.Models
                      HeadDepartment = Departments[1],
                      Name = "Кафедра Менеджмента и маркетинга",
                      ShortName = "МиМ",
-                     DepartmentLevel = 2
+                     DepartmentLevel = 2,
+                     AllGorups = false
+
                  }
                 );
             Departments.Add(
@@ -221,7 +223,9 @@ namespace WpfAppAbit2.Models
                      HeadDepartment = Departments[0],
                      Name = "Строительно-технологический Институт",
                      ShortName = "СТИ",
-                     DepartmentLevel = 1
+                     DepartmentLevel = 1,
+                     AllGorups = false
+
                  }
                 );
             Departments.Add(
@@ -231,7 +235,9 @@ namespace WpfAppAbit2.Models
                      HeadDepartment = Departments[5],
                      Name = "Кафедра Промышленного и гражданского строительства",
                      ShortName = "ПГС",
-                     DepartmentLevel = 2
+                     DepartmentLevel = 2,
+                     AllGorups = false
+
                  }
                 );
             Departments.Add(
@@ -241,7 +247,9 @@ namespace WpfAppAbit2.Models
                      HeadDepartment = Departments[5],
                      Name = "Все специальности",
                      ShortName = "Все",
-                     DepartmentLevel = 2
+                     DepartmentLevel = 2,
+                     AllGorups = true
+                     
                  }
                 );
 

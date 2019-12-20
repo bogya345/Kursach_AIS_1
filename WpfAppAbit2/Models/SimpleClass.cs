@@ -15,6 +15,7 @@ namespace WpfAppAbit2.Models
     /// </summary>
     public class SimpleClass : DependencyObject, INotifyPropertyChanged
     {
+        //todo все что связано с ViewModel - аггрегация (классы, которые хранит ViewModel сам, unitOfWork тоже касается.
         public int ID { get; set; }
         public string Name  { get; set; }
         //public SimpleClass(int ID, string Name)

@@ -26,7 +26,13 @@ namespace WpfAppAbit2.Models
 
         public ObservableCollection<Entrant> GetAll()
         {
-            return db.Entrants;
+            var entrantsAll = db.Entrants.Where(x => x.NotDeleted);
+            ObservableCollection<Entrant> entrants = new ObservableCollection<Entrant>();
+            foreach(Entrant entrant in entrantsAll)
+            {
+                entrants.Add(entrant);
+            }
+            return entrants;
         }
         //TODO Entrant заменить на другие функции и перегрузить под разные поисковые запросы
         //TODO В интерфейсах репозиториев можно дописывать новые функции 

@@ -10,7 +10,6 @@ namespace WpfAppAbit2.DAL
     public class UnitOfWork// : IDisposable
     {
         private LocalStorage db = new LocalStorage();
-
         private RepositoryApplication reposApplication;
         private RepositoryEntrant reposEnrant;
         private RepositoryPerson reposPerson;

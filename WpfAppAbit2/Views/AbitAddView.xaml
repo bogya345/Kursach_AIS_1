@@ -24,11 +24,11 @@
         <TextBox HorizontalAlignment="Left" Height="22" Margin="124,75,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.Number, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" AutomationProperties.Name="tbPasNumber"/>
 
         <Label Content="Фамилия " HorizontalAlignment="Left" Margin="53,158,0,0" VerticalAlignment="Top" Height="26" Width="63"/>
-        <TextBox Name="lastNametb" HorizontalAlignment="Left" Height="22" Margin="124,160,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.LastName, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, TargetNullValue=WTF}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbLastName" IsEnabled="{Binding NotExisted}"/>
+        <TextBox Name="lastNametb" HorizontalAlignment="Left" Height="22" Margin="124,160,0,0" TextWrapping="Wrap" Text="{Binding Person.PersonPassports[0].LastName, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, TargetNullValue=WTF}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbLastName" IsEnabled="{Binding NotExisted}"/>
         <Label Content="Имя " HorizontalAlignment="Left" Margin="77,186,0,0" VerticalAlignment="Top" Height="26" Width="37"/>
-        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,187,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbFirstName" IsEnabled="{Binding NotExisted}"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,187,0,0" TextWrapping="Wrap" Text="{Binding Person.PersonPassports[0].FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbFirstName" IsEnabled="{Binding NotExisted}"/>
         <Label Content="Отчество" HorizontalAlignment="Left" Margin="53,213,0,0" VerticalAlignment="Top" Height="26" Width="61"/>
-        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,214,0,0" TextWrapping="Wrap" Text="{Binding SelectedPassport.MiddleName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbMiddleName" IsEnabled="{Binding NotExisted}"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="124,214,0,0" TextWrapping="Wrap" Text="{Binding Person.PersonPassports[0].MiddleName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="158" AutomationProperties.Name="tbMiddleName" IsEnabled="{Binding NotExisted}"/>
         <RichTextBox HorizontalAlignment="Left" Height="99" Margin="124,245,0,0" VerticalAlignment="Top" Width="158" AutomationProperties.Name="rtbIfo" IsEnabled="{Binding NotExisted}">
             <FlowDocument>
                 <Paragraph>
@@ -74,7 +74,7 @@
         <Label Content="{Binding SelectedApplication.EntranceTestResults[3].EntranceTestItem.Subject.Name}" Grid.Column="5" HorizontalAlignment="Left" Margin="260,213,0,0" VerticalAlignment="Top" Height="26" Width="95" AutomationProperties.Name="lbEntrTestItem4"/>
         <!--Tests-->
 
-        <Button IsEnabled="{Binding NotExisted}" Content="Добавить заявление" Grid.Column="3" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Width="177" Height="34" AutomationProperties.Name="btAddApp" Grid.ColumnSpan="3"/>
+        <Button  Command="{Binding CommandAddApplication}" IsEnabled="{Binding NotExisted}" Content="Добавить заявление" Grid.Column="3" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Width="177" Height="34" AutomationProperties.Name="btAddApp" Grid.ColumnSpan="3"/>
         <Button IsEnabled="{Binding NotExisted}" Content="Печатать заявление" Grid.Column="5" HorizontalAlignment="Left" Margin="161,27,0,0" VerticalAlignment="Top" Width="176" Height="34" AutomationProperties.Name="btAddApp"/>
         <Button Content="Проверить паспорт" Command="{Binding CheckPassport}" HorizontalAlignment="Left" Margin="57,110,0,0" VerticalAlignment="Top" Width="185" Height="34" AutomationProperties.Name="btAddApp" Click="Button_Click"/>
         <ComboBox HorizontalAlignment="Left" Margin="123,19,0,0" VerticalAlignment="Top" Width="120" AutomationProperties.Name="cmbPassport" Height="22"

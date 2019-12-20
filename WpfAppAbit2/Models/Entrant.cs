@@ -73,6 +73,7 @@ namespace WpfAppAbit2.Models
         {
 
         }
+        public bool NotDeleted = true;
         //TODO получить список всех заявлений абитуриента
         public Entrant(Person person, bool IsFromKrym, Document DocumentForKrym, ObservableCollection<EntranceTestResult> EntranceTestResults)
         {

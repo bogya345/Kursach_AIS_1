@@ -76,7 +76,7 @@ namespace WpfAppAbit2.Models
                 && (x.Entrant.Person.PersonPassports[0].Number == this.Entrant.Person.PersonPassports[0].Number));
             TestResults.Where(x => x.EntranceTestItem == this.CompetitiveGroup.EntranceTestItems.First(y => y == x.EntranceTestItem));
         }
-
+        public bool NotDeleted = true;
         /// <summary>
         /// обновление суммы баллов в заявлении
         /// </summary>
