@@ -65,7 +65,12 @@ namespace WpfAppAbit2.Models
         }
         public void Delete(Entrant Entrant)
         {
-            db.Entrants.Remove(Entrant);
+
+            db.Entrants[db.Entrants.IndexOf(Entrant)].NotDeleted = false;
+        }
+        public void Delete(string Series, string Number)
+        {
+          
         }
         public void Update(Entrant Entrant, Entrant entrant_prev)
         {
