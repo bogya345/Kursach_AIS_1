@@ -66,7 +66,7 @@ namespace WpfAppAbit2.Models
             if (CheckPasExisted(Series, Number)) { PersonPassports.Add(Passport); }
             else { return; }
         }
-        public Person() { }
+        public Person() { PersonPassports = new ObservableCollection<Passport>(); }
         public Person(Passport passport, string CustomInformation, EmailOrMailAddress emailOrMailAddress)
         {
             this.UID = Guid.NewGuid();

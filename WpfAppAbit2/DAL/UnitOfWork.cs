@@ -17,7 +17,7 @@ namespace WpfAppAbit2.DAL
         private RepositoryDirection reposDirection;
         private RepositoryCompetitiveGroup reposCompetitiveGroup;
         private RepositoryEntranceTestResult reposEntrantceTestResult;
-
+        private RepositoryCampaigns repositoryCampaigns;
         public RepositoryApplication Applications
         {
             get
@@ -25,6 +25,15 @@ namespace WpfAppAbit2.DAL
                 if (reposApplication == null)
                     reposApplication = new RepositoryApplication(db);
                 return reposApplication;
+            }
+        }
+        public RepositoryCampaigns  Campaigns
+        {
+            get
+            {
+                if (repositoryCampaigns == null)
+                    repositoryCampaigns = new RepositoryCampaigns(db);
+                return repositoryCampaigns;
             }
         }
         public RepositoryEntrant Entrants

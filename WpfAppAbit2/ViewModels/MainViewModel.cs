@@ -31,13 +31,25 @@ namespace WpfAppAbit2.ViewModels
             get => new UserCommand(async () =>
             {
                 var displayRootRegistry = (Application.Current as App).displayRootRegistry;
-                LocalStorage localStorage = new LocalStorage();
-                
-                var otherWindowViewModel = new AbitAddViewModel(new AbitAddView());
+                LocalStorage localStorage = new LocalStorage();                
+                var otherWindowViewModel = new AbitAddViewModel(new AbitAddView(), unit);
                 await displayRootRegistry.ShowModalPresentation(otherWindowViewModel);
             }
             );
         }
+        public void CloseCampaignFunc()
+        {
+            unit.Campaigns.
+        }
+        public ICommand CloseCampaign
+        {
+            get => new UserCommand(() =>
+            {
+                CloseCampaignFunc();
+            }
+            );
+        }
+        public 
         //public ObservableCollection<Application> LoadApplications()
         //{
         //    return unit.Applications.GetAll();

@@ -10,6 +10,11 @@ namespace WpfAppAbit2.DAL
 {
     public class RepositoryCampaigns : IRepository<Campaign>
     {
+        LocalStorage db;
+        RepositoryCampaigns(LocalStorage db)
+        {
+            this.db = db;
+        }
         public void Create(Campaign item)
         {
             throw new NotImplementedException();

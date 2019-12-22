@@ -249,7 +249,7 @@ namespace WpfAppAbit2.Models
                      ShortName = "Все",
                      DepartmentLevel = 2,
                      AllGorups = true
-                     
+
                  }
                 );
 
@@ -265,6 +265,31 @@ namespace WpfAppAbit2.Models
                 new EntranceTestResult(){ UID = Guid.NewGuid(), EntranceTestItem = EntranceTestItems[2],
                     Entrant = Entrants[0], ResultValue = 73}
             };
+        }
+        public void FillPersons()
+        {
+            Persons = new ObservableCollection<Person>()
+            {
+                new Person( new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1",
+                    Series ="1243", Number = "214545" }, null,
+                new EmailOrMailAddress("owlkek@gpepa.com", new Address()
+                { Region = "Комякия", Town = "Сыктыкар", Street = "улица Пушкина", House = "Дом Колатушкина" } ) ),
+                new Person()
+                {
+                    PersonPassports = new ObservableCollection<Passport>()
+                    { new Passport()
+                    { FirstName="B2", LastName= "Volkov2", MiddleName="M2" , Series ="0000", Number = "000000"}
+                    }
+                },
+                new Person()
+                {
+                    PersonPassports = new ObservableCollection<Passport>()
+                    {
+                        new Passport() { FirstName="B4", LastName= "Volkov4", MiddleName="M4",Series ="0002", Number = "000002" }
+                    }
+                }
+            };
+
         }
         public void FillApplications()
         {
@@ -315,18 +340,10 @@ namespace WpfAppAbit2.Models
             Entrants = new ObservableCollection<Entrant>()
             {
                 new Entrant()
-                { Person = new Person( new Passport() { FirstName="B1", LastName= "Volkov1", MiddleName="M1",
-                    Series ="1243", Number = "214545" }, null,
-                new EmailOrMailAddress("owlkek@gpepa.com", new Address(){ Town = "Сыктыкар", Street = "улица Пушкина", House = "Дом Колатушкина" } ) )
+                { Person = Persons[0]
                , IsFromKrym=true
                 },
-                new Entrant(){ Person = new Person()
-                {
-                    PersonPassports = new ObservableCollection<Passport>()
-                    { new Passport()
-                    { FirstName="B2", LastName= "Volkov2", MiddleName="M2" , Series ="0000", Number = "000000"}
-                    }
-                }, IsFromKrym=false },
+                new Entrant(){ Person = Persons[1], IsFromKrym=false },
                 new Entrant(){ Person = new Person()
                 {
                         PersonPassports = new ObservableCollection<Passport>()
@@ -334,13 +351,7 @@ namespace WpfAppAbit2.Models
                             new Passport() { FirstName="B3", LastName= "Volkov3", MiddleName="M3", Series ="0001", Number = "000001" }
                         }
                 }, IsFromKrym=true },
-                new Entrant(){ Person = new Person()
-                {
-                    PersonPassports = new ObservableCollection<Passport>()
-                    {
-                        new Passport() { FirstName="B4", LastName= "Volkov4", MiddleName="M4",Series ="0002", Number = "000002" }
-                    }
-                }, IsFromKrym=false },
+                new Entrant(){ Person = Persons[2], IsFromKrym=false },
                 new Entrant(){ Person = new Person()
                 {
                     PersonPassports = new ObservableCollection<Passport>()
@@ -359,7 +370,7 @@ namespace WpfAppAbit2.Models
             FillDirections();
             FillLevelBudjets();
             FillentranceTestItems();
-
+            FillPersons();
             FillCompGroups();
             FillEntrants();
             FillEntranceTestResults();

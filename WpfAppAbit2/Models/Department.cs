@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WpfAppAbit2.DAL;
 
 namespace WpfAppAbit2.Models
 {

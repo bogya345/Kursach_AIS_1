@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using WpfAppAbit2.DAL;
 
 using System.Xml;
 using System.Xml.Serialization;

@@ -7,6 +7,7 @@ using Microsoft.Office.Interop.Word;
 
 using WpfAppAbit2.Services.Patterns;
 using WpfAppAbit2.Models;
+using WpfAppAbit2.DAL;
 
 namespace WpfAppAbit2.Services.Word
 {

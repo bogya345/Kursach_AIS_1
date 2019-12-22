@@ -351,11 +351,12 @@ namespace WpfAppAbit2.ViewModels
         }
 
 
-        public AbitAddViewModel(IView view) : base(view)
+        public AbitAddViewModel(IView view, UnitOfWork unit) : base(view)
         {
             _departments1stLevel.Clear();
             _departments2ndLevel.Clear();
             GetDepartments();
+            this.unit = unit;
             //_selectedDepart1stMem = _selectedDepart1st;
             //_selectedDepart2ndMem = _selectedDepart2nd;
             // RepositoryDepartment repositoryDepartment = new RepositoryDepartment(db);
@@ -591,7 +592,7 @@ namespace WpfAppAbit2.ViewModels
             }
             _selectedpassport = Person.PersonPassports[0];
             //MessageBox.Show(Entrant.ToString());
-            //   SelectedDepart2nd = Departments2ndLevel[1];
+            //SelectedDepart2nd = Departments2ndLevel[1];
         }
         public EntrantApplication CreateApp()
         {
@@ -605,7 +606,7 @@ namespace WpfAppAbit2.ViewModels
         public void GetApps()
         {
             var applications = unit.Applications.GetAll().Where(x => (x.Entrant.Person.PersonPassports[0].Series == Person.PersonPassports[0].Series)
-           && (x.Entrant.Person.PersonPassports[0].Number == Person.PersonPassports[0].Number));
+            && (x.Entrant.Person.PersonPassports[0].Number == Person.PersonPassports[0].Number));
             Applications = new ObservableCollection<EntrantApplication>();
             foreach (EntrantApplication app in applications)
             {
@@ -623,7 +624,9 @@ namespace WpfAppAbit2.ViewModels
 
             get => new UserCommand(() =>
             {
-                CreateEntrant();
+                AddAbiturient();
+                
+               // CreateEntrant();
             }
             );
         }
@@ -639,19 +642,6 @@ namespace WpfAppAbit2.ViewModels
         public void BtAddApp()
         {
             unit.Applications.Create(CreateApp());
-        }
-
-        //protected override void PrepareViewModel()
-        //{
-        //    _entrantPassports = new List<Passport>
-        //    {
-
-        //    };
-        //    _entrantApplications = new List<EntrantApplication>
-        //    {
-
-        //    };
-
-        //}
+        }       
     }
 }
