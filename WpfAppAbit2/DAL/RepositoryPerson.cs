@@ -1,7 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using WpfAppAbit2.Models;
 
-namespace WpfAppAbit2.Models
+namespace WpfAppAbit2.DAL
 {
     public interface IRepositoryPerson : IRepository<Person>
     {
@@ -28,9 +29,9 @@ namespace WpfAppAbit2.Models
         public Person Get(string Series, string Number)
         {
             ObservableCollection<Person> persons = GetAll();
-            foreach(Person person in persons)
+            foreach (Person person in persons)
             {
-                if ((person.PersonPassports[0].Series == Series)&& (person.PersonPassports[0].Series == Series) ){ return person; }
+                if ((person.PersonPassports[0].Series == Series) && (person.PersonPassports[0].Series == Series)) { return person; }
             }
             return null;
         }
@@ -57,11 +58,23 @@ namespace WpfAppAbit2.Models
         public void Create(Person Person)
         {
             if (!db.Persons.Any(x => (x.PersonPassports[0].Series == Person.PersonPassports[0].Series)
-            && (x.PersonPassports[0].Number == Person.PersonPassports[0].Number))) { db.Persons.Add(Person); };
+                && (x.PersonPassports[0].Number == Person.PersonPassports[0].Number)))
+            {
+                db.Persons.Add(Person);
+            }
+            else
+            {
+                Update(Person, db.Persons.FirstOrDefault(x => (x.PersonPassports[0].Series == Person.PersonPassports[0].Series)
+                    && (x.PersonPassports[0].Number == Person.PersonPassports[0].Number)));
+            }
         }
         public void Delete(Person Person)
         {
-            db.Persons.Remove(Person);
+            if (!db.Persons.Remove(Person))
+            {
+                db.Persons.Remove(db.Persons.FirstOrDefault(x => (x.PersonPassports[0].Series == Person.PersonPassports[0].Series)
+                    && (x.PersonPassports[0].Number == Person.PersonPassports[0].Number)));
+            }
         }
         public void Update(Person Person, Person person_prev)
         {
@@ -70,9 +83,9 @@ namespace WpfAppAbit2.Models
         public ObservableCollection<Passport> GetPassports()
         {
             ObservableCollection<Passport> passports = new ObservableCollection<Passport>();
-            foreach(Person person in db.Persons)
+            foreach (Person person in db.Persons)
             {
-                foreach(Passport passport in person.PersonPassports)
+                foreach (Passport passport in person.PersonPassports)
                 {
                     passports.Add(passport);
                 }

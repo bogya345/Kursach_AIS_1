@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using WpfAppAbit2.DAL;
+using WpfAppAbit2.Models;
 
-namespace WpfAppAbit2.Models
+
+namespace WpfAppAbit2.DAL
 {
     public interface IRepositoryEntrant : IRepository<Entrant>
     {
 #pragma warning disable CS0108 // "IRepositoryEntrant.GetAll()" скрывает наследуемый член "IRepository<Entrant>.GetAll()". Если скрытие было намеренным, используйте ключевое слово new.
         ObservableCollection<Entrant> GetAll();
 #pragma warning restore CS0108 // "IRepositoryEntrant.GetAll()" скрывает наследуемый член "IRepository<Entrant>.GetAll()". Если скрытие было намеренным, используйте ключевое слово new.
-        Entrant Get(Entrant entrant);
+        //Entrant Get(Entrant entrant);
         Entrant Get(string Seria, string Number);
     }
     public class RepositoryEntrant : IRepositoryEntrant

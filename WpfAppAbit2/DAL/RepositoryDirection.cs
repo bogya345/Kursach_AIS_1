@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using WpfAppAbit2.Models;
 
-namespace WpfAppAbit2.Models
+namespace WpfAppAbit2.DAL
 {
     public interface IRepositoryDirection : IRepository<Direction>
     {

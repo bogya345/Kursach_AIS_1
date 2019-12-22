@@ -13,8 +13,28 @@ namespace WpfAppAbit2.ViewModels
 {
     public class AbitAddViewModel : ViewModelBase, INotifyPropertyChanged
     {
-
-        public Entrant Entrant { get; set; }
+        private Entrant _entrant;
+        public Entrant Entrant
+        {
+            get => _entrant;
+            set
+            {
+                _entrant = value;
+                OnPropertyChanged("Entrant");
+                Set(ref _entrant, value);
+            }
+        }
+        private Person _person;
+        public Person Person
+        {
+            get => _person;
+            set
+            {
+                _person = value;
+                OnPropertyChanged("Person");
+                Set(ref _person, value);
+            }
+        }
         public DateTime RegistrationDate { get => _registrationDate; set { _registrationDate = value; } }
         private bool _needhostel = false;
         public bool NeedHostel
@@ -30,18 +50,6 @@ namespace WpfAppAbit2.ViewModels
         public Address Address { get; set; }
         public CompetitiveGroup competitiveGroup { get; set; }
         public EmailOrMailAddress EmailOrMailAddress { get; set; }
-
-        private Person _person;
-        public Person Person
-        {
-            get => _person;
-            set
-            {
-                _person = value;
-                OnPropertyChanged("Person");
-                Set(ref _person, value);
-            }
-        }
 
         private Passport _selectedpassport = new Passport();
         public Passport SelectedPassport
@@ -73,7 +81,6 @@ namespace WpfAppAbit2.ViewModels
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-
 
         public bool IsEditApp { get => _isEditApp; }
         private bool _isEditApp = false;
@@ -207,6 +214,8 @@ namespace WpfAppAbit2.ViewModels
                 _selectedDirection = _selectedcompetitiveGroup.Direction;
                 _selectedDepart2nd = _selectedDirection.Department;
                 _selectedDepart1st = SelectedDepart2nd.HeadDepartment;
+                OnPropertyChanged("SelectedApplication");
+
             }
         }
         //public  _selectedInstitute { get; set; } = new ();
@@ -365,6 +374,13 @@ namespace WpfAppAbit2.ViewModels
             Departments2ndLevel = _departments2ndLevel;
             SelectedDepart1st = Departments1stLevel[0];
             SelectedDepart2nd = Departments2ndLevel[0];
+
+
+            Person = new Person();
+            Person.PersonPassports.Add(new Passport());
+
+            SelectedPassport = new Passport();
+            EmailOrMailAddress = new EmailOrMailAddress();
             //Entrant = unit.Entrants.GetAll()[0];
             //Person = Entrant.Person;
             //_selectedpassport = Entrant.Person.PersonPassports[0];
@@ -374,7 +390,6 @@ namespace WpfAppAbit2.ViewModels
 
             //.Show(Person.EmailOrMailAddress.Email);
             View.Show();
-
         }
         public void RefreshSubs()
         {
@@ -452,15 +467,52 @@ namespace WpfAppAbit2.ViewModels
                 //MessageBox.Show(_entrantPassports[0].ToString());
                 MessageBox.Show(SelectedPassport.Series);
                 MessageBox.Show(SelectedPassport.LastName);
-
             }
             );
         }
+
+        public ICommand AddAbit
+        {
+            get => new UserCommand(() =>
+            {
+                AddAbiturient();
+            });
+        }
+        public void AddAbiturient()
+        {
+            Person temp = new Person(Person.PersonPassports[0], Person.CustomInformation, EmailOrMailAddress);
+            unit.Persons.Create(temp);
+        }
+        public ICommand DelAbit
+        {
+            get => new UserCommand(() =>
+            {
+                if (!DeleteAbiturient())
+                    MessageBox.Show("Cant Found That Abit");
+            });
+        }
+        public bool DeleteAbiturient()
+        {
+            unit.Persons.Delete(Person);
+            return true;
+        }
+        public ICommand SaveApp
+        {
+            get => new UserCommand(() =>
+            {
+                SaveApplication();
+            });
+        }
+        public bool SaveApplication()
+        {
+            unit.Applications.Delete(SelectedApplication);
+            return true;
+        }
+
         public ICommand DeleteApp
         {
             get => new UserCommand(() =>
             {
-
                 DeleteEntrApp();
             }
             );
@@ -474,7 +526,7 @@ namespace WpfAppAbit2.ViewModels
         {
 
             ObservableCollection<Entrant> entrants = unit.Entrants.GetAll();
-            Entrant = null;
+            //Entrant = null;
             Passport passportNew = new Passport() { Series = Series, Number = Number };
 
             if (passportNew.PassportChecked(unit.Persons.GetPassports(), Series, Number) || (CheckPersonExist(Series, Number)))
@@ -500,7 +552,7 @@ namespace WpfAppAbit2.ViewModels
             else
             {
                 _entrantPassports.Add(_selectedpassport);
-
+                Person = new Person();
                 NotExisted = true;
             }
         }
@@ -516,15 +568,17 @@ namespace WpfAppAbit2.ViewModels
         {
             Entrant = unit.Entrants.Get(Series, Number);
             Person = Entrant.Person;
+
             ObservableCollection<EntrantApplication> entrantApplications = unit.Applications.GetAll();
             ObservableCollection<EntranceTestResult> allTestResults = unit.EntranceTestResults.GetAll();
             Entrant.EntrantApps = unit.Entrants.GetApplicationsEntrant(entrantApplications, Entrant);
 
             foreach (EntrantApplication entrantApp in Entrant.EntrantApps)
             {
-                var entrTesResult = unit.EntranceTestResults.GetAll().Where(x => ((x.Entrant.Person.PersonPassports[0].Series == Entrant.Person.PersonPassports[0].Series)
+                var entrTesResult = unit.EntranceTestResults.GetAll()
+                .Where(x => ((x.Entrant.Person.PersonPassports[0].Series == Entrant.Person.PersonPassports[0].Series)
                 && (x.Entrant.Person.PersonPassports[0].Number == Entrant.Person.PersonPassports[0].Number))
-                && (entrantApp.CompetitiveGroup.EntranceTestItems.Any(y => y.Guid == x.EntranceTestItem.Guid)));
+                /*&& (entrantApp.CompetitiveGroup.EntranceTestItems.Any(y => y.Guid == x.EntranceTestItem.Guid))*/);
 
                 foreach (EntranceTestResult entranceTestResult in entrTesResult)
                 {

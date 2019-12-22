@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using WpfAppAbit2.DAL;
 using System.Linq;
+using WpfAppAbit2.Models;
 
-namespace WpfAppAbit2.Models
+namespace WpfAppAbit2.DAL
 {
     public interface IRepositoryApplication : IRepository<EntrantApplication>
     {
