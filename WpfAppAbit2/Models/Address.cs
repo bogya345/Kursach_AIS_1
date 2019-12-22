@@ -9,7 +9,8 @@ namespace WpfAppAbit2.Models
     {
         [XmlIgnore]
         public int ID { get; set; }
-
+        [XmlElement("Region")]
+        public string Region { get; set; }
         [XmlElement("Town")]
         public string Town { get; set; }
 

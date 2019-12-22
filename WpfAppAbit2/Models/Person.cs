@@ -76,6 +76,7 @@ namespace WpfAppAbit2.Models
             this.FirstName = PersonPassports[0].FirstName;
             this.MiddleName = PersonPassports[0].MiddleName;
             this.EmailOrMailAddress = emailOrMailAddress;
+            this.PersonPassports[0].Address = emailOrMailAddress.Address;
         }
 
         //TODO добавление абитуриента (подача заявления), редактирование, зачисление.
